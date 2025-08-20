@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/NavBar.astro";
+import OtorrinoHero from "../subcomponents/OtorrinoHero.jsx";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout>
+  <NavBar />
+  <div class="pt-32"></div>
+  <OtorrinoHero client:load />  
+  <Contact />
+  <Footer />
+</Layout>
