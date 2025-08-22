@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import NavBar from "../components/NavBar.astro";
-import Hero from "../components/Hero.astro";
+import Hero from "../components/Hero.jsx";
 import Welcome from "../components/Welcome.jsx";
 import OpinionCarousel from "../components/OpinionCarousel.jsx";
 import Team from "../components/Team.astro";
@@ -16,7 +16,7 @@ import Chatbot from "../components/Chatbot.astro";
 <Layout>
   <NavBar />
   <div class="pt-26">
-    <Hero />
+    <Hero client:load/>
     <Welcome client:load />
   </div>
   <section>  

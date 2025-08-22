@@ -1,29 +1,34 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function HeroClinica() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"], 
+    // cuando el section empieza en viewport hasta que sale por arriba
+  });
+
+  // La lista se va desvaneciendo y moviendo hacia abajo al hacer scroll
+  const opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.4], [0, 100]);
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-teal-600 via-teal-500 to-teal-600 py-28">
+    <section
+      ref={ref}
+      className="relative overflow-hidden bg-gradient-to-br from-teal-600 via-teal-500 to-teal-600 py-28"
+    >
       {/* Fondos decorativos */}
       <div className="absolute -top-16 -left-16 w-60 h-60 bg-white/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 -right-16 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        {/* Título */}
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-tight drop-shadow-2xl"
-        >
-          Bienvenido a Clínica Barajas
-        </motion.h2>
-
         {/* Descripción */}
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          className="text-white/90 text-2xl md:text-2xl leading-relaxed mb-12 max-w-3xl mx-auto"
+          className="text-white/90 text-3xl md:text-2xl leading-relaxed mb-12 max-w-3xl mx-auto"
         >
           En <span className="font-semibold text-white">Clínica Barajas</span>{" "}
           somos el centro de referencia en{" "}
@@ -32,20 +37,23 @@ export default function HeroClinica() {
           </span>{" "}
           en Tenerife y las Islas Canarias. Nuestro equipo multidisciplinar de
           otorrinos y audiólogos combina una{" "}
-          <span className="font-semibold text-white">experiencia centenaria</span>{" "}
+          <span className="font-semibold text-white">
+            experiencia centenaria
+          </span>{" "}
           con tecnología de vanguardia para brindarte el mejor diagnóstico y
           tratamiento en:
         </motion.p>
 
-        {/* Lista de servicios */}
+        {/* Lista de servicios (desaparece con scroll) */}
         <motion.ul
+          style={{ opacity, y }}
           initial="hidden"
           animate="show"
           variants={{
             hidden: {},
             show: { transition: { staggerChildren: 0.15 } },
           }}
-          className="flex flex-wrap justify-center gap-3 md:gap-4 text-white font-semibold mb-14"
+          className="flex flex-wrap justify-center gap-3 md:gap-4 text-white font-semibold text-2xl mb-14"
         >
           {[
             "Sordera y pérdida auditiva",
@@ -75,7 +83,7 @@ export default function HeroClinica() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
           className="flex justify-center"
         >
-          <span className="inline-block bg-white text-teal-700 text-lg font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition">
+          <span className="inline-block bg-white text-2xl text-teal-700 font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition">
             Más de 100 años cuidando de ti
           </span>
         </motion.div>
