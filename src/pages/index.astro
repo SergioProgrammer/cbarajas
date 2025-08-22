@@ -2,10 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import NavBar from "../components/NavBar.astro";
 import Hero from "../components/Hero.astro";
-import Welcome from "../components/Welcome.astro";
+import Welcome from "../components/Welcome.jsx";
 import OpinionCarousel from "../components/OpinionCarousel.jsx";
 import Team from "../components/Team.astro";
 import Services from "../components/Services.jsx";
+import Aseguradoras from "../components/Aseguradoras.jsx";
 import Qya from "../components/Qya.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
@@ -16,13 +17,14 @@ import Chatbot from "../components/Chatbot.astro";
   <NavBar />
   <div class="pt-26">
     <Hero />
-    <Welcome />
+    <Welcome client:load />
   </div>
   <section>  
   <OpinionCarousel client:load />
   </section>
   <Team client: load/>
   <Services client:load />
+  <Aseguradoras />
   <Qya />
   <Contact />
   <Chatbot client:load />
