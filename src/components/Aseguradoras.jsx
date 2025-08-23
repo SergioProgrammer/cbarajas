@@ -27,7 +27,7 @@ export default function Aseguradoras() {
         </h2>
 
         {/* Texto descriptivo */}
-        <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-12 animate-fadeInUp">
+        <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-12 animate-fadeInUp">
           Trabajamos con las principales compañías aseguradoras y mutuas, no
           dude en preguntar por la suya:
         </p>
