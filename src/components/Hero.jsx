@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const images = [
+  "/hero/cl.jpg",
   "/hero/barajas.webp",
   "/hero/franz.webp",
 ];

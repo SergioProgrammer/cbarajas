@@ -1,11 +1,9 @@
-<!-- Incluir AOS en el head -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
 <section class="bg-white py-20 relative overflow-hidden">
-  <!-- Fondo decorativo -->
-  <div class="absolute top-0 left-0 w-40 h-40 bg-teal-200 rounded-full opacity-20 blur-3xl"></div>
-  <div class="absolute bottom-0 right-0 w-48 h-48 bg-teal-300 rounded-full opacity-20 blur-3xl"></div>
-
+<!-- Imagen de fondo fija y opaca -->
+  <div class="absolute inset-0 bg-center bg-cover opacity-30 pointer-events-none"
+       style="background-image: url('instalaciones/cabina.webp'); background-attachment: fixed;">
+  </div>
+  <!-- Contenido (queda nítido porque tiene z-10 encima del fondo) -->
   <div class="max-w-7xl mx-auto px-6 text-center relative z-10 mb-36">
     <!-- Título -->
     <h2 class="text-4xl md:text-5xl mb-28 font-extrabold text-teal-500 drop-shadow-lg">
@@ -34,7 +32,7 @@
       <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition group" data-aos="fade-up" data-aos-delay="300">
         <img src="https://randomuser.me/api/portraits/men/53.jpg" alt="Dr. Pedro Sánchez" 
              class="w-36 h-36 mx-auto rounded-full border-4 border-white shadow-md group-hover:scale-105 transition">
-        <h3 class="mt-6 text-xl font-semibold text-teal-700">Dr. Pedro Sánchez</h3>
+        <h3 class="mt-6 text-xl font-semibold text-teal-700">Dr. Pedro Herrera</h3>
         <p class="text-gray-500 text-base">Otorrinolaringólogo</p>
       </div>
 
@@ -54,12 +52,3 @@
     </div>
   </div>
 </section>
-
-<!-- Script de AOS -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 800,
-    once: true
-  });
-</script>

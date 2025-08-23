@@ -16,7 +16,7 @@ export default function HeroClinica() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-gradient-to-br from-teal-600 via-teal-500 to-teal-600 py-28"
+      className="relative overflow-hidden bg-teal-500 py-28"
     >
       {/* Fondos decorativos */}
       <div className="absolute -top-16 -left-16 w-60 h-60 bg-white/10 rounded-full blur-3xl"></div>

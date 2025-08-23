@@ -1,4 +1,9 @@
 <section id="contacto" class="relative overflow-hidden bg-white py-20 px-6 md:px-16">
+  <!-- Imagen de fondo fija y opaca -->
+  <div class="absolute inset-0 bg-center bg-cover opacity-30 pointer-events-none"
+       style="background-image: url('hero/cl.jpg'); background-attachment: fixed;">
+  </div>
+
   <!-- Fondos decorativos -->
   <div class="absolute -top-20 -left-20 w-72 h-72 bg-teal-100 rounded-full opacity-30 blur-3xl animate-pulse"></div>
   <div class="absolute -bottom-16 -right-16 w-60 h-60 bg-teal-100 rounded-full opacity-20 blur-3xl animate-pulse delay-200"></div>
@@ -15,26 +20,14 @@
     <!-- Contenido -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
       
-      <!-- Información lateral (ejemplo: datos de contacto) -->
-      <div class="flex flex-col justify-center space-y-6 bg-gradient-to-br from-teal-50 to-white rounded-2xl shadow-md p-8 border border-teal-100">
-        <h3 class="text-2xl font-semibold text-teal-700">Contáctenos</h3>
-        <p class="text-gray-600 leading-relaxed">
-          Puede escribirnos directamente a través del formulario o si lo prefiere, puede contactarnos en:
-        </p>
-        <ul class="space-y-3 text-gray-700">
-          <li class="flex items-center gap-3">
-            <span class="w-8 h-8 flex items-center justify-center rounded-full bg-teal-500 text-white shadow">📞</span>
-            +34 922 123 456
-          </li>
-          <li class="flex items-center gap-3">
-            <span class="w-8 h-8 flex items-center justify-center rounded-full bg-teal-500 text-white shadow">✉️</span>
-            info@clinicabarajas.com
-          </li>
-          <li class="flex items-center gap-3">
-            <span class="w-8 h-8 flex items-center justify-center rounded-full bg-teal-500 text-white shadow">📍</span>
-            Av. de la Salud, 15 – Santa Cruz de Tenerife
-          </li>
-        </ul>
+      <!-- Mapa en la izquierda -->
+      <div class="rounded-2xl shadow-md border border-teal-100 overflow-hidden">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.351696385232!2d-16.259378124193983!3d28.468953275754515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc41cc8142e23e89%3A0x52217ad24d010376!2sCl%C3%ADnica%20Barajas!5e0!3m2!1ses!2ses!4v1755937038013!5m2!1ses!2ses" 
+        width="600" 
+        height="450" style="border:0;" 
+        allowfullscreen="" loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
 
       <!-- Formulario de contacto -->
