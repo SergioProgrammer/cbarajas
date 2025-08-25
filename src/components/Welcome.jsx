@@ -1,23 +1,8 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 export default function HeroClinica() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"], 
-    // cuando el section empieza en viewport hasta que sale por arriba
-  });
-
-  // La lista se va desvaneciendo y moviendo hacia abajo al hacer scroll
-  const opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-  const y = useTransform(scrollYProgress, [0, 0.4], [0, 100]);
-
   return (
-    <section
-      ref={ref}
-      className="relative overflow-hidden bg-teal-500 py-28"
-    >
+    <section className="relative overflow-hidden bg-teal-500 py-28">
       {/* Fondos decorativos */}
       <div className="absolute -top-16 -left-16 w-60 h-60 bg-white/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 -right-16 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
@@ -26,7 +11,8 @@ export default function HeroClinica() {
         {/* Descripción */}
         <motion.p
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
           className="text-white/90 text-3xl md:text-2xl leading-relaxed mb-12 max-w-3xl mx-auto"
         >
@@ -44,14 +30,14 @@ export default function HeroClinica() {
           tratamiento en:
         </motion.p>
 
-        {/* Lista de servicios (desaparece con scroll) */}
+        {/* Lista de servicios (aparece al hacer scroll) */}
         <motion.ul
-          style={{ opacity, y }}
           initial="hidden"
-          animate="show"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
           variants={{
             hidden: {},
-            show: { transition: { staggerChildren: 0.15 } },
+            show: { transition: { staggerChildren: 0.25 } },
           }}
           className="flex flex-wrap justify-center gap-3 md:gap-4 text-white font-semibold text-2xl mb-14"
         >
@@ -79,8 +65,9 @@ export default function HeroClinica() {
         {/* Lema */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           className="flex justify-center"
         >
           <span className="inline-block bg-white text-2xl text-teal-700 font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition">
