@@ -4,7 +4,7 @@ export default function ChatBotUI() {
   const [open, setOpen] = useState(false);
   const [meta, setMeta] = useState({ services: [], professionals: [], insurances: [] });
   const [messages, setMessages] = useState([
-    { from: "bot", text: "¡Hola! Te ayudo a reservar tu cita. Elige servicio:" },
+    { from: "bot", text: "¡Hola! ¿Le ayudo a reservar una cita? ¿Cuál es su nombre completo?" },
   ]);
   const [serviceId, setServiceId] = useState("");
   const [professionalId, setProfessionalId] = useState("");
@@ -22,6 +22,12 @@ export default function ChatBotUI() {
 
   useEffect(() => {
     fetch("/api/meta").then((r) => r.json()).then(setMeta);
+  }, []);
+
+  useEffect(() => {
+    const openHandler = () => setOpen(true);
+    window.addEventListener("open-chat", openHandler);
+    return () => window.removeEventListener("open-chat", openHandler);
   }, []);
 
   const push = (from, text) => setMessages((prev) => [...prev, { from, text }]);
@@ -112,8 +118,9 @@ export default function ChatBotUI() {
   return (
     <div className="fixed bottom-4 right-4 z-50">
       {/* Botón flotante estilo bocadillo clásico (ovalado + colita) */}
-      <button
-          onClick={() => setOpen(!open)}
+      {!open && (
+        <button
+          onClick={() => setOpen(true)}
           className="
             relative inline-flex items-center gap-3
             bg-teal-600 text-white px-10 py-6 rounded-full
@@ -125,9 +132,8 @@ export default function ChatBotUI() {
           aria-label="Abrir chat para reservar cita"
         >
           <span className="text-2xl font-bold">Reserva Cita</span>
-      </button>
-
-
+        </button>
+      )}
 
       {/* Panel desplegable */}
       {open && (
@@ -153,7 +159,6 @@ export default function ChatBotUI() {
               </div>
             ))}
 
-            {/* Aquí irían selects/inputs y los slots, igual que en tu implementación */}
             <div ref={endRef} />
           </div>
         </div>

@@ -11,37 +11,44 @@ const reviews = [
     text: "Buena atención y explicaciones por parte del doctor. Cuenta con buena aparatología y pruebas diagnósticas de todo tipo. No se queda en lo superficial.",
     rating: 5,
     relative_time_description: "Hace 5 meses",
-    profile_photo_url: "https://randomuser.me/api/portraits/women/12.jpg"
+    profile_photo_url: ""
   },
   {
     author_name: "Alyf69 MG",
     text: "La verdad es que me sorprendió, tanto el Doctor como el especialista en Audiometría. El Doctor tras dicha prueba me aclaró las dudas de mi dolencia.",
     rating: 5,
     relative_time_description: "Hace 7 meses",
-    profile_photo_url: "https://randomuser.me/api/portraits/men/19.jpg"
+    profile_photo_url: ""
   },
   {
     author_name: "Santi Correa",
     text: "Siempre un magnífico trato. Muchas gracias por la cordial atención que me dispensan todos los profesionales de la clínica en cada cita. Agradecimientos al doctor y todo su equipo.",
     rating: 5,
     relative_time_description: "Hace 3 meses",
-    profile_photo_url: "https://randomuser.me/api/portraits/men/45.jpg"
+    profile_photo_url: ""
   },
   {
     author_name: "Gabriela Vargas Jiménez",
     text: "Muchas gracias al Doctor y todo el personal (recepción y técnicos) por el trato y efectividad. El mismo día que fui tuve una solución completa a años de no saber qué tenía. Gracias 🙏",
     rating: 5,
     relative_time_description: "Hace 6 meses",
-    profile_photo_url: "https://randomuser.me/api/portraits/women/44.jpg"
+    profile_photo_url: ""
   },
   {
     author_name: "Carmen Dolores Gomez Perez",
     text: "Es la primera vez que voy y me ha parecido muy bien tanto el personal como el Doctor, muy bien explicado. Gracias por todo.",
     rating: 5,
     relative_time_description: "Hace 4 meses",
-    profile_photo_url: "https://randomuser.me/api/portraits/women/68.jpg"
+    profile_photo_url: ""
   }
 ];
+
+// Función para obtener avatar con inicial (al estilo Google)
+const getAvatarUrl = (name, photoUrl) => {
+  if (photoUrl) return photoUrl;
+  const initial = name.charAt(0).toUpperCase();
+  return `https://ui-avatars.com/api/?name=${initial}&background=random&color=fff&size=128&bold=true`;
+};
 
 export default function OpinionCarousel() {
   if (!reviews.length) {
@@ -73,50 +80,64 @@ export default function OpinionCarousel() {
         >
           {reviews.map((review, index) => (
             <SwiperSlide key={index}>
-              <div
-                style={{
-                  background: "#fff",
-                  borderRadius: "16px",
-                  padding: "28px 22px",
-                  boxShadow: "0 6px 22px rgba(0,0,0,0.08)",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  minHeight: "260px",
-                }}
-              >
-                {/* Cabecera con foto y nombre */}
-                <div style={{ display: "flex", alignItems: "center", marginBottom: "14px" }}>
-                  <img
-                    src={review.profile_photo_url}
-                    alt={review.author_name}
+                <div
+                  style={{
+                    background: "#fff",
+                    borderRadius: "16px",
+                    padding: "28px 22px",
+                    boxShadow: "0 6px 22px rgba(0,0,0,0.08)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    height: "320px",        // 🔹 altura fija
+                    minHeight: "320px",     // 🔹 asegura uniformidad
+                  }}
+                >
+                  {/* Cabecera con foto/nombre */}
+                  <div style={{ display: "flex", alignItems: "center", marginBottom: "14px" }}>
+                    <img
+                      src={getAvatarUrl(review.author_name, review.profile_photo_url)}
+                      alt={review.author_name}
+                      style={{
+                        width: "48px",
+                        height: "48px",
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        marginRight: "12px",
+                      }}
+                    />
+                    <div>
+                      <h3 style={{ fontWeight: 600, color: "#222", fontSize: "16px" }}>
+                        {review.author_name}
+                      </h3>
+                      <span style={{ fontSize: "13px", color: "#aaa" }}>{review.relative_time_description}</span>
+                    </div>
+                  </div>
+
+                  {/* Texto */}
+                  <p
                     style={{
-                      width: "48px",
-                      height: "48px",
-                      borderRadius: "50%",
-                      objectFit: "cover",
-                      marginRight: "12px",
+                      fontSize: "15px",
+                      color: "#444",
+                      marginBottom: "18px",
+                      flex: 1,
+                      lineHeight: "1.5",
+                      overflow: "hidden",        // 🔹 evita que el texto desborde
+                      textOverflow: "ellipsis",  // 🔹 pone "..." si el texto es muy largo
+                      display: "-webkit-box",
+                      WebkitLineClamp: 5,        // 🔹 máximo 5 líneas visibles
+                      WebkitBoxOrient: "vertical",
                     }}
-                  />
-                  <div>
-                    <h3 style={{ fontWeight: 600, color: "#222", fontSize: "16px" }}>
-                      {review.author_name}
-                    </h3>
-                    <span style={{ fontSize: "13px", color: "#aaa" }}>{review.relative_time_description}</span>
+                  >
+                    {review.text}
+                  </p>
+
+                  {/* Estrellas */}
+                  <div style={{ color: "#f59e0b", fontSize: "18px" }}>
+                    {"★".repeat(review.rating) + "☆".repeat(5 - review.rating)}
                   </div>
                 </div>
-
-                {/* Texto */}
-                <p style={{ fontSize: "15px", color: "#444", marginBottom: "18px", flex: 1, lineHeight: "1.5" }}>
-                  {review.text}
-                </p>
-
-                {/* Estrellas */}
-                <div style={{ color: "#f59e0b", fontSize: "18px" }}>
-                  {"★".repeat(review.rating) + "☆".repeat(5 - review.rating)}
-                </div>
-              </div>
-            </SwiperSlide>
+              </SwiperSlide>
           ))}
         </Swiper>
       </div>

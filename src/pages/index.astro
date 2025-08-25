@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import NavBar from "../components/NavBar.astro";
+import NavBar from "../components/NavBar.jsx";
 import Hero from "../components/Hero.jsx";
 import Welcome from "../components/Welcome.jsx";
 import OpinionCarousel from "../components/OpinionCarousel.jsx";
@@ -14,7 +14,7 @@ import Chatbot from "../components/Chatbot.astro";
 ---
 
 <Layout>
-  <NavBar />
+  <NavBar client:load/>
   <div class="pt-26">
     <Hero client:load/>
     <Welcome client:load />
