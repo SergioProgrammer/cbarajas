@@ -72,7 +72,7 @@ export default function NavBar() {
             {/* Botón Reservar Cita (desktop) */}
             <button
               onClick={() => window.dispatchEvent(new Event("open-chat"))}
-              className="ml-4 px-5 py-2 bg-teal-500 text-white font-semibold rounded-full shadow-md hover:shadow-lg hover:bg-teal-700 transition-all duration-200"
+              className="ml-4 px-5 py-2 bg-teal-600 text-white font-semibold rounded-full shadow-md hover:shadow-lg hover:bg-teal-800 transition-all duration-200"
             >
               Reservar Cita
             </button>
