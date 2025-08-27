@@ -37,9 +37,9 @@ export default function NavBar() {
           {/* Logo */}
           <a href="/" className="flex items-center gap-2">
             <img
-              src="/Logohorizontal.svg"
+              src="/favicon.svg"
               alt="Clínica Barajas Logo"
-              className="h-36 w-auto drop-shadow-lg"
+              className="h-14 w-auto drop-shadow-lg"
             />
           </a>
 
