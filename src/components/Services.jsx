@@ -115,9 +115,9 @@ export default function Services() {
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
       <section className="py-14 bg-[#14b8a6]">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2 class="text-4xl md:text-4xl font-extrabold text-white mb-12 mt-0 ">
+          <h2 class="text-4xl md:text-4xl font-extrabold text-white mb-16 mt-0 ">
             Nuestras  
-            <span class="bg-white px-3 pt-16 ml-2 pb-1 rounded-xl text-teal-500 shadow-lg">
+            <span class="bg-white px-3 pt-4 ml-2 pb-1 rounded-xl text-teal-500 shadow-lg">
               Especialidades
             </span>
           </h2>
