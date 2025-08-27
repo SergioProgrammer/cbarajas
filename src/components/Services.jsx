@@ -114,36 +114,40 @@ export default function Services() {
       `}</style>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
       <section className="py-14 bg-[#14b8a6]">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2 class="text-4xl md:text-4xl font-extrabold text-white mb-16 mt-0 ">
-            Nuestras  
-            <span class="bg-white px-3 pt-4 ml-2 pb-1 rounded-xl text-teal-500 shadow-lg">
-              Especialidades
-            </span>
-          </h2>
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, i) => (
-              <div
-                tabIndex={0}
-                className="service-card rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
-                data-aos="fade-up"
-                data-aos-delay={i * 100}
-                key={service.title}
-              >
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="service-img"
-                />
-                <h3 className="service-title">{service.title}</h3>
-                <div className="service-overlay">
-                  <h3 style={{ fontSize: "1.2rem", fontWeight: 600, marginBottom: 14 }}>{service.title}</h3>
-                  <p style={{ fontSize: "1rem", lineHeight: 1.6 }}>{service.description}</p>
-                </div>
+            <div className="max-w-6xl mx-auto px-4 text-center">
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-12 mt-0 leading-snug">
+                Nuestras
+                <br class="block sm:hidden" />
+                <span class="bg-white px-2 sm:px-3 pt-2 sm:pt-4 ml-0 sm:ml-2 pb-1 rounded-xl text-teal-500 shadow-lg inline-block">
+                  Especialidades
+                </span>
+              </h2>
+
+              <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                {services.map((service, i) => (
+                  <div
+                    tabIndex={0}
+                    className="service-card rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                    data-aos="fade-up"
+                    data-aos-delay={i * 100}
+                    key={service.title}
+                  >
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="service-img"
+                    />
+                    <h3 className="service-title">{service.title}</h3>
+                    <div className="service-overlay">
+                      <h3 style={{ fontSize: "1.2rem", fontWeight: 600, marginBottom: 14 }}>{service.title}</h3>
+                      <p style={{ fontSize: "1rem", lineHeight: 1.6 }}>{service.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+
+
       </section>
     </>
   );
