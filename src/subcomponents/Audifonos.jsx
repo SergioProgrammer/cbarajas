@@ -183,7 +183,7 @@ export default function Audifonos() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center mt-16"
           >
-            <div className="bg-gradient-to-r from-teal-500 to-teal-600 rounded-2xl p-8 md:p-12 text-white">
+            <div className="bg-teal-500 rounded-2xl p-8 md:p-12 text-white">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 ¿Listo para mejorar tu audición?
               </h3>
@@ -191,9 +191,6 @@ export default function Audifonos() {
                 Agenda una consulta personalizada con Franz y descubre 
                 qué audífono se adapta mejor a ti
               </p>
-              <button className="bg-white text-teal-600 font-semibold px-8 py-4 rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300">
-                Solicitar Consulta Gratuita
-              </button>
             </div>
           </motion.div>
         </div>
