@@ -25,7 +25,7 @@ const menuItems = [
       { label: "Potenciales Evocados Auditivos", href: "/evocados" },
     ],
   },
-  { label: "Fundación Barajas", href: "www.fundacionbarajas.com" },
+  { label: "Fundación Barajas", href: "www.fundacionbarajas.es" },
   { label: "Contacto", href: "/contacto" },
 ];
 
