@@ -1,9 +1,47 @@
+---
+import "aos/dist/aos.css";
+
+const doctors = [
+  {
+    name: "Dr. Juan Pérez",
+    role: "Otorrinolaringólogo",
+    img: "https://randomuser.me/api/portraits/men/32.jpg",
+    delay: 100,
+  },
+  {
+    name: "Dra. María López",
+    role: "Otorrinolaringóloga",
+    img: "https://randomuser.me/api/portraits/women/44.jpg",
+    delay: 200,
+  },
+  {
+    name: "Dr. Pedro Herrera",
+    role: "Otorrinolaringólogo",
+    img: "https://randomuser.me/api/portraits/men/53.jpg",
+    delay: 300,
+  },
+  {
+    name: "Dra. Ana Martínez",
+    role: "Otorrinolaringóloga",
+    img: "https://randomuser.me/api/portraits/women/68.jpg",
+    delay: 400,
+  },
+  {
+    name: "Lic. Carlos Gómez",
+    role: "Audiólogo",
+    img: "https://randomuser.me/api/portraits/men/85.jpg",
+    delay: 500,
+  },
+];
+---
+
 <section class="bg-white py-20 relative overflow-hidden">
-<!-- Imagen de fondo fija y opaca -->
-  <div class="absolute inset-0 bg-center bg-cover opacity-30 pointer-events-none"
-       style="background-image: url('instalaciones/cabina.webp'); background-attachment: fixed;">
-  </div>
-  <!-- Contenido (queda nítido porque tiene z-10 encima del fondo) -->
+  <!-- Imagen de fondo -->
+  <div
+    class="absolute inset-0 bg-center bg-cover opacity-30 pointer-events-none"
+    style="background-image: url('instalaciones/cabina.webp'); background-attachment: fixed;"
+  ></div>
+
   <div class="max-w-7xl mx-auto px-6 text-center relative z-10 mb-36">
     <!-- Título -->
     <h2 class="text-4xl md:text-5xl mb-28 font-extrabold text-teal-500 drop-shadow-lg">
@@ -13,42 +51,23 @@
       </span>
     </h2>
 
-    <!-- Grid de doctores -->
-    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
-      <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition group" data-aos="fade-up" data-aos-delay="100">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Juan Pérez" 
-             class="w-36 h-36 mx-auto rounded-full border-4 border-white shadow-md group-hover:scale-105 transition">
-        <h3 class="mt-6 text-xl font-semibold text-teal-700">Dr. Juan Pérez</h3>
-        <p class="text-gray-500 text-base">Otorrinolaringólogo</p>
-      </div>
-
-      <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition group" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Dra. María López" 
-             class="w-36 h-36 mx-auto rounded-full border-4 border-white shadow-md group-hover:scale-105 transition">
-        <h3 class="mt-6 text-xl font-semibold text-teal-700">Dra. María López</h3>
-        <p class="text-gray-500 text-base">Otorrinolaringóloga</p>
-      </div>
-
-      <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition group" data-aos="fade-up" data-aos-delay="300">
-        <img src="https://randomuser.me/api/portraits/men/53.jpg" alt="Dr. Pedro Sánchez" 
-             class="w-36 h-36 mx-auto rounded-full border-4 border-white shadow-md group-hover:scale-105 transition">
-        <h3 class="mt-6 text-xl font-semibold text-teal-700">Dr. Pedro Herrera</h3>
-        <p class="text-gray-500 text-base">Otorrinolaringólogo</p>
-      </div>
-
-      <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition group" data-aos="fade-up" data-aos-delay="400">
-        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Dra. Ana Martínez" 
-             class="w-36 h-36 mx-auto rounded-full border-4 border-white shadow-md group-hover:scale-105 transition">
-        <h3 class="mt-6 text-xl font-semibold text-teal-700">Dra. Ana Martínez</h3>
-        <p class="text-gray-500 text-base">Otorrinolaringóloga</p>
-      </div>
-
-      <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition group" data-aos="fade-up" data-aos-delay="500">
-        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Lic. Carlos Gómez" 
-             class="w-36 h-36 mx-auto rounded-full border-4 border-white shadow-md group-hover:scale-105 transition">
-        <h3 class="mt-6 text-xl font-semibold text-teal-700">Lic. Carlos Gómez</h3>
-        <p class="text-gray-500 text-base">Audiólogo</p>
-      </div>
+    <!-- Carrusel en mobile / grid en desktop -->
+    <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-5 sm:gap-10 scrollbar-hide">
+      {doctors.map((doc) => (
+        <div
+          class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition group snap-center shrink-0 w-64 sm:w-auto"
+          data-aos="fade-up"
+          data-aos-delay={doc.delay}
+        >
+          <img
+            src={doc.img}
+            alt={doc.name}
+            class="w-36 h-36 mx-auto rounded-full border-4 border-white shadow-md group-hover:scale-105 transition"
+          />
+          <h3 class="mt-6 text-xl font-semibold text-teal-700">{doc.name}</h3>
+          <p class="text-gray-500 text-base">{doc.role}</p>
+        </div>
+      ))}
     </div>
   </div>
 </section>
