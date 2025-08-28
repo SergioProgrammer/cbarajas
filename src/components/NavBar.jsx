@@ -25,7 +25,7 @@ const menuItems = [
       { label: "Potenciales Evocados Auditivos", href: "/evocados" },
     ],
   },
-  { label: "Fundación Barajas", href: "www.fundacionbarajas.es" },
+  { label: "Fundación Barajas", href: "https://fundacionbarajas.es" },  
   { label: "Contacto", href: "/contacto" },
 ];
 
@@ -47,12 +47,16 @@ export default function NavBar() {
           <div className="hidden md:flex items-center space-x-4 text-lg">
             {menuItems.map((item, idx) => (
               <div className="relative group" key={idx}>
-                <a
-                  href={item.href}
-                  className="px-3 py-2 rounded-lg transition-all duration-200 text-teal-700 font-medium hover:text-teal-900 hover:bg-teal-50"
-                >
-                  {item.label}
-                </a>
+                
+                <a 
+                    key={item.label}
+                    href={item.href}
+                    target={item.href.startsWith('http') ? '_blank' : '_self'}
+                    rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="px-3 py-2 rounded-lg transition-all duration-200 text-teal-700 font-medium hover:text-teal-900 hover:bg-teal-50"
+                  >
+                    {item.label}
+                  </a>
                 {item.subItems && (
                   <div className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 text-base min-w-[200px] border border-teal-100 animate-fadeIn">
                     {item.subItems.map((sub, subIdx) => (
