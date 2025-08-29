@@ -38,14 +38,14 @@ export default function NavBar() {
 
   return (
     <nav className="fixed mb-10 w-full z-50 bg-white/90 backdrop-blur-lg shadow-md border-b border-teal-100">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
-        <div className="flex justify-between h-20 items-center">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-10">
+        <div className="flex justify-between h-14 md:h-20 items-center">
           {/* Logo */}
           <a href="/" className="flex items-center gap-2">
             <img
               src="/favicon.svg"
               alt="Clínica Barajas Logo"
-              className="h-14 w-auto drop-shadow-lg"
+              className="h-10 md:h-14 w-auto drop-shadow-lg"
             />
           </a>
 
@@ -89,7 +89,7 @@ export default function NavBar() {
           {/* Botón móvil menú */}
           <button
             id="menu-btn"
-            className="md:hidden text-teal-700 text-3xl focus:outline-none"
+            className="md:hidden text-teal-700 text-2xl focus:outline-none p-1"
             onClick={() =>
               document.getElementById("mobile-menu").classList.toggle("hidden")
             }
@@ -102,7 +102,7 @@ export default function NavBar() {
       {/* Menu móvil con acordeón */}
       <div
         id="mobile-menu"
-        className="hidden md:hidden bg-white/95 shadow-lg border-t border-teal-100 rounded-b-lg max-h-screen overflow-y-auto pb-6"
+        className="hidden md:hidden bg-white/95 shadow-lg border-t border-teal-100 rounded-b-lg max-h-screen overflow-y-auto pb-4"
       >
         {menuItems.map((item, idx) => (
           <div key={idx} className="border-b border-teal-100">
@@ -110,18 +110,18 @@ export default function NavBar() {
               <>
                 <button
                   onClick={() => toggleSection(idx)}
-                  className="w-full text-left px-5 py-4 text-teal-700 font-semibold flex justify-between items-center hover:bg-teal-50"
+                  className="w-full text-left px-4 py-3 text-teal-700 font-semibold flex justify-between items-center hover:bg-teal-50 text-sm"
                 >
                   {item.label}
-                  <span>{openSection === idx ? "▲" : "▼"}</span>
+                  <span className="text-xs">{openSection === idx ? "▲" : "▼"}</span>
                 </button>
                 {openSection === idx && (
-                  <div className="pl-5 bg-teal-50">
+                  <div className="pl-3 bg-teal-50">
                     {item.subItems.map((sub, subIdx) => (
                       <a
                         key={subIdx}
                         href={sub.href}
-                        className="block px-5 py-3 text-teal-700 hover:bg-teal-100"
+                        className="block px-4 py-2.5 text-teal-700 hover:bg-teal-100 text-sm"
                       >
                         {sub.label}
                       </a>
@@ -132,7 +132,7 @@ export default function NavBar() {
             ) : (
               <a
                 href={item.href}
-                className="block px-5 py-4 text-teal-700 hover:bg-teal-50 font-semibold"
+                className="block px-4 py-3 text-teal-700 hover:bg-teal-50 font-semibold text-sm"
               >
                 {item.label}
               </a>
@@ -143,7 +143,7 @@ export default function NavBar() {
         {/* Botón móvil Reservar Cita */}
         <button
           onClick={() => window.dispatchEvent(new Event("open-chat"))}
-          className="block mx-4 my-4 px-5 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold rounded-full shadow-md hover:shadow-lg hover:from-teal-600 hover:to-teal-700 text-center transition-all duration-200"
+          className="block mx-3 my-3 px-4 py-2.5 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold rounded-full shadow-md hover:shadow-lg hover:from-teal-600 hover:to-teal-700 text-center transition-all duration-200 text-sm"
         >
           Reservar Cita
         </button>
