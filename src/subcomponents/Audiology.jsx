@@ -84,17 +84,16 @@ Con pruebas diagnósticas específicas y terapias auditivas personalizadas, es p
   }, [selected]);
 
   return (
-    <section className="bg-gradient-to-br from-gray-50 to-teal-50/30 py-16 px-6 lg:px-16" id="audiologia">
+    <section className="bg-teal-500 py-16 px-6 lg:px-16" id="audiologia">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-teal-700 mb-4">Audiología</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold text-white mb-4">Audiología</h2>
+          <p className="text-lg text-white max-w-2xl mx-auto">
             En Clínica Barajas cuidamos de tu salud auditiva con un enfoque
             personalizado y profesional. Descubre nuestros servicios especializados.
           </p>
         </div>
-
         {/* Grid de servicios */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
