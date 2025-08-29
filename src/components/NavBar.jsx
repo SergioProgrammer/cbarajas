@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const menuItems = [
   { label: "La Clínica", href: "/laclinica" },
@@ -25,11 +25,17 @@ const menuItems = [
       { label: "Potenciales Evocados Auditivos", href: "/potenciales-evocados-auditivos" },
     ],
   },
-  { label: "Fundación Barajas", href: "https://fundacionbarajas.es" },  
+  { label: "Fundación Barajas", href: "https://fundacionbarajas.es" },
   { label: "Contacto", href: "/contacto" },
 ];
 
 export default function NavBar() {
+  const [openSection, setOpenSection] = useState(null);
+
+  const toggleSection = (idx) => {
+    setOpenSection(openSection === idx ? null : idx);
+  };
+
   return (
     <nav className="fixed mb-10 w-full z-50 bg-white/90 backdrop-blur-lg shadow-md border-b border-teal-100">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
@@ -47,16 +53,14 @@ export default function NavBar() {
           <div className="hidden md:flex items-center space-x-4 text-lg">
             {menuItems.map((item, idx) => (
               <div className="relative group" key={idx}>
-                
-                <a 
-                    key={item.label}
-                    href={item.href}
-                    target={item.href.startsWith('http') ? '_blank' : '_self'}
-                    rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="px-3 py-2 rounded-lg transition-all duration-200 text-teal-700 font-medium hover:text-teal-900 hover:bg-teal-50"
-                  >
-                    {item.label}
-                  </a>
+                <a
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : "_self"}
+                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="px-3 py-2 rounded-lg transition-all duration-200 text-teal-700 font-medium hover:text-teal-900 hover:bg-teal-50"
+                >
+                  {item.label}
+                </a>
                 {item.subItems && (
                   <div className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 text-base min-w-[200px] border border-teal-100 animate-fadeIn">
                     {item.subItems.map((sub, subIdx) => (
@@ -95,47 +99,55 @@ export default function NavBar() {
         </div>
       </div>
 
-      {/* Menu móvil */}
-        <div
-          id="mobile-menu"
-          className="hidden md:hidden bg-white/95 shadow-lg border-t border-teal-100 rounded-b-lg 
-                    max-h-screen overflow-y-auto pb-6"
-        >
-          {menuItems.map((item, idx) => (
-            <React.Fragment key={idx}>
+      {/* Menu móvil con acordeón */}
+      <div
+        id="mobile-menu"
+        className="hidden md:hidden bg-white/95 shadow-lg border-t border-teal-100 rounded-b-lg max-h-screen overflow-y-auto pb-6"
+      >
+        {menuItems.map((item, idx) => (
+          <div key={idx} className="border-b border-teal-100">
+            {item.subItems ? (
+              <>
+                <button
+                  onClick={() => toggleSection(idx)}
+                  className="w-full text-left px-5 py-4 text-teal-700 font-semibold flex justify-between items-center hover:bg-teal-50"
+                >
+                  {item.label}
+                  <span>{openSection === idx ? "▲" : "▼"}</span>
+                </button>
+                {openSection === idx && (
+                  <div className="pl-5 bg-teal-50">
+                    {item.subItems.map((sub, subIdx) => (
+                      <a
+                        key={subIdx}
+                        href={sub.href}
+                        className="block px-5 py-3 text-teal-700 hover:bg-teal-100"
+                      >
+                        {sub.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </>
+            ) : (
               <a
                 href={item.href}
                 className="block px-5 py-4 text-teal-700 hover:bg-teal-50 font-semibold"
               >
                 {item.label}
               </a>
-              {item.subItems && (
-                <div className="pl-5 bg-teal-50">
-                  {item.subItems.map((sub, subIdx) => (
-                    <a
-                      key={subIdx}
-                      href={sub.href}
-                      className="block px-5 py-3 text-teal-700 hover:bg-teal-100"
-                    >
-                      {sub.label}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </React.Fragment>
-          ))}
+            )}
+          </div>
+        ))}
 
-          {/* Botón móvil Reservar Cita */}
-          <button
-            onClick={() => window.dispatchEvent(new Event("open-chat"))}
-            className="block mx-4 my-4 px-5 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white 
-                      font-semibold rounded-full shadow-md hover:shadow-lg 
-                      hover:from-teal-600 hover:to-teal-700 text-center transition-all duration-200"
-          >
-            Reservar Cita
-          </button>
-        </div>
-
+        {/* Botón móvil Reservar Cita */}
+        <button
+          onClick={() => window.dispatchEvent(new Event("open-chat"))}
+          className="block mx-4 my-4 px-5 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold rounded-full shadow-md hover:shadow-lg hover:from-teal-600 hover:to-teal-700 text-center transition-all duration-200"
+        >
+          Reservar Cita
+        </button>
+      </div>
     </nav>
   );
 }
