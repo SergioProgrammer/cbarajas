@@ -96,42 +96,46 @@ export default function NavBar() {
       </div>
 
       {/* Menu móvil */}
-      <div
-        id="mobile-menu"
-        className="hidden md:hidden bg-white/95 shadow-lg border-t border-teal-100 rounded-b-lg"
-      >
-        {menuItems.map((item, idx) => (
-          <React.Fragment key={idx}>
-            <a
-              href={item.href}
-              className="block px-5 py-4 text-teal-700 hover:bg-teal-50 font-semibold"
-            >
-              {item.label}
-            </a>
-            {item.subItems && (
-              <div className="pl-5 bg-teal-50">
-                {item.subItems.map((sub, subIdx) => (
-                  <a
-                    key={subIdx}
-                    href={sub.href}
-                    className="block px-5 py-3 text-teal-700 hover:bg-teal-100"
-                  >
-                    {sub.label}
-                  </a>
-                ))}
-              </div>
-            )}
-          </React.Fragment>
-        ))}
-
-        {/* Botón móvil Reservar Cita */}
-        <button
-          onClick={() => window.dispatchEvent(new Event("open-chat"))}
-          className="block mx-4 my-4 px-5 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold rounded-full shadow-md hover:shadow-lg hover:from-teal-600 hover:to-teal-700 text-center transition-all duration-200"
+        <div
+          id="mobile-menu"
+          className="hidden md:hidden bg-white/95 shadow-lg border-t border-teal-100 rounded-b-lg 
+                    max-h-screen overflow-y-auto pb-6"
         >
-          Reservar Cita
-        </button>
-      </div>
+          {menuItems.map((item, idx) => (
+            <React.Fragment key={idx}>
+              <a
+                href={item.href}
+                className="block px-5 py-4 text-teal-700 hover:bg-teal-50 font-semibold"
+              >
+                {item.label}
+              </a>
+              {item.subItems && (
+                <div className="pl-5 bg-teal-50">
+                  {item.subItems.map((sub, subIdx) => (
+                    <a
+                      key={subIdx}
+                      href={sub.href}
+                      className="block px-5 py-3 text-teal-700 hover:bg-teal-100"
+                    >
+                      {sub.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </React.Fragment>
+          ))}
+
+          {/* Botón móvil Reservar Cita */}
+          <button
+            onClick={() => window.dispatchEvent(new Event("open-chat"))}
+            className="block mx-4 my-4 px-5 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white 
+                      font-semibold rounded-full shadow-md hover:shadow-lg 
+                      hover:from-teal-600 hover:to-teal-700 text-center transition-all duration-200"
+          >
+            Reservar Cita
+          </button>
+        </div>
+
     </nav>
   );
 }
