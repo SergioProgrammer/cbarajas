@@ -4,12 +4,83 @@ import "../styles/global.css";
 
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clínica Barajas</title>
-    <link rel="icon" href="/favicon.svg" />
-    
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <!-- SEO básico -->
+      <title>Clínica Barajas – Especialistas en audífonos y prótesis auditivas</title>
+      <meta 
+        name="description" 
+        content="Clínica Barajas en Madrid. Especialistas en audífonos y adaptación de prótesis auditivas en niños y adultos. Tecnología avanzada y atención personalizada." 
+      />
+
+      <!-- Open Graph -->
+      <meta property="og:title" content="Clínica Barajas – Otorrinolaringología y prótesis auditivas" />
+      <meta property="og:description" content="Expertos en adaptación de audífonos y prótesis auditivas en niños y adultos. Atención clínica personalizada en Tenerife." />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://www.clinicabarajas.com" />
+      <meta property="og:image" content="https://www.clinicabarajas.com/cl.jpg" />
+
+      <!-- Accesibilidad y SEO técnico -->
+      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      <link rel="canonical" href="https://www.clinicabarajas.com" />
+      <meta name="robots" content="index, follow" />
+
+      <!-- JSON-LD (SEO local para Google) -->
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Clínica Barajas",
+        "image": "https://www.clinicabarajas.com/cl.jpg",
+        "@id": "https://www.clinicabarajas.com",
+        "url": "https://www.clinicabarajas.com",
+        "telephone": "+34 922 275 488",
+        "priceRange": "€€",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "C. de Perez de Rozas, 8, 38004",
+          "addressLocality": "Santa Cruz de Tenerife",
+          "postalCode": "38004",
+          "addressCountry": "ES"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 28.46824,
+          "longitude": -16.25462
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "19:00"
+          }
+        ],
+        "medicalSpecialty": [
+          "Audiology",
+          "Otolaryngologic"
+        ],
+        "founder": {
+          "@type": "Person",
+          "name": "Franz Zenker and Dr. Juan Barajas",
+          "jobTitle": "Otorrinolaringólogo y Audiólogo especialista en prótesis auditivas"
+        },
+        "sameAs": [
+          "https://www.facebook.com/clinicabarajas",
+          "https://www.instagram.com/clinicabarajas",
+          "https://www.linkedin.com/company/clinica-barajas"
+        ]
+      }
+      </script>
   </head>
+
   <body class="font-sans text-gray-800">
     <slot />
   </body>
