@@ -22,7 +22,7 @@ export default function Hero() {
       {images.map((img, index) => (
         <div
           key={index}
-          className={`absolute inset-0 bg-cover mt-20 bg-center transition-opacity duration-1000 ${
+          className={`absolute inset-0 bg-cover mt-10 bg-center transition-opacity duration-1000 ${
             index === current ? "opacity-100" : "opacity-0"
           }`}
           style={{ backgroundImage: `url(${img})` }}
