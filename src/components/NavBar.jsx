@@ -9,9 +9,9 @@ const menuItems = [
       { label: "Otorrino", href: "/otorrino" },
       { label: "Audiología", href: "/audiologia" },
       { label: "Audífonos", href: "/adaptacion-de-audifonos" },
-      { label: "Niños y Adolescentes", href: "/ninos" },
-      { label: "Vértigo", href: "/vertigo" },
-      { label: "Voz", href: "/voz" },
+      { label: "Niños y Adolescentes", href: "/deteccion-precoz-de-la-sordera" },
+      { label: "Vértigo", href: "/vertigo-trastornos" },
+      { label: "Voz", href: "/analisis-acustico-de-la-voz" },
     ],
   },
   {
