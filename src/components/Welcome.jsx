@@ -14,7 +14,7 @@ export default function HeroClinica() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          className="text-white/90 text-lg md:text-2xl leading-relaxed mb-12 max-w-3xl mx-auto"
+          className="text-white/90 text-xl md:text-2xl leading-relaxed mb-12 max-w-3xl mx-auto"
         >
           <span className="hidden md:inline">
             En <span className="font-semibold text-white">Clínica Barajas</span>{" "}
