@@ -14,23 +14,31 @@ export default function HeroClinica() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          className="text-white/90 text-3xl md:text-2xl leading-relaxed mb-12 max-w-3xl mx-auto"
+          className="text-white/90 text-lg md:text-2xl leading-relaxed mb-12 max-w-3xl mx-auto"
         >
-          En <span className="font-semibold text-white">Clínica Barajas</span>{" "}
-          somos el centro de referencia en{" "}
-          <span className="font-semibold text-white">
-            otorrinolaringología
-          </span>{" "}
-          en Tenerife y las Islas Canarias. Nuestro equipo multidisciplinar de
-          otorrinos y audiólogos combina una{" "}
-          <span className="font-semibold text-white">
-            experiencia centenaria
-          </span>{" "}
-          con tecnología de vanguardia para brindarte el mejor diagnóstico y
-          tratamiento en:
+          <span className="hidden md:inline">
+            En <span className="font-semibold text-white">Clínica Barajas</span>{" "}
+            somos el centro de referencia en{" "}
+            <span className="font-semibold text-white">
+              otorrinolaringología
+            </span>{" "}
+            en Tenerife y las Islas Canarias. Nuestro equipo multidisciplinar de
+            otorrinos y audiólogos combina una{" "}
+            <span className="font-semibold text-white">
+              experiencia centenaria
+            </span>{" "}
+            con tecnología de vanguardia para brindarte el mejor diagnóstico y
+            tratamiento en:
+          </span>
+          <span className="md:hidden">
+            <span className="font-semibold text-white">Clínica Barajas</span>,{" "}
+            centro de referencia en{" "}
+            <span className="font-semibold text-white">otorrinolaringología</span>{" "}
+            en Canarias. Especialistas en:
+          </span>
         </motion.p>
 
-        {/* Lista de servicios (aparece al hacer scroll) */}
+        {/* Lista de servicios */}
         <motion.ul
           initial="hidden"
           whileInView="show"
@@ -39,7 +47,7 @@ export default function HeroClinica() {
             hidden: {},
             show: { transition: { staggerChildren: 0.25 } },
           }}
-          className="flex flex-wrap justify-center gap-3 md:gap-4 text-white font-semibold text-2xl mb-14"
+          className="flex flex-wrap justify-center gap-3 md:gap-4 text-white font-semibold text-lg md:text-2xl mb-14"
         >
           {[
             "Sordera y pérdida auditiva",
@@ -55,7 +63,7 @@ export default function HeroClinica() {
                 show: { opacity: 1, y: 0 },
               }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="px-5 py-2 rounded-full bg-white/15 backdrop-blur-sm shadow-sm hover:bg-white/25 hover:scale-105 transition-transform"
+              className="px-4 md:px-5 py-2 rounded-full bg-white/15 backdrop-blur-sm shadow-sm hover:bg-white/25 hover:scale-105 transition-transform"
             >
               {servicio}
             </motion.li>
@@ -70,7 +78,7 @@ export default function HeroClinica() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           className="flex justify-center"
         >
-          <span className="inline-block bg-white text-2xl text-teal-700 font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition">
+          <span className="inline-block bg-white text-xl md:text-2xl text-teal-700 font-semibold px-6 md:px-8 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition">
             Más de 100 años cuidando de ti
           </span>
         </motion.div>
