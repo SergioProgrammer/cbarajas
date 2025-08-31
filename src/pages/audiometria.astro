@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import NavBar from "../components/NavBar";
-import Qya from "../components/Qya.astro";
+import Audiometry from "../subcomponents/Audiometry.jsx";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 import Chatbot from "../components/Chatbot.astro";
@@ -9,8 +9,8 @@ import Chatbot from "../components/Chatbot.astro";
 
 <Layout>
   <NavBar client:load/>
-  <div class="pt-9">
-  <Qya />
+  <div class="pt-16">
+  <Audiometry client:load/>
   <Contact />
   </div>
   <Footer />
