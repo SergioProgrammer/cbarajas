@@ -1,0 +1,134 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/NavBar.jsx";
+import Footer from "../components/Footer.jsx";
+import Chatbot from "../components/Chatbot.astro";
+---
+
+<Layout>
+  <NavBar client:load/>
+  <div class="pt-24 pb-16 px-6 max-w-5xl mx-auto">
+    <h1 class="text-4xl font-bold text-teal-700 mb-8 text-center">Política de Privacidad</h1>
+    
+    <div class="prose prose-lg max-w-none">
+
+      <!-- Introducción -->
+      <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Introducción</h2>
+        <p class="text-gray-700 mb-4">
+          Esta política de privacidad establece la forma en que se gestionan los datos personales en este sitio web. 
+          Es imprescindible que la leas y aceptes antes de seguir navegando.
+        </p>
+        <p class="text-gray-700">
+          Este sitio cumple con el Reglamento General de Protección de Datos Europeo (UE) 2016/679 (RGPD) y con la 
+          Ley 34/2002, de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSI).
+        </p>
+      </section>
+
+      <!-- Identificación del Responsable -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Identificación del Responsable</h2>
+        <div class="bg-white p-4 rounded border-l-4 border-teal-500 text-gray-700">
+          <p><strong>Identidad:</strong> Clínica Barajas, S.L.</p>
+          <p><strong>Nombre comercial:</strong> Clínica Barajas</p>
+          <p><strong>CIF:</strong> B38393377</p>
+          <p><strong>Dirección:</strong> C/ Pérez de Rozas, 8, 38004, Santa Cruz, Santa Cruz de Tenerife, España</p>
+          <p><strong>Email:</strong> <a href="mailto:info@clinicabarajas.com" class="text-teal-600 hover:text-teal-800">info@clinicabarajas.com</a></p>
+        </div>
+      </section>
+
+      <!-- Principios -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Principios aplicados a tu información</h2>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Licitud, lealtad y transparencia:</strong> Siempre requeriremos tu consentimiento informado.</li>
+          <li><strong>Minimización de datos:</strong> Solo solicitamos lo estrictamente necesario.</li>
+          <li><strong>Limitación de conservación:</strong> Los datos se guardarán el tiempo necesario.</li>
+          <li><strong>Integridad y confidencialidad:</strong> Garantizamos seguridad y confidencialidad.</li>
+        </ul>
+      </section>
+
+      <!-- Obtención de datos -->
+      <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Cómo obtenemos tus datos</h2>
+        <p class="text-gray-700 mb-2">Los datos personales que tratamos proceden de:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>Formulario de contacto.</li>
+        </ul>
+      </section>
+
+      <!-- Derechos -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Tus derechos</h2>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>Acceder a tus datos personales.</li>
+          <li>Solicitar rectificación o supresión.</li>
+          <li>Solicitar limitación de tratamiento.</li>
+          <li>Oponerte al tratamiento.</li>
+          <li>Solicitar portabilidad de los datos.</li>
+        </ul>
+        <p class="text-gray-700 mt-4">
+          También puedes presentar una reclamación ante la Agencia Española de Protección de Datos.
+        </p>
+      </section>
+
+      <!-- Finalidad -->
+      <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Finalidad del tratamiento</h2>
+        <p class="text-gray-700">
+          Usamos los datos para responder consultas, dar soporte, gestionar redes sociales y garantizar 
+          el cumplimiento de la ley.
+        </p>
+      </section>
+
+      <!-- Conservación -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Tiempo de conservación</h2>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>Mientras exista relación mercantil.</li>
+          <li>Hasta que se solicite su supresión.</li>
+          <li>Máximo de inactividad: 1 año.</li>
+        </ul>
+      </section>
+
+      <!-- Seguridad -->
+      <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Seguridad de los datos</h2>
+        <p class="text-gray-700">
+          Aplicamos medidas como certificado SSL y protocolos internos, aunque no podemos garantizar 
+          la absoluta inexpugnabilidad de Internet.
+        </p>
+      </section>
+
+      <!-- Veracidad -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Veracidad de los datos</h2>
+        <p class="text-gray-700">
+          El usuario es responsable de mantener actualizada la información que facilite.
+        </p>
+      </section>
+
+      <!-- Aceptación -->
+      <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Aceptación y consentimiento</h2>
+        <p class="text-gray-700">
+          El usuario declara haber sido informado y acepta el tratamiento de sus datos en los términos 
+          de esta política de privacidad.
+        </p>
+      </section>
+
+      <!-- Contacto -->
+      <section class="bg-teal-50 p-6 rounded-lg border border-teal-200">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Contacto</h2>
+        <p class="text-gray-700 mb-4">Para cualquier consulta relacionada con esta política de privacidad:</p>
+        <div class="space-y-2 text-gray-700">
+          <p><strong>Email:</strong> <a href="mailto:info@clinicabarajas.com" class="text-teal-600 hover:text-teal-800">info@clinicabarajas.com</a></p>
+          <p><strong>Dirección:</strong> C/ Pérez de Rozas, 8, 38004, Santa Cruz de Tenerife</p>
+        </div>
+      </section>
+      
+    </div>
+  </div>
+  <Footer />
+  <Chatbot />
+</Layout>

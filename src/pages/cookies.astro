@@ -1,0 +1,187 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/NavBar.jsx";
+import Footer from "../components/Footer.jsx";
+import Chatbot from "../components/Chatbot.astro";
+---
+
+<Layout>
+  <NavBar client:load/>
+  <div class="pt-24 pb-16 px-6 max-w-5xl mx-auto">
+    <h1 class="text-4xl font-bold text-teal-700 mb-8 text-center">Política de Cookies</h1>
+    
+    <div class="prose prose-lg max-w-none">
+
+      <!-- ¿Qué son las cookies? -->
+      <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">1. ¿Qué son las cookies?</h2>
+        <p class="text-gray-700 mb-4">
+          Una cookie es un archivo de texto que un servidor web puede guardar en el disco duro de tu equipo 
+          para almacenar información sobre ti como usuario. Se utilizan para reconocer al usuario, 
+          recordar preferencias, almacenar datos para próximas visitas, obtener estadísticas o analizar 
+          el comportamiento de navegación.
+        </p>
+        <p class="text-gray-700 mb-4">
+          Quedan exceptuadas del cumplimiento de las obligaciones del artículo 22.2 de la LSSI las cookies que:
+        </p>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>Permiten únicamente la comunicación entre el equipo del usuario y la red.</li>
+          <li>Prestan un servicio expresamente solicitado por el usuario.</li>
+        </ul>
+        <h3 class="text-xl font-semibold text-teal-600 mt-6 mb-3">Cookies exceptuadas:</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>Cookies de entrada del usuario.</li>
+          <li>Cookies de autenticación o identificación de usuario (de sesión).</li>
+          <li>Cookies de seguridad del usuario.</li>
+          <li>Cookies de sesión de reproductor multimedia.</li>
+          <li>Cookies de sesión para equilibrar la carga.</li>
+          <li>Cookies de personalización de la interfaz.</li>
+          <li>Cookies de complemento (plug-in) para compartir en redes sociales.</li>
+        </ul>
+      </section>
+
+      <!-- Tipos de cookies -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">2. Tipos de cookies</h2>
+        <p class="text-gray-700 mb-4">Las cookies pueden clasificarse según diferentes criterios:</p>
+
+        <h3 class="text-xl font-semibold text-teal-600 mb-3">Según quién las gestione:</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Cookies propias:</strong> Instaladas desde nuestro dominio.</li>
+          <li><strong>Cookies de terceros:</strong> Instaladas y gestionadas por proveedores externos.</li>
+        </ul>
+
+        <h3 class="text-xl font-semibold text-teal-600 mt-6 mb-3">Según su duración:</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Cookies de sesión:</strong> Se eliminan al cerrar el navegador.</li>
+          <li><strong>Cookies persistentes:</strong> Permanecen en el dispositivo un tiempo mayor.</li>
+        </ul>
+
+        <h3 class="text-xl font-semibold text-teal-600 mt-6 mb-3">Según su finalidad:</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Técnicas:</strong> Necesarias para el correcto funcionamiento del sitio.</li>
+          <li><strong>Personalización:</strong> Permiten configurar idioma, región o navegador.</li>
+          <li><strong>Analíticas:</strong> Permiten elaborar perfiles de navegación y estadísticas.</li>
+          <li><strong>Publicitarias:</strong> Muestran publicidad adaptada al comportamiento del usuario.</li>
+        </ul>
+      </section>
+
+      <!-- Cookies utilizadas -->
+      <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">3. Cookies utilizadas en nuestra web</h2>
+        <p class="text-gray-700 mb-4">
+          En <strong>Clínica Barajas</strong> utilizamos cookies técnicas, analíticas y publicitarias:
+        </p>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Técnicas:</strong> Para navegación, recordar contraseñas y usar funcionalidades.</li>
+          <li><strong>Analíticas:</strong> Google Analytics para medir uso de la web. 
+            <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage" target="_blank" class="text-teal-600 hover:text-teal-800">Más info</a>.
+          </li>
+          <li><strong>Publicitarias:</strong> Para mostrar anuncios relevantes y medir eficacia de campañas.</li>
+        </ul>
+
+        <h3 class="text-xl font-semibold text-teal-600 mt-6 mb-3">Cookies instaladas en nuestro dominio:</h3>
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm text-left border border-gray-300">
+            <thead class="bg-teal-100">
+              <tr>
+                <th class="p-2 border">Nombre</th>
+                <th class="p-2 border">Finalidad</th>
+                <th class="p-2 border">Propia/Terceros</th>
+                <th class="p-2 border">Duración</th>
+                <th class="p-2 border">¿Cuándo se instala?</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white">
+              <tr>
+                <td class="p-2 border">_ga</td>
+                <td class="p-2 border">Analítica (Google Analytics)</td>
+                <td class="p-2 border">Terceros</td>
+                <td class="p-2 border">2 años</td>
+                <td class="p-2 border">Al aceptar cookies</td>
+              </tr>
+              <tr>
+                <td class="p-2 border">_ga_*</td>
+                <td class="p-2 border">Analítica (Google Analytics)</td>
+                <td class="p-2 border">Terceros</td>
+                <td class="p-2 border">1 año</td>
+                <td class="p-2 border">Al aceptar cookies</td>
+              </tr>
+              <tr>
+                <td class="p-2 border">moove_gdpr_popup</td>
+                <td class="p-2 border">Control de consentimiento</td>
+                <td class="p-2 border">Terceros</td>
+                <td class="p-2 border">1 año</td>
+                <td class="p-2 border">Al aceptar cookies</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Consentimiento -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">4. Información y obtención del consentimiento</h2>
+        <p class="text-gray-700">
+          Al acceder a nuestra web, aparece un pop-up informando sobre el uso de cookies y ofreciendo 
+          la posibilidad de aceptación granular. El consentimiento se conservará por un máximo de 24 meses, 
+          tras lo cual se solicitará nuevamente.
+        </p>
+      </section>
+
+      <!-- Cómo deshabilitar -->
+      <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">5. ¿Cómo puedo impedir la instalación de cookies?</h2>
+        <p class="text-gray-700 mb-4">
+          Puedes rechazar la instalación de cookies desde el pop-up de aceptación o configurando tu navegador:
+        </p>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li><a href="http://windows.microsoft.com/es-es/windows-vista/block-or-allow-cookies" target="_blank" class="text-teal-600 hover:text-teal-800">Internet Explorer</a></li>
+          <li><a href="https://support.mozilla.org/es/kb/Borrar%20cookies" target="_blank" class="text-teal-600 hover:text-teal-800">Firefox</a></li>
+          <li><a href="http://support.apple.com/kb/HT1677?viewlocale=es_ES" target="_blank" class="text-teal-600 hover:text-teal-800">Safari</a></li>
+          <li><a href="https://support.google.com/accounts/answer/61416?hl=es" target="_blank" class="text-teal-600 hover:text-teal-800">Chrome</a></li>
+          <li><a href="http://help.opera.com/Windows/11.50/es-ES/cookies.html" target="_blank" class="text-teal-600 hover:text-teal-800">Opera</a></li>
+        </ul>
+        <p class="text-gray-700 mt-4">
+          También puedes usar herramientas de terceros como 
+          <a href="http://www.ghostery.com" target="_blank" class="text-teal-600 hover:text-teal-800">Ghostery</a> o 
+          <a href="http://www.youronlinechoices.com/es/" target="_blank" class="text-teal-600 hover:text-teal-800">Your Online Choices</a>.
+        </p>
+      </section>
+
+      <!-- Otros apartados -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">6. Enlaces a otros sitios web</h2>
+        <p class="text-gray-700">
+          No nos hacemos responsables de las políticas de cookies de sitios externos enlazados desde nuestra web.
+        </p>
+      </section>
+
+      <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">7. Uso de direcciones IP</h2>
+        <p class="text-gray-700">
+          Detectamos automáticamente direcciones IP y nombres de dominio para realizar mediciones estadísticas 
+          sobre accesos y navegación, y verificar consentimiento sobre cookies.
+        </p>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">8. Transferencia internacional de datos</h2>
+        <p class="text-gray-700">
+          Los datos recogidos por las cookies instaladas en nuestro dominio no se transfieren internacionalmente.
+        </p>
+      </section>
+
+      <section class="bg-teal-50 p-6 rounded-lg border border-teal-200">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">9. Actualización de la política de cookies</h2>
+        <p class="text-gray-700">
+          Esta política se revisa periódicamente y puede ser modificada. Última actualización: 
+          <strong>10 enero 2024</strong>.
+        </p>
+      </section>
+
+    </div>
+  </div>
+  <Footer />
+  <Chatbot />
+</Layout>

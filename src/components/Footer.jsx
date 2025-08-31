@@ -82,6 +82,19 @@ export default function Footer() {
 
         {/* Línea divisoria */}
         <div className="border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4">
+            <a href="/politica-privacidad" className="hover:text-white transition">
+              Política de Privacidad
+            </a>
+            <span className="hidden sm:inline">•</span>
+            <a href="/cookies" className="hover:text-white transition">
+              Política de Cookies
+            </a>
+            <span className="hidden sm:inline">•</span>
+            <a href="/pages/aviso-legal" className="hover:text-white transition">
+              Aviso Legal
+            </a>
+          </div>
           <p>&copy; 2025 Clínica Barajas. Todos los derechos reservados. <a href="https://www.instagram.com/sqstudiodm/" className="hover:text-white transition"> Web SQStudio</a></p>
         </div>
       </div>
