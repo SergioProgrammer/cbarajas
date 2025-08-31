@@ -4,12 +4,12 @@ import NavBar from "../components/NavBar.jsx";
 import Hero from "../components/Hero.jsx";
 import Welcome from "../components/Welcome.jsx";
 import OpinionCarousel from "../components/OpinionCarousel.jsx";
-import Team from "../components/Team.astro";
+import Team from "../components/Team.jsx";
 import Services from "../components/Services.jsx";
 import Aseguradoras from "../components/Aseguradoras.jsx";
 import Qya from "../components/Qya.astro";
 import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
+import Footer from "../components/Footer.jsx";
 import Chatbot from "../components/Chatbot.astro";
 import CookieBanner from "../components/CookieBanner.jsx";
 ---
@@ -23,12 +23,12 @@ import CookieBanner from "../components/CookieBanner.jsx";
   <section>  
   <OpinionCarousel client:load />
   </section>
-  <Team client: load/>
+  <Team client:load/>
   <Services client:load />
   <Aseguradoras />
   <Contact />
   <Qya />
   <Chatbot />
-  <Footer />
+  <Footer client:load/>
   <CookieBanner client:load />
 </Layout>
