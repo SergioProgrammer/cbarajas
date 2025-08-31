@@ -91,7 +91,7 @@ export default function Footer() {
               Política de Cookies
             </a>
             <span className="hidden sm:inline">•</span>
-            <a href="/pages/aviso-legal" className="hover:text-white transition">
+            <a href="/aviso-legal" className="hover:text-white transition">
               Aviso Legal
             </a>
           </div>
