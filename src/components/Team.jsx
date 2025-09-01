@@ -9,13 +9,13 @@ const doctors = [
   },
   {
     name: "Franz Zenker Castro",
-    role: "Psicólogo Especialista en Audición y Lenguaje y Audioprotesista",
+    role: "Técnico en Audiología y Psicólogo Especialista en Audición y Lenguaje",
     img: "hero/franz.webp",
     delay: 200,
   },
   {
     name: "Beatriz González Rodríguez",
-    role: "Contabilidad",
+    role: "Auxiliar de Consulta",
     img: "hero/beatriz.webp",
     delay: 300,
   },
@@ -24,6 +24,12 @@ const doctors = [
     role: "Técnico en Cuidados Auxiliares de Enfermería",
     img: "hero/romina.webp",
     delay: 400,
+  },
+  {
+    name: "Natalia Rodríguez Rodríguez",
+    role: "Técnico en Audiología",
+    img: "hero/nati.JPG",
+    delay: 500,
   },
 ];
 
@@ -49,7 +55,7 @@ export default function DoctorsSection() {
         </h2>
 
         {/* Carrusel en mobile / grid en desktop */}
-        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-8 scrollbar-hide">
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-5 sm:gap-8 scrollbar-hide">
           {doctors.map((doc, index) => (
             <div
               key={index}
