@@ -14,9 +14,9 @@ const doctors = [
     delay: 200,
   },
   {
-    name: "Beatriz González Rodríguez",
-    role: "Auxiliar de Consulta",
-    img: "hero/beatriz.webp",
+    name: "Natalia Rodríguez Rodríguez",
+    role: "Técnico en Audiología",
+    img: "hero/nati.JPG",
     delay: 300,
   },
   {
@@ -26,9 +26,9 @@ const doctors = [
     delay: 400,
   },
   {
-    name: "Natalia Rodríguez Rodríguez",
-    role: "Técnico en Audiología",
-    img: "hero/nati.JPG",
+    name: "Beatriz González Rodríguez",
+    role: "Auxiliar de Consulta",
+    img: "hero/beatriz.webp",
     delay: 500,
   },
 ];
@@ -67,9 +67,11 @@ export default function DoctorsSection() {
                 <img
                   src={doc.img}
                   alt={doc.name}
-                  className="w-full h-full object-cover object-top border-4 border-white shadow-md scale-110 transition-transform duration-500"
+                  className={`w-full h-full object-cover border-4 border-white shadow-md scale-110 transition-transform duration-500 
+                    ${doc.name === "Natalia Rodríguez Rodríguez" ? "object-[center_35%]" : "object-top"}`}
                 />
               </div>
+
               <h3 className="text-xl font-semibold text-teal-700 mb-3 leading-tight">
                 {doc.name}
               </h3>
