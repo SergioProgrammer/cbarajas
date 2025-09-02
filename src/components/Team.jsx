@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "aos/dist/aos.css";
 
 const doctors = [
@@ -57,30 +57,49 @@ Además, es formador nacional e internacional en cursos de adaptación audioprot
 export default function DoctorsSection() {
   const [selected, setSelected] = useState(null);
   const [scrollIndex, setScrollIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const carouselRef = useRef(null);
 
   useEffect(() => {
     if (selected) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "unset";
   }, [selected]);
 
-  // Autoscroll solo en mobile
+  // Detectar cuando el carrusel entra en pantalla
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (carouselRef.current) observer.observe(carouselRef.current);
+    return () => {
+      if (carouselRef.current) observer.unobserve(carouselRef.current);
+    };
+  }, []);
+
+  // Autoscroll solo en mobile y cuando es visible
   useEffect(() => {
     const container = document.getElementById("carousel-container");
-    if (!container) return;
+    if (!container || window.innerWidth >= 640 || !isVisible) return;
 
-    if (window.innerWidth < 640) {
-      const interval = setInterval(() => {
-        const nextIndex = (scrollIndex + 1) % doctors.length;
-        container.scrollTo({
-          left: nextIndex * container.clientWidth * 0.9,
-          behavior: "smooth",
-        });
-        setScrollIndex(nextIndex);
-      }, 3000);
+    const interval = setInterval(() => {
+      const nextIndex = (scrollIndex + 1) % doctors.length;
+      container.scrollTo({
+        left: nextIndex * container.clientWidth * 0.9,
+        behavior: "smooth",
+      });
+      setScrollIndex(nextIndex);
+    }, 3000);
 
-      return () => clearInterval(interval);
-    }
-  }, [scrollIndex]);
+    return () => clearInterval(interval);
+  }, [scrollIndex, isVisible]);
 
   return (
     <section className="bg-white py-20 relative overflow-hidden">
@@ -104,6 +123,7 @@ export default function DoctorsSection() {
 
         {/* Carrusel en mobile / grid en desktop */}
         <div
+          ref={carouselRef}
           id="carousel-container"
           className="flex gap-4 overflow-x-auto snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-5 sm:gap-8 scrollbar-hide"
         >
@@ -158,6 +178,14 @@ export default function DoctorsSection() {
           onClick={(e) => e.target === e.currentTarget && setSelected(null)}
         >
           <div className="bg-white max-w-3xl w-full rounded-2xl shadow-2xl relative max-h-[90vh] overflow-hidden animate-scaleIn">
+            {/* Botón fijo para cerrar */}
+            <button
+              onClick={() => setSelected(null)}
+              className="absolute top-4 right-4 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-teal-700 transition-all shadow-lg z-20"
+            >
+              ✕
+            </button>
+
             {/* Header con imágenes */}
             <div className="relative flex overflow-x-auto snap-x snap-mandatory">
               {selected.images?.map((src, i) => (
@@ -168,12 +196,6 @@ export default function DoctorsSection() {
                   className="w-full h-64 object-cover snap-center"
                 />
               ))}
-              <button
-                onClick={() => setSelected(null)}
-                className="absolute top-4 right-4 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-teal-700 transition-all shadow-lg"
-              >
-                ✕
-              </button>
             </div>
 
             {/* Contenido */}
