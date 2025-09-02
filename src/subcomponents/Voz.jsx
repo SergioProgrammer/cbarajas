@@ -137,13 +137,6 @@ Permite detectar alteraciones mínimas y lesiones que no se aprecian en una lari
               ) : (
                 <p className="text-gray-700 leading-relaxed whitespace-pre-line text-lg">{selected.fullText}</p>
               )}
-
-              <div className="mt-10 flex justify-center">
-                <button onClick={() => setSelected(null)}
-                        className="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white font-semibold py-4 px-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95">
-                  Solicitar Consulta
-                </button>
-              </div>
             </div>
           </div>
         </div>

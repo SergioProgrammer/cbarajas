@@ -121,14 +121,7 @@ Con intervención temprana, se favorece el desarrollo cognitivo, comunicativo y 
 
             <div className="p-6 overflow-y-auto max-h-[calc(90vh-12rem)]">
               <p className="text-gray-700 leading-relaxed whitespace-pre-line text-base">{selected.fullText}</p>
-              <div className="mt-8 flex justify-center">
-                <button
-                  onClick={() => setSelected(null)}
-                  className="bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105"
-                >
-                  Solicitar Consulta
-                </button>
-              </div>
+              
             </div>
           </div>
         </div>

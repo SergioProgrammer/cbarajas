@@ -148,15 +148,6 @@ Con pruebas diagnósticas específicas y terapias auditivas personalizadas, es p
                 </p>
               </div>
               
-              {/* Botón de acción */}
-              <div className="mt-8 flex justify-center">
-                <button
-                  onClick={() => setSelected(null)}
-                  className="bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105"
-                >
-                  Solicitar Consulta
-                </button>
-              </div>
             </div>
           </div>
         </div>

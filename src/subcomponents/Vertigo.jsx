@@ -132,12 +132,6 @@ Las causas pueden variar: migrañas, medicamentos, accidente cerebrovascular, le
                 <p className="text-gray-700 leading-relaxed whitespace-pre-line text-base">{selected.fullText}</p>
               )}
               
-              <div className="mt-8 flex justify-center">
-                <button onClick={() => setSelected(null)}
-                        className="bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105">
-                  Solicitar Consulta
-                </button>
-              </div>
             </div>
           </div>
         </div>
