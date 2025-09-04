@@ -63,7 +63,7 @@ export default function OpinionCarousel() {
     <div style={{ position: "relative", padding: "40px 0", background: "#f9fafb" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto", position: "relative", zIndex: 10 }}>
         <h2 style={{ textAlign: "center", fontSize: "32px", fontWeight: "700", marginBottom: "40px", color: "#0d9488" }}>
-          Opiniones de nuestros pacientes
+          Reseñas de Google de nuestros pacientes
         </h2>
 
         <Swiper
