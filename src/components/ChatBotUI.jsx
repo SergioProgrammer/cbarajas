@@ -106,9 +106,9 @@ export default function SimpleChatBot() {
 
     if (service === "otorrino") {
       if (paymentType === "seguro") {
-        return "https://calendar.app.google/MaFg9agwvoa1dwCz5";
+        return "https://calendar.app.google/1NwmBzJcvip9EAMa6";
       } else {
-        return "https://calendar.app.google/A6LE86RNFE37wrvQA";
+        return "https://calendar.app.google/7C3jKPxXgBbbQe7Z8";
       }
     }
 

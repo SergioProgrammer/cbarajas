@@ -26,7 +26,7 @@ const menuItems = [
     ],
   },
   { label: "Fundación Barajas", href: "https://fundacionbarajas.es" },
-  { label: "Contacto", href: "/contacto" },
+  { label: "Contacto", action: "open-chat" }, 
 ];
 
 export default function NavBar() {
@@ -34,6 +34,12 @@ export default function NavBar() {
 
   const toggleSection = (idx) => {
     setOpenSection(openSection === idx ? null : idx);
+  };
+
+  // Función para manejar la apertura del chatbot
+  const handleChatOpen = () => {
+    window.dispatchEvent(new CustomEvent("open-chat"));
+    
   };
 
   return (
@@ -53,14 +59,25 @@ export default function NavBar() {
           <div className="hidden md:flex items-center space-x-4 text-lg">
             {menuItems.map((item, idx) => (
               <div className="relative group" key={idx}>
-                <a
-                  href={item.href}
-                  target={item.href.startsWith("http") ? "_blank" : "_self"}
-                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="px-3 py-2 rounded-lg transition-all duration-200 text-teal-700 font-medium hover:text-teal-900 hover:bg-teal-50"
-                >
-                  {item.label}
-                </a>
+                {/* Verificar si el item tiene una acción en lugar de href */}
+                {item.action ? (
+                  <button
+                    onClick={handleChatOpen}
+                    className="px-3 py-2 rounded-lg transition-all duration-200 text-teal-700 font-medium hover:text-teal-900 hover:bg-teal-50"
+                  >
+                    {item.label}
+                  </button>
+                ) : (
+                  <a
+                    href={item.href}
+                    target={item.href?.startsWith("http") ? "_blank" : "_self"}
+                    rel={item.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="px-3 py-2 rounded-lg transition-all duration-200 text-teal-700 font-medium hover:text-teal-900 hover:bg-teal-50"
+                  >
+                    {item.label}
+                  </a>
+                )}
+                
                 {item.subItems && (
                   <div className="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 text-base min-w-[200px] border border-teal-100 animate-fadeIn">
                     {item.subItems.map((sub, subIdx) => (
@@ -79,12 +96,11 @@ export default function NavBar() {
 
             {/* Botón Reservar Cita (desktop) */}
             <button
-                onClick={() => (window.location.href = "/contacto")}
-                className="ml-4 px-5 py-2 bg-teal-600 text-white font-semibold rounded-full shadow-md hover:shadow-lg hover:bg-teal-800 transition-all duration-200"
-              >
-                Reservar Cita
-              </button>
-
+              onClick={handleChatOpen}
+              className="ml-4 px-5 py-2 bg-teal-600 text-white font-semibold rounded-full shadow-md hover:shadow-lg hover:bg-teal-800 transition-all duration-200"
+            >
+              Reservar Cita
+            </button>
           </div>
 
           {/* Botón móvil menú */}
@@ -130,6 +146,14 @@ export default function NavBar() {
                   </div>
                 )}
               </>
+            ) : item.action ? (
+              // Si el item tiene una acción (como el contacto), renderizar como botón
+              <button
+                onClick={handleChatOpen}
+                className="block w-full text-left px-4 py-3 text-teal-700 hover:bg-teal-50 font-semibold text-sm"
+              >
+                {item.label}
+              </button>
             ) : (
               <a
                 href={item.href}
@@ -143,7 +167,7 @@ export default function NavBar() {
 
         {/* Botón móvil Reservar Cita */}
         <button
-          onClick={() => (window.location.href = "/contacto")}
+          onClick={handleChatOpen}
           className="block mx-3 my-3 px-4 py-2.5 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold rounded-full shadow-md hover:shadow-lg hover:from-teal-600 hover:to-teal-700 text-center transition-all duration-200 text-sm"
         >
           Reservar Cita
