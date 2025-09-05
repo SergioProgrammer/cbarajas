@@ -1,153 +1,211 @@
 import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const services = [
   {
     title: "Otorrinolaringología",
     description:
-      "Diagnóstico y tratamiento de las enfermedades de cuello, garganta, nariz y oído. En nuestro centro somos especialistas en enfermedades como otitis, amigdalitis o rinitis así como el diagnóstico médico de la sordera, hipoacusia o el vértigo y problemas de equilibrio.",
+      "Diagnóstico y Diagnóstico y tratamiento de las enfermedades de cuello, garganta, nariz y oído. En nuestro centro somos especialistas en enfermedades como otitis, amigdalitis o rinitis así como el diagnóstico médico de la sordera, hipoacusia o el vértigo y problemas de equilibrio.",
     image: "/especialidades/otorrinolaringologia.webp",
+    link: "/otorrino",
   },
   {
     title: "Pérdida de Audición",
     description:
       "Estudio de la pérdida auditiva en adultos, niños y recién nacidos. La sordera en distinto grado puede complicar severamente la vida de quien la padece. En nuestro centro somos especialistas en el diagnostico, tratamiento y seguimiento de la audición a lo largo de toda la vida del paciente.",
     image: "/especialidades/perdida-audicion.webp",
+    link: "/audiologia",
   },
   {
     title: "Audífonos",
     description:
       "Adaptación de audífonos con un enfoque profesional centrándonos en las necesidades clínicas de cada paciente. Nuestro compromiso con un diagnóstico preciso y un seguimiento clínico exhaustivo nos permite asegurar una adaptación óptima durante un largo periódo de tiempo. Contamos con especialistas capacitados en atender tanto a niños como a adultos.",
     image: "/especialidades/audifonos.webp",
+    link: "/adaptacion-de-audifonos",
   },
   {
     title: "Vértigo",
     description:
       "Diagnóstico y rehabilitación de los trastornos del equilibrio, vértigos y mareos. Contamos con la tecnología para el diagnóstico única en Canarias. Estudiamos y tratamos patología vestibular como la enfermedad de Ménière, la neuritis vestibular, o el Vertigo Paroxistico Beningno.",
     image: "/especialidades/vertigo.webp",
+    link: "/vertigo-trastornos",
   },
   {
     title: "Ruido en los Oídos",
     description:
       "Los ruidos en los oídos de manera ocasional o constante pueden ser motivo de malestar y causar problemas como imsonio o dificultades para oír. En nuestro centro estudiamos el ruido en los oídos, el acúfeno o tinnitus, mediante la tecnología más avanzada indicando el tratamiento mas apropiado para cada paciente.",
     image: "/especialidades/ruido-oido.webp",
+    link: "/otorrino",
   },
   {
     title: "Niños y Recién Nacidos",
     description:
-      "Abordamos tempranamente problemas en los oídos y la audición. Especializados en el tratamiento de infecciones de oído y en el diagnóstico de la pérdida auditiva en recién nacidos y niños pequeños.  Abarcamos el estudio de las dificultades auditivas que pueden interferir en el desarrollo escolar y que pueden darse junto a otros trastornos del desarrollo.",
+      "Abordamos tempranamente problemas en los oídos y la audición. Especializados en el tratamiento de infecciones de oído y en el diagnóstico de la pérdida auditiva en recién nacidos y niños pequeños. Abarcamos el estudio de las dificultades auditivas que pueden interferir en el desarrollo escolar y que pueden darse junto a otros trastornos del desarrollo.",
     image: "/especialidades/pruebas-clinicas.webp",
+    link: "/deteccion-precoz-de-la-sordera",
   },
 ];
 
 export default function Services() {
   useEffect(() => {
-    AOS.init({ once: true, duration: 700, easing: "ease-out-cubic" });
+    const cards = document.querySelectorAll("[data-aos]");
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      }, index * 100);
+    });
   }, []);
 
   return (
     <>
-      <style>{`
-        .service-card {
-          min-height: 300px;
-          height: 100%;
-          position: relative;
-          background: #FFFFFF;
-          cursor: pointer;
-          transition: box-shadow 0.3s;
-        }
-        .service-card:hover,
-        .service-card:focus-within,
-        .service-card:active {
-          box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-        }
-        .service-card .service-overlay {
-          position: absolute;
-          inset: 0;
-          background: #14b8a6;
-          color: #FFFFFF;
-          opacity: 0;
-          transition: opacity 0.3s, background 0.3s;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          padding: 32px 18px;
-          z-index: 2;
-          pointer-events: none;
-        }
-        .service-card:hover .service-overlay,
-        .service-card:focus-within .service-overlay,
-        .service-card:active .service-overlay {
-          opacity: 1;
-          pointer-events: auto;
-        }
-        .service-card .service-img {
-          width: 100%;
-          height: 220px;
-          object-fit: cover;
-          border-radius: 2px 2px 0 0;
-          filter: brightness(1);
-          transition: filter 0.3s;
-        }
-        .service-card:hover .service-img,
-        .service-card:focus-within .service-img,
-        .service-card:active .service-img {
-          filter: brightness(0.5);
-        }
-        .service-title {
-          font-size: 1.35rem;
-          font-weight: 600;
-          color: #14b8a6;
-          margin: 0;
-          padding: 28px 0 0 0;
-          z-index: 3;
-          position: relative;
-          transition: opacity 0.3s;
-        }
-        .service-card:hover .service-title,
-        .service-card:focus-within .service-title,
-        .service-card:active .service-title {
-          opacity: 0;
-        }
-      `}</style>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-      <section className="py-14 bg-[#14b8a6]">
-            <div className="max-w-6xl mx-auto px-4 text-center">
-              <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-12 mt-0 leading-snug">
-                Nuestras
-                <br class="block sm:hidden" />
-                <span class="bg-white px-2 sm:px-3 pt-2 sm:pt-4 ml-0 sm:ml-2 pb-1 rounded-xl text-teal-500 shadow-lg inline-block">
-                  Especialidades
-                </span>
-              </h2>
+      <style>
+        {`
+          [data-aos] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+          }
+          
+          .card-container {
+            perspective: 1000px;
+            height: 300px;
+            cursor: pointer;
+          }
+          
+          .flip-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease-in-out;
+          }
+          
+          @media (min-width: 768px) {
+            .card-container:hover .flip-card {
+              transform: rotateY(180deg);
+            }
+            
+            .card-container:hover {
+              transform: translateY(-5px);
+            }
+            
+            .card-container {
+              transition: transform 0.3s ease;
+            }
+          }
+          
+          .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+            overflow: hidden;
+          }
+          
+          .card-front {
+            background: white;
+            display: flex;
+            flex-direction: column;
+          }
+          
+          .card-back {
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+          }
+          
+          .service-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+          }
+          
+          .service-title {
+            padding: 1.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #0f766e;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          .card-back h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+          }
+          
+          .card-back p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.95;
+          }
+          
+          @media (max-width: 767px) {
+            .card-back {
+              display: none;
+            }
+          }
+          
+          .card-container {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: box-shadow 0.3s ease;
+          }
+          
+          .card-container:hover {
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+          }
+        `}
+      </style>
 
-              <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                {services.map((service, i) => (
-                  <div
-                    tabIndex={0}
-                    className="service-card rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
-                    data-aos="fade-up"
-                    data-aos-delay={i * 100}
-                    key={service.title}
-                  >
+      <section className="py-14 bg-[#14b8a6]">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-12 leading-snug">
+            Nuestras
+            <br className="block sm:hidden" />
+            <span className="bg-white px-3 pt-2 pb-1 rounded-xl text-teal-500 shadow-lg inline-block ml-2">
+              Especialidades
+            </span>
+          </h2>
+
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((service, i) => (
+              <a
+                key={service.title}
+                href={service.link}
+                className="card-container block"
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
+              >
+                <div className="flip-card">
+                  <div className="card-face card-front">
                     <img
                       src={service.image}
                       alt={service.title}
                       className="service-img"
                     />
                     <h3 className="service-title">{service.title}</h3>
-                    <div className="service-overlay">
-                      <h3 style={{ fontSize: "1.2rem", fontWeight: 600, marginBottom: 14 }}>{service.title}</h3>
-                      <p style={{ fontSize: "1rem", lineHeight: 1.6 }}>{service.description}</p>
-                    </div>
                   </div>
-                ))}
-              </div>
-            </div>
 
-
+                  <div className="card-face card-back">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
       </section>
     </>
   );
