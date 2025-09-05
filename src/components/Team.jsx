@@ -186,14 +186,19 @@ export default function DoctorsSection() {
               ✕
             </button>
 
-            {/* Header con imágenes */}
             <div className="relative flex overflow-x-auto snap-x snap-mandatory">
               {selected.images?.map((src, i) => (
                 <img
                   key={i}
                   src={src}
                   alt={selected.name}
-                  className="w-full h-64 object-cover snap-center"
+                  className={`w-full h-64 object-cover snap-center
+                    ${
+                      selected.name === "Dr. José Juan Barajas de Prat" &&
+                      i === 0
+                        ? "object-[center_10%]" 
+                        : "object-center"
+                    }`}
                 />
               ))}
             </div>
