@@ -54,7 +54,10 @@ export default function SimpleChatBot() {
         { value: "caser", label: "Caser", image: "aseguradoras/caser.png" },
         { value: "santalucia", label: "Santa Lucía", image: "aseguradoras/santalucia.svg" },
         { value: "dkv", label: "DKV", image: "aseguradoras/dkv.png" },
-        { value: "hna", label: "HNA", image: "aseguradoras/hna.png" }
+        { value: "hna", label: "HNA", image: "aseguradoras/hna.png" },
+        { value: "aura", label: "Aura", image: "aseguradoras/aura.png" },
+        { value: "savia", label: "Savia", image: "aseguradoras/savia.png" }
+        
       ],
       field: "insurance",
       showOnlyIf: (data) => data.service === "otorrino" && data.paymentType === "seguro"

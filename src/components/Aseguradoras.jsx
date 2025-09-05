@@ -6,6 +6,8 @@ const aseguradoras = [
   { nombre: "Santalucía", logo: "/aseguradoras/santalucia.svg" },
   { nombre: "DKV", logo: "/aseguradoras/dkv.png" },
   { nombre: "HNA", logo: "/aseguradoras/hna.png" },
+  { nombre: "Aura", logo: "/aseguradoras/aura.png" },
+  { nombre: "Savia", logo: "/aseguradoras/savia.png" },
 ];
 
 export default function Aseguradoras() {
@@ -33,7 +35,7 @@ export default function Aseguradoras() {
         </p>
 
         {/* Grid de aseguradoras */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-7">
           {aseguradoras.map((aseguradora, index) => (
             <div
               key={index}
