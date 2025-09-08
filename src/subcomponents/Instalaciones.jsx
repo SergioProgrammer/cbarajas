@@ -5,7 +5,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 const instalaciones = [
-  { src: "secretaria", ext: "webp", label: "Secretaría" },
   { src: "consulta-ORL", ext: "webp", label: "Consulta ORL" },
   { src: "sala", ext: "webp", label: "Sala de Espera" },
   { src: "terraza", ext: "webp", label: "Terraza" },
@@ -20,7 +19,9 @@ const instalaciones = [
   { src: "office", ext: "jpg", label: "Office" },
   { src: "sede", ext: "jpg", label: "Sede" },
   { src: "biblioteca", ext: "jpg", label: "Biblioteca" },
-  { src: "aula-formacion", ext: "JPG", label: "Aula de Formación" }
+  { src: "aula-formacion", ext: "JPG", label: "Aula de Formación" },
+  { src: "secretaria", ext: "webp", label: "Secretaría" },
+
 ];
 
 export default function Instalaciones() {
