@@ -5,22 +5,22 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 const instalaciones = [
-  { src: "secretaria", label: "Secretaría" },
-  { src: "consulta-ORL", label: "Consulta ORL" },
-  { src: "sala", label: "Sala de Espera" },
-  { src: "terraza", label: "Terraza" },
-  { src: "consulta-ORL-2", label: "Consulta ORL 2" },
-  { src: "cabina", label: "Cabina" },
-  { src: "cabina2", label: "Cabina 2" },
-  { src: "cabina3", label: "Cabina 3" },
-  { src: "cabina4", label: "Cabina 4" },
-  { src: "laboratorio-vestibular", label: "Laboratorio Vestibular" },
-  { src: "taller-protesis", label: "Taller de Prótesis" },
-  { src: "laboratorio-voz", label: "Laboratorio de Voz" },
-  { src: "office", label: "Office" },
-  { src: "sede", label: "Sede" },
-  { src: "biblioteca", label: "Biblioteca" },
-  { src: "aula-formacion", label: "Aula de Formación" }
+  { src: "secretaria", ext: "webp", label: "Secretaría" },
+  { src: "consulta-ORL", ext: "webp", label: "Consulta ORL" },
+  { src: "sala", ext: "webp", label: "Sala de Espera" },
+  { src: "terraza", ext: "webp", label: "Terraza" },
+  { src: "consulta-ORL-2", ext: "webp", label: "Consulta ORL 2" },
+  { src: "cabina", ext: "webp", label: "Cabina" },
+  { src: "cabina2aud", ext: "jpg", label: "Cabina 2" },
+  { src: "cabina3", ext: "jpg", label: "Cabina 3" },
+  { src: "cabina4", ext: "jpg", label: "Cabina 4" },
+  { src: "laboratorio-vestibular", ext: "jpg", label: "Laboratorio Vestibular" },
+  { src: "taller-protesis", ext: "webp", label: "Taller de Prótesis" },
+  { src: "laboratorio-voz", ext: "jpg", label: "Laboratorio de Voz" },
+  { src: "office", ext: "jpg", label: "Office" },
+  { src: "sede", ext: "jpg", label: "Sede" },
+  { src: "biblioteca", ext: "jpg", label: "Biblioteca" },
+  { src: "aula-formacion", ext: "webp", label: "Aula de Formación" }
 ];
 
 export default function Instalaciones() {
@@ -51,7 +51,7 @@ export default function Instalaciones() {
             <SwiperSlide key={img.src} className="flex flex-col items-center">
               <div className="w-full h-80 md:h-[28rem]">
                 <img
-                  src={`/instalaciones/${img.src}.webp`}
+                  src={`/instalaciones/${img.src}.${img.ext}`}
                   alt={img.label}
                   className="w-full h-full object-cover rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105"
                 />
