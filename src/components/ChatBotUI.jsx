@@ -16,16 +16,16 @@ export default function SimpleChatBot() {
 
   const endRef = useRef(null);
 
-  useEffect(() => 
-    { const handleOpen = () => setOpen(true); window.addEventListener("open-chat", handleOpen); 
-      return () => { window.removeEventListener("open-chat", handleOpen); }; }, []);
+  useEffect(() => { 
+    const handleOpen = () => setOpen(true); 
+    window.addEventListener("open-chat", handleOpen); 
+    return () => { window.removeEventListener("open-chat", handleOpen); }; 
+  }, []);
 
-  // auto-scroll
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // pasos
   const steps = [
     {
       id: "service",
@@ -57,7 +57,6 @@ export default function SimpleChatBot() {
         { value: "hna", label: "HNA", image: "aseguradoras/hna.png" },
         { value: "aura", label: "Aura", image: "aseguradoras/aura.png" },
         { value: "savia", label: "Savia", image: "aseguradoras/savia.png" }
-        
       ],
       field: "insurance",
       showOnlyIf: (data) => data.service === "otorrino" && data.paymentType === "seguro"
@@ -137,86 +136,92 @@ export default function SimpleChatBot() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed z-50">
+      {/* Botón inicial siempre abajo a la derecha */}
       {!open && (
-        <button
-          onClick={() => setOpen(true)}
-          className="flex items-center gap-3 bg-teal-700 text-white px-6 py-4 rounded-full shadow-2xl hover:bg-teal-800 hover:scale-105 transition-all"
-        >
-          <MessageCircle className="w-6 h-6" />
-          <span className="font-semibold text-lg">Reserva Cita</span>
-        </button>
+        <div className="fixed bottom-6 right-6">
+          <button
+            onClick={() => setOpen(true)}
+            className="flex items-center gap-3 bg-teal-700 text-white px-6 py-4 rounded-full shadow-2xl hover:bg-teal-800 hover:scale-105 transition-all"
+          >
+            <MessageCircle className="w-6 h-6" />
+            <span className="font-semibold text-lg">Reserva Cita</span>
+          </button>
+        </div>
       )}
 
+      {/* Chat abierto */}
       {open && (
-        <div className="w-96 h-[500px] bg-white rounded-2xl shadow-2xl mt-3 overflow-hidden flex flex-col animate-fadeIn">
-          {/* Header */}
-          <div className="bg-teal-700 text-white p-4 font-bold flex justify-between items-center">
-            <span>Reserva tu cita</span>
-            <button onClick={() => setOpen(false)} className="text-xl">×</button>
-          </div>
+        <div className="fixed bottom-6 md:right-6 md:left-auto left-1/2 -translate-x-1/2">
+          <div className="w-96 max-w-[90vw] max-h-[80vh] h-[500px] bg-white rounded-2xl shadow-2xl mt-3 overflow-hidden flex flex-col animate-fadeIn">
+            {/* Header */}
+            <div className="bg-teal-700 text-white p-4 font-bold flex justify-between items-center">
+              <span>Reserva tu cita</span>
+              <button onClick={() => setOpen(false)} className="text-xl">×</button>
+            </div>
 
-          {/* Mensajes */}
-          <div className="flex-1 p-4 overflow-auto bg-gray-50 flex flex-col gap-3">
-            {messages.map((message, i) => (
-              <div
-                key={i}
-                className={`max-w-[85%] px-4 py-3 rounded-2xl leading-relaxed ${
-                  message.from === "bot"
-                    ? "bg-teal-700 text-white self-start"
-                    : "bg-white text-gray-900 self-end border border-gray-200"
-                }`}
-              >
-                {message.text}
-              </div>
-            ))}
+            {/* Mensajes */}
+            <div className="flex-1 p-4 overflow-auto bg-gray-50 flex flex-col gap-3">
+              {messages.map((message, i) => (
+                <div
+                  key={i}
+                  className={`max-w-[85%] px-4 py-3 rounded-2xl leading-relaxed ${
+                    message.from === "bot"
+                      ? "bg-teal-700 text-white self-start"
+                      : "bg-white text-gray-900 self-end border border-gray-200"
+                  }`}
+                >
+                  {message.text}
+                </div>
+              ))}
 
-            {currentStep < steps.length && (
-              <div className="mt-2">
-                {steps[currentStep].options && (
-                  <div className="grid gap-2">
-                    {steps[currentStep].options.map((option, i) => (
-                      <button
-                        key={i}
-                        onClick={() => handleOptionClick(option)}
-                        className="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg hover:border-teal-500 hover:bg-teal-50 transition-all text-left"
-                      >
-                        {option.image ? (
-                          <img src={option.image} alt={option.label} className="w-8 h-8 object-contain" />
-                        ) : (
-                          <span className="text-xl">{option.icon}</span>
-                        )}
-                        <span className="text-gray-700 font-medium">{option.label}</span>
-                      </button>
-                    ))}
-                  </div>
-                )}
-
-                {steps[currentStep].type === "calendar" && (
-                  <div className="mt-4 p-4 bg-white rounded-lg border border-teal-200 text-center">
-                    <div className="mb-3">
-                      <strong className="text-sm text-gray-700">Resumen:</strong>
-                      {getSummary()}
+              {currentStep < steps.length && (
+                <div className="mt-2">
+                  {steps[currentStep].options && (
+                    <div className="grid gap-2">
+                      {steps[currentStep].options.map((option, i) => (
+                        <button
+                          key={i}
+                          onClick={() => handleOptionClick(option)}
+                          className="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg hover:border-teal-500 hover:bg-teal-50 transition-all text-left"
+                        >
+                          {option.image ? (
+                            <img src={option.image} alt={option.label} className="w-8 h-8 object-contain" />
+                          ) : (
+                            <span className="text-xl">{option.icon}</span>
+                          )}
+                          <span className="text-gray-700 font-medium">{option.label}</span>
+                        </button>
+                      ))}
                     </div>
+                  )}
 
-                    <a
-                      href={getCalendarLink()}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full flex items-center justify-center gap-2 bg-teal-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors"
-                    >
-                      <Calendar className="w-5 h-5" />
-                      Elegir Fecha y Hora
-                    </a>
+                  {steps[currentStep].type === "calendar" && (
+                    <div className="mt-4 p-4 bg-white rounded-lg border border-teal-200 text-center">
+                      <div className="mb-3">
+                        <strong className="text-sm text-gray-700">Resumen:</strong>
+                        {getSummary()}
+                      </div>
 
-                    <p className="text-xs text-gray-500 mt-2">
-                      Serás redirigido a nuestro calendario de citas
-                    </p>
-                  </div>
-                )}
-              </div>
-            )}
-            <div ref={endRef} />
+                      <a
+                        href={getCalendarLink()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full flex items-center justify-center gap-2 bg-teal-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors"
+                      >
+                        <Calendar className="w-5 h-5" />
+                        Elegir Fecha y Hora
+                      </a>
+
+                      <p className="text-xs text-gray-500 mt-2">
+                        Serás redirigido a nuestro calendario de citas
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+              <div ref={endRef} />
+            </div>
           </div>
         </div>
       )}
