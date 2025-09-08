@@ -15,12 +15,12 @@ const instalaciones = [
   { src: "cabina3", ext: "jpg", label: "Cabina 3" },
   { src: "cabina4", ext: "jpg", label: "Cabina 4" },
   { src: "laboratorio-vestibular", ext: "jpg", label: "Laboratorio Vestibular" },
-  { src: "taller-protesis", ext: "webp", label: "Taller de Prótesis" },
+  { src: "taller-protesis", ext: "JPG", label: "Taller de Prótesis" },
   { src: "laboratorio-voz", ext: "jpg", label: "Laboratorio de Voz" },
   { src: "office", ext: "jpg", label: "Office" },
   { src: "sede", ext: "jpg", label: "Sede" },
   { src: "biblioteca", ext: "jpg", label: "Biblioteca" },
-  { src: "aula-formacion", ext: "webp", label: "Aula de Formación" }
+  { src: "aula-formacion", ext: "JPG", label: "Aula de Formación" }
 ];
 
 export default function Instalaciones() {
