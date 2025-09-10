@@ -103,7 +103,7 @@ export default function DoctorsSection() {
 
   return (
     <section className="bg-gradient-to-br from-teal-50 to-white py-20 relative overflow-hidden">
-      {/* Nuevo fondo con efecto de onda SVG */}
+      
       <svg
         className="absolute bottom-0 left-0 w-full z-0 pointer-events-none opacity-100"
         viewBox="0 0 1440 320"
@@ -116,7 +116,7 @@ export default function DoctorsSection() {
       </svg>
 
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10 mb-20">
-        {/* Título más dinámico */}
+        {/* Título dinámico */}
         <h2 className="text-4xl md:text-5xl mb-24 font-extrabold text-teal-700 drop-shadow-lg">
           Conoce a <span className="text-teal-500">nuestro equipo</span>
         </h2>
@@ -137,7 +137,7 @@ export default function DoctorsSection() {
             >
               <div className="flex-grow">
                 {/* Imagen con un efecto "reveal" y gradiente */}
-                <div className="relative overflow-hidden rounded-full mx-auto w-44 h-44 mb-6 ring-4 ring-teal-500/50 group-hover:ring-teal-500 transition-all duration-500">
+                <div className="relative overflow-hidden rounded-full mx-auto w-44 h-44 mb-6 ring-4 ring-teal-500 group-hover:ring-teal-700 transition-all duration-500">
                   <img
                     src={doc.img}
                     alt={doc.name}
