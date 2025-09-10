@@ -21,7 +21,6 @@ const instalaciones = [
   { src: "biblioteca", ext: "jpg", label: "Biblioteca" },
   { src: "aula-formacion", ext: "JPG", label: "Aula de Formación" },
   { src: "secretaria", ext: "webp", label: "Secretaría" },
-
 ];
 
 export default function Instalaciones() {

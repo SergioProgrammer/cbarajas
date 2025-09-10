@@ -102,66 +102,65 @@ export default function DoctorsSection() {
   }, [scrollIndex, isVisible]);
 
   return (
-    <section className="bg-white py-20 relative overflow-hidden">
-      {/* Imagen de fondo */}
-      <div
-        className="absolute inset-0 bg-center bg-cover opacity-30 pointer-events-none"
-        style={{
-          backgroundImage: "url('instalaciones/cabina.webp')",
-          backgroundAttachment: "fixed",
-        }}
-      ></div>
+    <section className="bg-gradient-to-br from-teal-50 to-white py-20 relative overflow-hidden">
+      {/* Nuevo fondo con efecto de onda SVG */}
+      <svg
+        className="absolute bottom-0 left-0 w-full z-0 pointer-events-none opacity-100"
+        viewBox="0 0 1440 320"
+      >
+        <path
+          fill="#14b8a6"
+          fillOpacity="1"
+          d="M0,192L48,181.3C96,171,192,149,288,160C384,171,480,213,576,224C672,235,768,213,864,192C960,171,1056,149,1152,144C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        ></path>
+      </svg>
 
-      <div className="max-w-7xl mx-auto px-6 text-center relative z-10 mb-36">
-        {/* Título */}
-        <h2 className="text-4xl md:text-5xl mb-28 font-extrabold text-teal-500 drop-shadow-lg">
-          Nuestro equipo de
-          <span className="bg-teal-500 px-3 py-1 rounded-xl text-white shadow-lg ml-3">
-            profesionales
-          </span>
+      <div className="max-w-7xl mx-auto px-6 text-center relative z-10 mb-20">
+        {/* Título más dinámico */}
+        <h2 className="text-4xl md:text-5xl mb-24 font-extrabold text-teal-700 drop-shadow-lg">
+          Conoce a <span className="text-teal-500">nuestro equipo</span>
         </h2>
 
         {/* Carrusel en mobile / grid en desktop */}
         <div
           ref={carouselRef}
           id="carousel-container"
-          className="flex gap-4 overflow-x-auto snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-5 sm:gap-8 scrollbar-hide"
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-5 sm:gap-8 scrollbar-hide"
         >
           {doctors.map((doc, index) => (
             <div
               key={index}
-              className={`bg-white rounded-2xl shadow-xl p-6 flex flex-col justify-between transition-all duration-300 group snap-center shrink-0 w-80 sm:w-auto ${
-                index < 2
-                  ? "hover:scale-105 hover:shadow-2xl"
-                  : "hover:shadow-2xl"
-              }`}
+              className={`bg-white rounded-3xl shadow-xl p-6 flex flex-col justify-between transition-all duration-500 transform hover:scale-105 group snap-center shrink-0 w-80 sm:w-auto overflow-hidden
+              ${index < 2 ? "hover:shadow-2xl" : "hover:shadow-2xl"}`}
               data-aos="fade-up"
               data-aos-delay={doc.delay}
             >
-              <div>
-                <div className="relative overflow-hidden rounded-full mx-auto w-44 h-44 mb-6">
+              <div className="flex-grow">
+                {/* Imagen con un efecto "reveal" y gradiente */}
+                <div className="relative overflow-hidden rounded-full mx-auto w-44 h-44 mb-6 ring-4 ring-teal-500/50 group-hover:ring-teal-500 transition-all duration-500">
                   <img
                     src={doc.img}
                     alt={doc.name}
-                    className={`w-full h-full object-cover border-4 border-white shadow-md scale-110 transition-transform duration-500 
+                    className={`w-full h-full object-cover border-4 border-white shadow-md scale-110 transition-transform duration-500 group-hover:scale-105
                       ${
                         doc.name === "Natalia Rodríguez Rodríguez"
                           ? "object-[center_35%]"
                           : "object-top"
                       }`}
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
-                <h3 className="text-xl font-semibold text-teal-700 mb-3 leading-tight">
+                <h3 className="text-2xl font-bold text-teal-800 mb-2 leading-tight">
                   {doc.name}
                 </h3>
-                <p className="text-gray-600 text-base leading-relaxed mb-4">
+                <p className="text-gray-600 text-sm leading-relaxed font-light">
                   {doc.role}
                 </p>
               </div>
               {index < 2 && (
                 <button
                   onClick={() => setSelected(doc)}
-                  className="mt-auto px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white font-medium rounded-xl shadow-md transition-all"
+                  className="mt-6 px-6 py-3 bg-teal-500 text-white font-semibold rounded-full shadow-lg hover:bg-teal-600 transition-all transform hover:translate-y-1"
                 >
                   Saber más
                 </button>
@@ -174,42 +173,58 @@ export default function DoctorsSection() {
       {/* Modal flotante */}
       {selected && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 px-4 animate-fadeIn"
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 px-4 animate-fadeIn"
           onClick={(e) => e.target === e.currentTarget && setSelected(null)}
         >
-          <div className="bg-white max-w-3xl w-full rounded-2xl shadow-2xl relative max-h-[90vh] overflow-hidden animate-scaleIn">
-            {/* Botón fijo para cerrar */}
+          <div className="bg-white max-w-4xl w-full rounded-3xl shadow-2xl relative max-h-[95vh] overflow-hidden animate-scaleIn">
+            {/* Botón de cierre */}
             <button
               onClick={() => setSelected(null)}
-              className="absolute top-4 right-4 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-teal-700 transition-all shadow-lg z-20"
+              className="absolute top-4 right-4 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-teal-700 transition-all shadow-lg z-20 focus:outline-none focus:ring-2 focus:ring-teal-500"
             >
-              ✕
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
             </button>
 
+            {/* Carrusel de imágenes en el modal */}
             <div className="relative flex overflow-x-auto snap-x snap-mandatory">
               {selected.images?.map((src, i) => (
                 <img
                   key={i}
                   src={src}
                   alt={selected.name}
-                  className={`w-full h-64 object-cover snap-center
+                  className={`w-full h-64 sm:h-80 object-cover snap-center
                     ${
                       selected.name === "Dr. José Juan Barajas de Prat" &&
                       i === 0
-                        ? "object-[center_10%]" 
+                        ? "object-[center_10%]"
                         : "object-center"
                     }`}
                 />
               ))}
             </div>
 
-            {/* Contenido */}
-            <div className="p-6 overflow-y-auto max-h-[calc(90vh-16rem)]">
-              <h3 className="text-2xl font-bold text-teal-700 mb-2">
+            {/* Contenido del modal */}
+            <div className="p-8 overflow-y-auto max-h-[calc(95vh-16rem)] sm:max-h-[calc(95vh-20rem)]">
+              <h3 className="text-3xl font-bold text-teal-800 mb-2">
                 {selected.name}
               </h3>
-              <p className="text-sm text-gray-500 mb-4">{selected.email}</p>
-              <p className="text-gray-700 whitespace-pre-line leading-relaxed">
+              <p className="text-sm text-gray-500 mb-4 font-light">
+                {selected.email}
+              </p>
+              <p className="text-gray-700 whitespace-pre-line leading-relaxed text-base">
                 {selected.fullText}
               </p>
             </div>
