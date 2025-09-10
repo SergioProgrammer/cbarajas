@@ -102,8 +102,7 @@ export default function DoctorsSection() {
   }, [scrollIndex, isVisible]);
 
   return (
-    <section className="bg-gradient-to-br from-teal-50 to-white py-20 relative overflow-hidden">
-      
+    <section className="bg-gradient-to-b from-gray-50 to-teal-50 py-20 relative overflow-hidden">      
       <svg
         className="absolute bottom-0 left-0 w-full z-0 pointer-events-none opacity-100"
         viewBox="0 0 1440 320"
@@ -117,9 +116,14 @@ export default function DoctorsSection() {
 
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10 mb-20">
         {/* Título dinámico */}
-        <h2 className="text-4xl md:text-5xl mb-24 font-extrabold text-teal-700 drop-shadow-lg">
-          Conoce a <span className="text-teal-500">nuestro equipo</span>
-        </h2>
+        
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-teal-500 mb-36 leading-snug">
+            Conoce a nuestro
+            <br className="block sm:hidden" />
+            <span className="bg-white px-3 pt-2 pb-1 rounded-xl text-teal-500 shadow-lg inline-block ml-2">
+              Equipo
+            </span>
+          </h2>
 
         {/* Carrusel en mobile / grid en desktop */}
         <div
