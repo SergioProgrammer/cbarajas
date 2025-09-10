@@ -268,6 +268,7 @@ export default function DoctorsSection() {
         .animate-scaleIn {
           animation: scaleIn 0.3s ease-out;
         }
+          
       `}</style>
     </section>
   );
