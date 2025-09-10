@@ -26,7 +26,7 @@ const menuItems = [
     ],
   },
   { label: "Fundación Barajas", href: "https://fundacionbarajas.es" },
-  { label: "Contacto", action: "open-chat" }, 
+  { label: "Contacto", href: "/contacto" },
 ];
 
 export default function NavBar() {

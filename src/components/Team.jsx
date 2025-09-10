@@ -7,7 +7,7 @@ const doctors = [
     role: "Médico Otorrinolaringólogo",
     img: "hero/barajas.webp",
     delay: 100,
-    email: "barajas@clinicabarajas.com",
+    email: "clinicabarajas@gmail.com",
     images: ["hero/Dr-Jose-Juan.webp", "hero/Dr-Jose-Juan2.webp"],
     fullText: `El Dr. J.J. Barajas, médico otorrinolaringólogo, nace en Santa Cruz de Tenerife, obtiene la licenciatura en Medicina y Cirugía en la Universidad de Navarra. Continúa su formación en el Reino Unido donde obtenie el diploma en Laringología y Otología por el Real Colegio de Cirujanos de Londres.
 
@@ -22,7 +22,7 @@ El Dr. Barajas ha fundamentado este prestigio en un trabajo de investigación de
     role: "Técnico en Audiología y Audioprótesis, Psicólogo en Audición y Lenguaje",
     img: "hero/franz.webp",
     delay: 200,
-    email: "zenker@clinicabarajas.com",
+    email: "efa2009@gmail.com",
     images: ["hero/Franz-Zenker-03.webp", "hero/Franz-Zenker-04.webp"],
     fullText: `Franz Zenker es psicólogo especialista en audición y lenguaje y técnico superior en audiología protésica. Ha ejercido roles destacados como secretario científico en congresos internacionales de la Federación Europea de Audiología (IX EFAS) y de la Sociedad Internacional de Respuestas Evocadas (XVIII IERASG). Fue presidente del VI Congreso Nacional de la Asociación Española de Audiología y recibió becas de la Universidad de Nottingham y la Universidad de Helsinki para cursos avanzados en tinnitus y neurociencia cognitiva.
 
@@ -59,7 +59,8 @@ export default function DoctorsSection() {
   const [scrollIndex, setScrollIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const carouselRef = useRef(null);
-
+   
+    
   useEffect(() => {
     if (selected) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "unset";

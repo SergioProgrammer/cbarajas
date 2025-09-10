@@ -40,7 +40,7 @@ export default function Footer() {
                 📞 <a href="tel:+34922275488" className="hover:text-white transition">+34 922 275 488</a>
               </li>
               <li className="flex items-start gap-2">
-                ✉️ <a href="mailto:info@clinicabarajas.com" className="hover:text-white transition">info@clinicabarajas.com</a>
+                ✉️ <a href="mailto:info@clinicabarajas.com" className="hover:text-white transition">clinicabarajas@gmail.com</a>
               </li>
             </ul>
           </div>

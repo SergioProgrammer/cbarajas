@@ -54,7 +54,7 @@ Teléfono: ${formData.telefono || 'No proporcionado'}
 Mensaje:
 ${formData.mensaje}`;
 
-    const mailtoLink = `mailto:sergiosanpacheco@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoLink = `mailto:clinicabarajas@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     
     // Abrir cliente de email
     window.location.href = mailtoLink;
@@ -126,7 +126,7 @@ ${formData.mensaje}`;
                 </div>
                 <div className="text-gray-600 leading-relaxed">
                   <a href="mailto:info@clinicabarajas.com" className="hover:text-teal-700 transition-colors">
-                    info@clinicabarajas.com
+                    clinicabarajas@gmail.com
                   </a>
                 </div>
                 <p className="text-sm text-gray-500 mt-1">Consultas generales</p>
