@@ -17,15 +17,14 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Enlaces rápidos */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Enlaces rápidos</h3>
-            <ul className="space-y-2">
-              <li><a href="#inicio" className="hover:text-white transition">La Clínica</a></li>
-              <li><a href="#especialidades" className="hover:text-white transition">Especialidades</a></li>
-              <li><a href="#servicios" className="hover:text-white transition">Pruebas Clínicas</a></li>
-              <li><a href="#fundacion" className="hover:text-white transition">Fundación Barajas</a></li>
-              <li><a href="#contacto" className="hover:text-white transition">Contacto</a></li>
+            <h3 class="text-lg font-semibold text-white mb-4">Enlaces rápidos</h3>
+              <ul class="space-y-2">
+                <li><a href="/laclinica" class="hover:text-white transition">La Clínica</a></li>
+                <li><a href="/otorrino" class="hover:text-white transition">Especialidades</a></li>
+                <li><a href="/audiologia" class="hover:text-white transition">Pruebas Clínicas</a></li>
+                <li><a href="https://fundacionbarajas.es" class="hover:text-white transition">Fundación Barajas</a></li>
+                <li><a href="/contacto" class="hover:text-white transition">Contacto</a></li>
             </ul>
           </div>
 

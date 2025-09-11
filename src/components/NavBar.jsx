@@ -23,6 +23,8 @@ const menuItems = [
       { label: "Timpanometría", href: "/timpanometria" },
       { label: "Otoemisiones Acústicas", href: "/otoemisiones-acusticas" },
       { label: "Potenciales Evocados Auditivos", href: "/potenciales-evocados-auditivos" },
+      { label: "Vértigo", href: "/vertigo-trastornos" },
+
     ],
   },
   { label: "Fundación Barajas", href: "https://fundacionbarajas.es" },
@@ -147,7 +149,7 @@ export default function NavBar() {
                 )}
               </>
             ) : item.action ? (
-              // Si el item tiene una acción (como el contacto), renderizar como botón
+              
               <button
                 onClick={handleChatOpen}
                 className="block w-full text-left px-4 py-3 text-teal-700 hover:bg-teal-50 font-semibold text-sm"
