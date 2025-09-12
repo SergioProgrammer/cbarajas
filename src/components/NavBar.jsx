@@ -23,7 +23,7 @@ const menuItems = [
       { label: "Timpanometría", href: "/timpanometria" },
       { label: "Otoemisiones Acústicas", href: "/otoemisiones-acusticas" },
       { label: "Potenciales Evocados Auditivos", href: "/potenciales-evocados-auditivos" },
-      { label: "Vértigo", href: "/vertigo-trastornos" },
+      { label: "Vértigo", href: "/pruebas_vestibulares" },
 
     ],
   },
