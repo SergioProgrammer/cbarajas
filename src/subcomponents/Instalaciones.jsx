@@ -12,7 +12,7 @@ const instalaciones = [
   { src: "cabina", ext: "webp", label: "Cabina" },
   { src: "cabina2aud", ext: "jpg", label: "Cabina 2" },
   { src: "cabina3", ext: "jpg", label: "Cabina 3" },
-  { src: "laboratorio-electrofisiología", ext: "jpg", label: "Cabina de Electrofisiología" },
+  { src: "cabina4", ext: "jpg", label: "Cabina de Electrofisiología" },
   { src: "laboratorio-vestibular", ext: "jpg", label: "Laboratorio Vestibular" },
   { src: "taller-protesis", ext: "JPG", label: "Taller de Prótesis" },
   { src: "laboratorio-voz", ext: "jpg", label: "Laboratorio de Voz" },
