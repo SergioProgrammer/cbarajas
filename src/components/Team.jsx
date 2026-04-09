@@ -4,7 +4,7 @@ import "aos/dist/aos.css";
 const doctors = [
   {
     name: "Dr. José Juan Barajas de Prat",
-    role: "Médico Otorrinolaringólogo",
+    role: "Especialista en Otorrinolaringología y Cirugía de Cabeza y Cuello",
     img: "hero/barajas.webp",
     imageClassName: "object-[center_18%] scale-[1.18]",
     modalImageClassName: "object-[center_10%]",
@@ -92,11 +92,13 @@ Además, es formador nacional e internacional en cursos de adaptación audioprot
 
 export default function DoctorsSection() {
   const [selected, setSelected] = useState(null);
-  const [scrollIndex, setScrollIndex] = useState(0);
+  const [mobileScrollIndex, setMobileScrollIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const carouselRef = useRef(null);
+  const resetTimeoutRef = useRef(null);
   const featuredDoctors = doctors.filter((doctor) => doctor.fullText);
   const supportDoctors = doctors.filter((doctor) => !doctor.fullText);
+  const mobileDoctors = [...doctors, ...doctors];
   const desktopRows = [
     doctors.filter((doctor) =>
       [
@@ -119,12 +121,16 @@ export default function DoctorsSection() {
     ),
   ];
 
-  const renderCard = (doc) => {
+  const renderCard = (doc, options = {}) => {
+    const { mobile = false } = options;
     const sharedCardClassName =
       "bg-white rounded-3xl border border-teal-100 p-6 flex flex-col justify-between transition-all duration-500 transform group overflow-hidden text-left";
     const imageClassName = `w-full h-full object-cover border-4 border-white shadow-md transition-transform duration-500 group-hover:scale-105 ${
       doc.imageClassName ?? "object-top scale-110"
     }`;
+    const layoutClassName = mobile
+      ? "snap-center shrink-0 w-80"
+      : "";
 
     if (doc.fullText) {
       return (
@@ -132,7 +138,7 @@ export default function DoctorsSection() {
           key={doc.name}
           type="button"
           onClick={() => setSelected(doc)}
-          className={`${sharedCardClassName} cursor-pointer hover:scale-105`}
+          className={`${sharedCardClassName} ${layoutClassName} cursor-pointer hover:scale-105`}
           data-aos="fade-up"
           data-aos-delay={doc.delay}
         >
@@ -155,7 +161,7 @@ export default function DoctorsSection() {
     return (
       <div
         key={doc.name}
-        className={`${sharedCardClassName} hover:scale-105`}
+        className={`${sharedCardClassName} ${layoutClassName} hover:scale-105`}
         data-aos="fade-up"
         data-aos-delay={doc.delay}
       >
@@ -205,17 +211,40 @@ export default function DoctorsSection() {
     const container = document.getElementById("carousel-container");
     if (!container || window.innerWidth >= 640 || !isVisible) return;
 
+    const getScrollStep = () => {
+      const firstCard = container.firstElementChild;
+      if (!firstCard) return 0;
+
+      const styles = window.getComputedStyle(container);
+      const gap = parseFloat(styles.columnGap || styles.gap || "0");
+      return firstCard.getBoundingClientRect().width + gap;
+    };
+
     const interval = setInterval(() => {
-      const nextIndex = (scrollIndex + 1) % featuredDoctors.length;
+      const step = getScrollStep();
+      if (!step) return;
+
+      const nextIndex = mobileScrollIndex + 1;
       container.scrollTo({
-        left: nextIndex * container.clientWidth * 0.9,
+        left: nextIndex * step,
         behavior: "smooth",
       });
-      setScrollIndex(nextIndex);
+      setMobileScrollIndex(nextIndex);
+
+      if (nextIndex === doctors.length) {
+        if (resetTimeoutRef.current) clearTimeout(resetTimeoutRef.current);
+        resetTimeoutRef.current = setTimeout(() => {
+          container.scrollTo({ left: 0, behavior: "auto" });
+          setMobileScrollIndex(0);
+        }, 450);
+      }
     }, 3000);
 
-    return () => clearInterval(interval);
-  }, [scrollIndex, isVisible, featuredDoctors.length]);
+    return () => {
+      clearInterval(interval);
+      if (resetTimeoutRef.current) clearTimeout(resetTimeoutRef.current);
+    };
+  }, [mobileScrollIndex, isVisible]);
 
   return (
     <section className="bg-gradient-to-b from-gray-50 to-teal-50 py-20 relative overflow-hidden">      
@@ -248,67 +277,8 @@ export default function DoctorsSection() {
             id="carousel-container"
             className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-2 sm:hidden scrollbar-hide"
           >
-            {featuredDoctors.map((doc) => {
-              return (
-                <button
-                  key={doc.name}
-                  type="button"
-                  onClick={() => setSelected(doc)}
-                  className="bg-white rounded-3xl border border-teal-100 p-6 flex flex-col justify-between transition-all duration-500 transform group snap-center shrink-0 w-80 sm:w-auto overflow-hidden text-left cursor-pointer hover:scale-105"
-                  data-aos="fade-up"
-                  data-aos-delay={doc.delay}
-                >
-                  <div className="flex-grow">
-                    {/* Imagen con un efecto "reveal" y gradiente */}
-                    <div className="relative overflow-hidden rounded-full mx-auto w-44 h-44 mb-6 ring-4 ring-teal-500 group-hover:ring-teal-700 transition-all duration-500">
-                      <img
-                        src={doc.img}
-                        alt={doc.name}
-                        className={`w-full h-full object-cover border-4 border-white shadow-md transition-transform duration-500 group-hover:scale-105 ${
-                          doc.imageClassName ?? "object-top scale-110"
-                        }`}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                    </div>
-                    <h3 className="text-2xl font-bold text-teal-800 mb-2 leading-tight">
-                      {doc.name}
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed font-light">
-                      {doc.role}
-                    </p>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pt-2 scrollbar-hide sm:hidden">
-            {supportDoctors.map((doc) => (
-              <div
-                key={doc.name}
-                className="bg-white rounded-3xl border border-teal-100 p-6 flex flex-col justify-between transition-all duration-500 transform group overflow-hidden text-left snap-center shrink-0 w-80 sm:w-auto hover:scale-105"
-                data-aos="fade-up"
-                data-aos-delay={doc.delay}
-              >
-                <div className="flex-grow">
-                  <div className="relative overflow-hidden rounded-full mx-auto w-44 h-44 mb-6 ring-4 ring-teal-500 group-hover:ring-teal-700 transition-all duration-500">
-                    <img
-                      src={doc.img}
-                      alt={doc.name}
-                      className={`w-full h-full object-cover border-4 border-white shadow-md transition-transform duration-500 group-hover:scale-105 ${
-                        doc.imageClassName ?? "object-top scale-110"
-                      }`}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                  </div>
-                  <h3 className="text-2xl font-bold text-teal-800 mb-2 leading-tight">
-                    {doc.name}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed font-light">
-                    {doc.role}
-                  </p>
-                </div>
-              </div>
+            {mobileDoctors.map((doc, index) => (
+              <div key={`${doc.name}-${index}`}>{renderCard(doc, { mobile: true })}</div>
             ))}
           </div>
 
