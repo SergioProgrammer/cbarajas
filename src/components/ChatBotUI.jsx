@@ -76,7 +76,7 @@ export default function SimpleChatBot() {
     {
       id: "phone",
       botMessage:
-        "Para pedir cita con el Dr. Ayoze Lemes Robayna o el Dr. Francisco González Sammarco, por favor llámenos al 922 275 488.",
+        "Para pedir cita con el Dr. Ayoze Lemes Robayna o el Dr. Francisco González Sammarco, puede contactar por teléfono en el 922 275 488 o por WhatsApp.",
       type: "phone",
       showOnlyIf: (data) =>
         data.service === "otorrino" &&
@@ -251,15 +251,10 @@ export default function SimpleChatBot() {
                         {getSummary()}
                       </div>
 
-                      <a
-                        href="tel:+34922275488"
-                        className="w-full flex items-center justify-center gap-2 bg-teal-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors"
-                      >
-                        Llamar al 922 275 488
-                      </a>
+                      <ContactButtons />
 
                       <p className="text-xs text-gray-500 mt-2">
-                        La cita con estos doctores se gestiona por teléfono
+                        La cita con estos doctores se gestiona por teléfono o WhatsApp
                       </p>
                     </div>
                   )}
@@ -280,6 +275,36 @@ export default function SimpleChatBot() {
           to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
+    </div>
+  );
+}
+
+function ContactButtons() {
+  return (
+    <div className="flex flex-col gap-3">
+      <a
+        href="tel:+34922275488"
+        className="w-full flex items-center justify-center gap-2 bg-teal-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors"
+      >
+        Llamar al 922 275 488
+      </a>
+
+      <a
+        href="https://wa.me/34613003092"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full flex items-center justify-center gap-2 bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+      >
+        <svg
+          className="w-5 h-5"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M20.52 3.48A11.86 11.86 0 0012.07 0C5.5 0 .15 5.35.15 11.92c0 2.1.55 4.14 1.58 5.94L0 24l6.32-1.66a11.89 11.89 0 005.75 1.47h.01c6.57 0 11.92-5.35 11.92-11.92 0-3.18-1.24-6.17-3.48-8.41zM12.08 21.8h-.01a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.75.98 1-3.65-.23-.37a9.9 9.9 0 01-1.52-5.24c0-5.47 4.45-9.92 9.92-9.92 2.65 0 5.14 1.03 7.01 2.91A9.86 9.86 0 0122 11.92c0 5.47-4.45 9.92-9.92 9.92zm5.44-7.41c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.47-1.76-1.64-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.31 1.27.5 1.7.64.71.23 1.35.2 1.85.12.57-.08 1.77-.72 2.02-1.42.25-.69.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z" />
+        </svg>
+        Hablar por WhatsApp
+      </a>
     </div>
   );
 }

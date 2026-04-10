@@ -1,3 +1,7 @@
+---
+import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
+---
+
 <section id="contacto" class="relative overflow-hidden bg-gradient-to-b from-teal-50 to-white py-20 px-6 md:px-16">
 <!-- Imagen de fondo fija y opaca -->
   <div class="absolute inset-0 bg-center bg-cover opacity-30 pointer-events-none"
@@ -28,40 +32,34 @@
       <!-- Tarjeta de información elegante -->
       <div class="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl p-10 border border-teal-200">
         <h3 class="text-2xl font-bold text-teal-700 mb-8 flex items-center gap-3">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8a6 6 0 11-12 0 6 6 0 0112 0zM12 14v7m0 0h-3m3 0h3" />
-          </svg>
+          
           Contacto & Horarios
         </h3>
         <div class="space-y-6 text-teal-800">
           <!-- Dirección -->
           <div class="flex items-start gap-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-teal-500 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zM12 11v10m0 0H6m6 0h6" />
-            </svg>
+            <MapPin class="h-6 w-6 text-teal-500 mt-1" />
             <p><strong>Dirección:</strong> C. de Pérez de Rozas, 8<br />
               38004 Santa Cruz de Tenerife<br />
               Islas Canarias, España</p>
           </div>
           <!-- Teléfono -->
           <div class="flex items-center gap-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h2l3 7-2 3h4l3 7h2" />
-            </svg>
+            <Phone class="h-6 w-6 text-teal-500" />
             <p><strong>Teléfono:</strong> +34 922 27 54 88</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <MessageCircle class="h-6 w-6 text-teal-500" />
+            <p><strong>WhatsApp:</strong> +34 613 003 092</p>
           </div>
           <!-- Correo -->
           <div class="flex items-center gap-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m8 0l-4 4m4-4l-4-4" />
-            </svg>
+            <Mail class="h-6 w-6 text-teal-500" />
             <p><strong>Correo:</strong> clinicabarajas@gmail.com</p>
           </div>
           <!-- Horarios -->
           <div class="flex items-start gap-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-teal-500 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+            <Clock class="h-6 w-6 text-teal-500 mt-1" />
             <div>
               <strong>Horario de atención:</strong>
               <ul class="list-disc list-inside ml-4 mt-1">
