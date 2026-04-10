@@ -1,200 +1,508 @@
 import { motion } from "framer-motion";
 
-export default function Audifonos() {
-  const audifonos = [
- {
-   nombre: "Virto Paradise",
-   imagen: "audifonos/virto.webp",
-   descripcion: "De pequeño tamaño dentro del oído, ofrece conectividad universal y calidad sonora inigualable para mantenerse conectado con confianza.",
-   caracteristicas: ["Invisible", "Sonido natural", "Cómodo todo el día"]
- },
- {
-   nombre: "Sky Lumity",
-   imagen: "audifonos/sky.webp", 
-   descripcion: "Audífonos pediátricos, cuenta con una amplia gama de combinación de color para que los niños puedan aceptar su singularidad.",
-   caracteristicas: ["Resistente", "Colores divertidos", "Seguro para niños"]
- },
- {
-   nombre: "Naída Lumity",
-   imagen: "audifonos/Naida.webp",
-   descripcion: "Audífonos potentes, que ofrecen una solución robusta y fiable a quienes desean aprovechar todas las oportunidades.",
-   caracteristicas: ["Máxima potencia", "Tecnología avanzada", "Durabilidad"]
- },
- {
-   nombre: "Audeo Lumity",
-   imagen: "audifonos/audeo.webp",
-   descripcion: "La solución ideal para quienes desean un audífono discreto, con la tecnología más avanzada para pérdidas auditivas leves a severas.",
-   caracteristicas: ["Versátil", "Conectividad", "Diseño moderno"]
- }
-];
+export default function AudifonosTenerife() {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        type: "spring", 
+        stiffness: 100, 
+        damping: 20, 
+        duration: 0.6 
+      } 
+    },
+  };
+
+  const openReservationChat = () => {
+    window.dispatchEvent(new CustomEvent("open-chat"));
+  };
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-teal-500 py-20">
-        {/* Fondos decorativos */}
-        <div className="absolute -top-16 -left-16 w-60 h-60 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 -right-16 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
-        
-        <div className="relative z-10 max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Contenido */}
-            <div className="text-center md:text-left">
-              <motion.h1
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="text-4xl md:text-5xl font-bold text-white mb-6"
-              >
-                Adaptación de Audífonos
-              </motion.h1>
-              
-              <motion.p
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                className="text-white/90 text-xl leading-relaxed mb-8"
-              >
-                <span className="block md:hidden">
-                  Franz Zenker, audiólogo en Clínica Barajas, es un referente nacional e internacional en el{" "}
-                  <span className="font-semibold text-white">ajuste y selección de prótesis auditivas.</span>{" "}
-                  Su trayectoria se respalda con la publicación de múltiples artículos científicos sobre la adaptación de audífonos en niños y adultos, 
-                  lo que avala su prestigio y experiencia.
-                </span>
-                
-                <span className="hidden md:block">
-                  Franz Zenker, audiólogo en Clínica Barajas, es un referente nacional e internacional en el{" "}
-                  <span className="font-semibold text-white">ajuste y selección de prótesis auditivas.</span>{" "}
-                   Su trayectoria se respalda con la publicación de múltiples artículos científicos sobre la adaptación de audífonos en niños y adultos, 
-                   lo que avala su prestigio y experiencia.
-                </span>
-              </motion.p>
+    <div className="relative mx-auto max-w-7xl space-y-12 px-4 py-16 sm:px-8 sm:py-24">
+      <section className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(420px,560px)] lg:gap-16">
+        <motion.div
+          className="space-y-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
+          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-teal-700">
+            Clínica Barajas
+          </p>
+          <h1 className="text-left text-5xl font-extrabold tracking-tight text-gray-950 sm:text-6xl md:text-7xl">
+            Audífonos en Santa Cruz de Tenerife
+          </h1>
+          <p className="max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">
+            Evaluación auditiva completa, adaptación personalizada y seguimiento orientado a mejorar la comprensión y la comodidad en el día a día.
+          </p>
+        </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-              >
-                <span className="inline-block bg-white text-teal-700 font-semibold px-6 py-3 rounded-full shadow-lg">
-                  Asesoramiento especializado
-                </span>
-              </motion.div>
-            </div>
-
-            {/* Imagen de Franz */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-              className="relative"
-            >
-              <div className="relative w-80 h-80 mx-auto rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="hero/franz.webp" 
-                  alt="Franz - Experto Audiólogo de Clínica Barajas" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                  <h3 className="text-white font-semibold text-xl">Franz Zencker</h3>
-                  <p className="text-white/90">Audiólogo Especialista</p>
-                </div>
-              </div>
-              
-              {/* Elemento decorativo */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-white/20 rounded-full blur-xl"></div>
-            </motion.div>
-          </div>
-        </div>
+        <motion.div
+          className="relative overflow-hidden rounded-[32px] border border-gray-200 bg-white p-2 shadow-xl shadow-gray-900/10 sm:p-3"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+        >
+          <img
+            src="/instalaciones/cabina3.jpg"
+            alt="Tipos de audífonos modernos"
+            className="h-[300px] w-full rounded-[24px] object-cover sm:h-[400px] lg:h-[520px]"
+          />
+        </motion.div>
       </section>
 
-      {/* Sección de Audífonos */}
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-teal-700 mb-6">
-              Nuestros Audífonos de Última Generación
-            </h2>
-            <p className="text-teal-700 text-xl max-w-3xl mx-auto">
-              Trabajamos con las mejores marcas para ofrecerte soluciones 
-              auditivas personalizadas según tu estilo de vida y necesidades
-            </p>
-          </motion.div>
+      {/* Bloques de Contenido - Diseño limpio (Flat) sin sombras pesadas, mejor legibilidad */}
+      <div className="space-y-10">
+        
+        {/* Intro */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+        >
+          <div className="mx-auto max-w-4xl rounded-3xl border border-gray-100 bg-white p-8 shadow-sm sm:p-10">
+            <div className="space-y-6 text-gray-700 text-lg sm:text-xl leading-relaxed">
+              <p>
+                En <strong className="font-semibold text-gray-900">Clínica Barajas</strong> combinamos tecnología de vanguardia con un enfoque clínico orientado al diagnóstico y tratamiento de la pérdida auditiva.
+              </p>
 
-          {/* Grid de Audífonos */}
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={{
-              hidden: {},
-              show: { transition: { staggerChildren: 0.2 } },
-            }}
-            className="grid md:grid-cols-2 lg:grid-cols-2 gap-8"
-          >
-            {audifonos.map((audifono, i) => (
-              <motion.div
-                key={i}
-                variants={{
-                  hidden: { opacity: 0, y: 30 },
-                  show: { opacity: 1, y: 0 },
-                }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300"
-              >
-                <div className="relative h-64 bg-white">
-                  <img 
-                    src={audifono.imagen} 
-                    alt={audifono.nombre}
-                    className="w-full h-full object-contain p-8"
-                  />
-                </div>
-                
-                <div className="p-6">
-                  <h3 className="text-3xl font-bold text-teal-700 mb-3">
-                    {audifono.nombre}
-                  </h3>
-                  <p className="text-teal-700 mb-4 text-lg">
-                    {audifono.descripcion}
-                  </p>
-                  
-                  <div className="space-y-2">
-                    {audifono.caracteristicas.map((caracteristica, j) => (
-                      <div key={j} className="flex items-center text-base text-teal-700">
-                        <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
-                        {caracteristica}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+              {/* Elemento destacado sutil */}
+              <div className="my-8 flex items-center gap-4 border-l-4 border-cyan-300 bg-cyan-50 p-6 rounded-r-xl">
+                <p className="font-medium text-cyan-950 text-base">
+                  Si estás buscando audífonos en Santa Cruz de Tenerife, es importante entender que la clave no está solo en el dispositivo, sino en cómo se evalúa la audición y cómo se adapta posteriormente a cada persona.
+                </p>
+              </div>
 
-          {/* Call to Action */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center mt-16"
-          >
-            <div className="bg-teal-500 rounded-2xl p-8 md:p-12 text-white">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                ¿Listo para mejorar tu audición?
-              </h3>
-              <p className="text-teal-50 mb-8 text-lg">
-                Agenda una consulta personalizada con Franz y descubre 
-                qué audífono se adapta mejor a ti
+              <p>
+                Nuestro proceso comienza con una valoración completa que permite conocer con precisión el tipo y grado de pérdida auditiva. A partir de este diagnóstico, seleccionamos y ajustamos la solución más adecuada, acompañando al paciente con un seguimiento continuo para optimizar los resultados en su vida diaria.
               </p>
             </div>
-          </motion.div>
-        </div>
-      </section>
+          </div>
+        </motion.div>
+
+        {/* Evaluación */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+        >
+          <div className="mx-auto max-w-4xl rounded-3xl border border-gray-100 bg-white p-8 shadow-sm sm:p-10 space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-950">
+              Evaluación auditiva
+            </h2>
+
+            <h3 className="text-2xl font-semibold tracking-tight text-gray-900">
+              ¿Necesito audífonos?
+            </h3>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              No todas las pérdidas auditivas requieren audífonos de forma inmediata, por lo que es importante valorar cada situación antes de tomar una decisión.
+            </p>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              Para ello realizamos una evaluación auditiva completa que permite determinar con precisión el tipo y grado de pérdida de audición.
+            </p>
+
+            <ul className="grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2 list-none text-gray-700 text-lg sm:text-xl font-medium">
+              {[
+                "Audiometría tonal",
+                "Pruebas de comprensión del habla",
+                "Evaluación auditiva personalizada",
+                "Estudio del historial auditivo"
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <svg className="h-5 w-5 flex-none text-cyan-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4.0-5.5z" clipRule="evenodd" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              Después de esta evaluación se decide si realmente el paciente los necesita o no.
+            </p>
+
+            <div className="pt-4">
+              <a
+                href="/revision-auditiva-tenerife"
+                className="group inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 text-lg"
+              >
+                Más información
+                <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Adaptación */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+        >
+          <div className="mx-auto max-w-4xl rounded-3xl border border-gray-100 bg-white p-8 shadow-sm sm:p-10 space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-950">
+              Adaptación de audífonos
+            </h2>
+
+            <h3 className="text-2xl font-semibold tracking-tight text-gray-900">
+              Adaptación personalizada de audífonos
+            </h3>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              Cada audífono se ajusta en función de las características auditivas individuales. La adaptación se realiza mediante programación precisa y ajustes progresivos orientados a mejorar la comprensión del habla y la comodidad en el uso cotidiano.
+            </p>
+
+            <ul className="grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2 list-none text-gray-700 text-lg sm:text-xl font-medium">
+              {[
+                "Selección del audífono según perfil auditivo",
+                "Programación personalizada",
+                "Adaptación progresiva",
+                "Seguimiento y revisiones periódicas"
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <svg className="h-5 w-5 flex-none text-cyan-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4.0-5.5z" clipRule="evenodd" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <div className="pt-4">
+              <a
+                href="/adaptacion-de-audifonos"
+                className="group inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 text-lg"
+              >
+                Más información
+                <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+        >
+          <div className="mx-auto max-w-4xl rounded-3xl border border-gray-100 bg-white p-8 shadow-sm sm:p-10 space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-950">
+              Profesionales en adaptación de audífonos
+            </h2>
+
+            <h3 className="text-2xl font-semibold tracking-tight text-gray-900">
+              Equipo especializado
+            </h3>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              La adaptación de audífonos requiere experiencia y un seguimiento cercano a lo largo del tiempo.
+            </p>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              El paciente es atendido siempre por los mismos profesionales, que conocen su caso y se responsabilizan del proceso, acompañándole en todo momento para conseguir un resultado útil y estable en su día a día.
+            </p>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              En Clínica Barajas, este proceso es realizado de forma personalizada por Franz Zenker y Natalia Rodríguez, profesionales con amplia experiencia en adaptación de audífonos.
+            </p>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+        >
+          <div className="mx-auto max-w-4xl rounded-3xl border border-gray-100 bg-white p-8 shadow-sm sm:p-10 space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-950">
+              Readaptación de audífonos
+            </h2>
+
+            <h3 className="text-2xl font-semibold tracking-tight text-gray-900">
+              Revisión y mejora de audífonos ya adaptados
+            </h3>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              No siempre es necesario cambiar de audífonos para mejorar la audición. En muchos casos, una readaptación adecuada permite obtener mejores resultados con los dispositivos actuales.
+            </p>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              En Clínica Barajas revisamos el ajuste previo y analizamos si los audífonos están funcionando correctamente en función de la audición actual del paciente, aunque hayan sido adaptados en otro centro.
+            </p>
+
+            <ul className="grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2 list-none text-gray-700 text-lg sm:text-xl font-medium">
+              {[
+                "Revisión del estado y funcionamiento del audífono",
+                "Comprobación del ajuste existente",
+                "Reprogramación según la audición actual",
+                "Evaluación de la comprensión del habla",
+                "Ajustes para mejorar el rendimiento en situaciones reales"
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <svg className="h-5 w-5 flex-none text-cyan-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4.0-5.5z" clipRule="evenodd" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              El objetivo es que los audífonos funcionen bien en el día a día, optimizando su rendimiento y mejorando la experiencia de uso sin necesidad de sustituirlos, independientemente de dónde se hayan adquirido.
+            </p>
+
+            <div className="pt-4">
+              <button
+                type="button"
+                onClick={openReservationChat}
+                className="group inline-flex items-center gap-2 text-lg font-semibold text-teal-600 hover:text-teal-700"
+              >
+                Solicitar revisión
+                <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+        >
+          <div className="mx-auto max-w-4xl rounded-3xl border border-gray-100 bg-white p-8 shadow-sm sm:p-10 space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-950">
+              Reparación y mantenimiento de audífonos
+            </h2>
+
+            <h3 className="text-2xl font-semibold tracking-tight text-gray-900">
+              Servicio técnico y ajuste
+            </h3>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              Los audífonos requieren un mantenimiento periódico para asegurar su correcto funcionamiento y un buen rendimiento en el día a día.
+            </p>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              En Clínica Barajas revisamos el estado de los dispositivos y realizamos los ajustes necesarios para garantizar que funcionen correctamente. Trabajamos con la mayoría de marcas de audífonos, independientemente de dónde se hayan adaptado.
+            </p>
+
+            <ul className="grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2 list-none text-gray-700 text-lg sm:text-xl font-medium">
+              {[
+                "Revisión y limpieza de audífonos",
+                "Sustitución de filtros y componentes",
+                "Comprobación del funcionamiento",
+                "Ajustes y pequeñas reparaciones",
+                "Asesoramiento sobre el uso y mantenimiento"
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <svg className="h-5 w-5 flex-none text-cyan-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4.0-5.5z" clipRule="evenodd" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              En caso necesario, gestionamos la reparación con el fabricante para asegurar un resultado adecuado.
+            </p>
+
+            <div className="pt-4">
+              <button
+                type="button"
+                onClick={openReservationChat}
+                className="group inline-flex items-center gap-2 text-lg font-semibold text-teal-600 hover:text-teal-700"
+              >
+                Solicitar revisión
+                <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+        >
+          <div className="mx-auto max-w-4xl rounded-3xl border border-gray-100 bg-white p-8 shadow-sm sm:p-10 space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-950">
+              Un enfoque diferente en la adaptación de audífonos
+            </h2>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              Decidir utilizar audífonos requiere tiempo y una buena orientación. No se trata solo de oír más, sino de comprender mejor en el día a día.
+            </p>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              En Clínica Barajas realizamos una adaptación progresiva, permitiendo al paciente probar los audífonos en su entorno habitual antes de tomar una decisión.
+            </p>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              Esto ayuda a comprobar si realmente le aportan beneficio antes de realizar una inversión.
+            </p>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              Además, no siempre es el momento de empezar. En algunos casos, lo más adecuado es hacer un seguimiento y valorar cuándo iniciar la adaptación.
+            </p>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              El objetivo es que, cuando el paciente dé el paso, lo haga con seguridad y con la confianza de que los va a usar y le van a resultar útiles.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Tipos */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+        >
+          <div className="mx-auto max-w-4xl rounded-3xl border border-gray-100 bg-white p-8 shadow-sm sm:p-10 space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-950">
+              Tipos de audífonos
+            </h2>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              Tipos de audífonos
+            </p>
+
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 pt-2">
+              {[
+                "Retroauriculares",
+                "Intrauriculares",
+                "Recargables",
+                "Discretos / Invisibles"
+              ].map((type) => (
+                <a
+                  key={type}
+                  href="/tipos-de-audifonos"
+                  className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-center transition-colors duration-200 hover:border-blue-500 hover:bg-blue-50"
+                >
+                  <p className="font-semibold text-gray-900 text-sm sm:text-base transition-colors duration-200 hover:text-blue-700">
+                    {type}
+                  </p>
+                </a>
+              ))}
+            </div>
+
+            <div className="pt-4">
+              <a
+                href="/tipos-de-audifonos"
+                  className="group inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 text-lg"
+                >
+                  Más información
+                  <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+                </a>
+            </div>
+
+            <div className="overflow-hidden rounded-[28px] border border-gray-200 bg-white shadow-sm">
+              <img
+                src="/audifonos/todos.jpg"
+                alt="Modelos de audífonos"
+                className="h-[260px] w-full object-cover sm:h-[340px]"
+              />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Pérdida auditiva */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+        >
+          <div className="mx-auto max-w-4xl rounded-3xl border border-gray-100 bg-white p-8 shadow-sm sm:p-10 space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-950">
+              Pérdida auditiva
+            </h2>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              La pérdida auditiva puede afectar a la comunicación, la vida social y la calidad de vida. Detectarla a tiempo permite aplicar soluciones que mejoren la audición y la comprensión del habla.
+            </p>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              Cuando una persona se plantea utilizar audífonos, lo más importante no es el dispositivo en sí, sino empezar a cuidar su audición.
+            </p>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              Esto implica realizar revisiones periódicas y repetir la audiometría al menos una vez al año para ver cómo evoluciona.
+            </p>
+
+            <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+              En Clínica Barajas realizamos un seguimiento continuo que permite detectar a tiempo cualquier cambio y tomar decisiones en el momento adecuado.
+            </p>
+
+            <div className="pt-2">
+              <a
+                href="/perdida-auditiva"
+                className="group inline-flex items-center gap-2 text-teal-600 font-semibold hover:text-teal-700 text-lg"
+              >
+                Más información
+                <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* FAQ */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+        >
+          <div className="mx-auto max-w-4xl rounded-3xl border border-gray-100 bg-white p-8 shadow-sm sm:p-10 space-y-8">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-950">
+              Preguntas frecuentes
+            </h2>
+
+            <div className="space-y-8 text-gray-700 text-lg sm:text-xl leading-relaxed">
+              {[
+                {
+                  q: "¿Cuándo es recomendable utilizar audífonos?",
+                  a: "Cuando existe dificultad para comprender conversaciones o se necesita subir mucho el volumen de televisión o teléfono."
+                },
+                {
+                  q: "¿Es difícil adaptarse a los audífonos?",
+                  a: "La adaptación suele ser progresiva. Con ajustes adecuados y seguimiento, la mayoría de los pacientes se acostumbran de forma natural."
+                },
+                {
+                  q: "¿Es necesario realizar una prueba auditiva?",
+                  a: "Sí. La evaluación auditiva permite seleccionar y ajustar el audífono de forma adecuada para cada caso. Y sobre todo saber si es realmente necesario."
+                },
+                {
+                  q: "¿Dónde comprar audífonos en Tenerife?",
+                  a: "Más que el lugar, lo importante es el proceso de evaluación y adaptación. Un mismo audífono puede ofrecer resultados muy distintos según cómo se ajuste."
+                }
+              ].map((item, index) => (
+                <div key={index} className="border-b border-gray-100 pb-8 last:border-none last:pb-0">
+                  <h3 className="font-semibold text-gray-950 text-xl mb-3">
+                    {item.q}
+                  </h3>
+                  <p>{item.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+      </div>
     </div>
   );
 }

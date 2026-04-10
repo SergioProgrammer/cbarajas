@@ -1,16 +1,123 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import NavBar from "../components/NavBar";
-import Audifonos from "../subcomponents/Audifonos.jsx";
+import Adaptacion from "../subcomponents/Adaptacion.jsx";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.jsx";
 import Chatbot from "../components/Chatbot.astro";
+
+const pageTitle =
+  "Adaptación de audífonos en Santa Cruz de Tenerife | Clínica Barajas";
+
+const pageDescription =
+  "Adaptación de audífonos en Santa Cruz de Tenerife con evaluación auditiva previa, ajuste personalizado y seguimiento profesional en Clínica Barajas.";
+const canonicalUrl = "https://www.clinicabarajas.com/adaptacion-de-audifonos";
+
+const adultHearingSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalBusiness",
+      "@id": "https://www.clinicabarajas.com/adaptacion-de-audifonos/#clinica",
+      "name": "Clínica Barajas - Centro Auditivo en Tenerife",
+      "url": "https://www.clinicabarajas.com/adaptacion-de-audifonos",
+      "image": "https://www.clinicabarajas.com/especialidades/audifonos.webp",
+      "telephone": "+34922275488",
+      "priceRange": "$$",
+      "medicalSpecialty": "Audiology",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "C. de Perez de Rozas, 8",
+        "addressLocality": "Santa Cruz de Tenerife",
+        "addressRegion": "Canarias",
+        "postalCode": "38004",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 28.46824,
+        "longitude": -16.25462
+      },
+      "description": "Centro especializado en audiología y adaptación de audífonos en Santa Cruz de Tenerife. Evaluación auditiva, ajuste personalizado y seguimiento profesional."
+    },
+
+    {
+      "@type": "Service",
+      "@id": "https://www.clinicabarajas.com/adaptacion-de-audifonos/#servicio",
+      "serviceType": "Adaptación de audífonos",
+      "name": "Adaptación de audífonos en Santa Cruz de Tenerife",
+      "description": "Servicio de adaptación personalizada de audífonos con evaluación audiológica, programación individual del dispositivo y seguimiento profesional.",
+      "provider": {
+        "@id": "https://www.clinicabarajas.com/adaptacion-de-audifonos/#clinica"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Santa Cruz de Tenerife"
+      }
+    },
+
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.clinicabarajas.com/adaptacion-de-audifonos/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Es necesaria una revisión auditiva antes de adaptar un audífono?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Antes de adaptar un audífono es necesario realizar una evaluación audiológica que permita determinar el tipo y grado de pérdida auditiva y seleccionar el dispositivo más adecuado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es difícil acostumbrarse a los audífonos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La adaptación suele requerir un periodo de ajuste progresivo. Con revisiones y ajustes adecuados, la mayoría de los pacientes se acostumbra sin dificultad."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Los audífonos mejoran la comprensión del habla?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Los audífonos modernos amplifican los sonidos y pueden mejorar la comprensión del habla cuando están correctamente ajustados al perfil auditivo del paciente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto dura una evaluación auditiva?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Una evaluación auditiva completa suele durar entre 30 y 45 minutos, dependiendo de las pruebas necesarias."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Existen audífonos discretos o invisibles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Existen modelos muy pequeños e incluso audífonos invisibles, aunque la elección depende del tipo de pérdida auditiva y de las características del oído."
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
-<Layout>
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonicalUrl}
+  ogTitle={pageTitle}
+  ogDescription={pageDescription}
+  ogType="article"
+  schema={adultHearingSchema}
+>
   <NavBar client:load/>
-  <div class="pt-9">
-  <Audifonos client:load />
+  <div class="pt-16">
+  <Adaptacion client:load />
   <Contact />
   </div>
   <Chatbot />

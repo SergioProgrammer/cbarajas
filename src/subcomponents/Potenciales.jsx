@@ -85,7 +85,7 @@ export default function PotencialesEvocadosAuditivos() {
       >
         <div className="bg-white shadow-lg rounded-2xl p-6 space-y-3">
           <h2 className="text-2xl font-semibold text-teal-500 mb-2">
-            Cabinas Audiométricas
+            Publicaciones
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-gray-700">
             <div className="space-y-2">

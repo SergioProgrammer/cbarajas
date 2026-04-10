@@ -92,7 +92,7 @@ export default function Audiometry() {
             </div>
             <div className="space-y-2">
               <img
-                src="/instalaciones/cabina2aud.webp"
+                src="/instalaciones/cabina2aud.jpg"
                 alt="Cabina 2 Audiometría"
                 className="rounded-xl shadow-md w-full object-cover"
               />

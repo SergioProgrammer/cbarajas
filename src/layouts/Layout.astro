@@ -1,96 +1,113 @@
 ---
 import "../styles/global.css";
+
+const siteUrl = "https://www.clinicabarajas.com";
+
+const defaultTitle =
+  "Clínica Barajas – Especialistas en otorrinolaringología y audiología en Tenerife";
+
+const defaultDescription =
+  "Clínica Barajas en Tenerife. Especialistas en otorrinolaringología y audiología. Tecnología avanzada y atención personalizada.";
+
+const defaultSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  name: "Clínica Barajas",
+  image: `${siteUrl}/cl.jpg`,
+  "@id": siteUrl,
+  url: siteUrl,
+  telephone: "+34 922 275 488",
+  priceRange: "€€",
+  address: {
+  "@type": "PostalAddress",
+  streetAddress: "C. de Perez de Rozas, 8",
+  addressLocality: "Santa Cruz de Tenerife",
+  postalCode: "38004",
+  addressCountry: "ES",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 28.46824,
+    longitude: -16.25462,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "19:00",
+    },
+  ],
+  medicalSpecialty: ["Audiology", "Otolaryngology"],
+  founder: {
+    "@type": "Person",
+    name: "Franz Zenker and Dr. Juan Barajas",
+    jobTitle: "Otorrinolaringólogo y Audiólogo especialista en prótesis auditivas",
+  },
+  sameAs: [
+    "https://www.facebook.com/clinicabarajas",
+    "https://www.instagram.com/clinicabarajas",
+    "https://www.linkedin.com/company/clinica-barajas",
+  ],
+};
+
+const {
+  title = defaultTitle,
+  description = defaultDescription,
+  canonical = siteUrl,
+  ogTitle = title,
+  ogDescription = description,
+  ogType = "website",
+  ogImage = `${siteUrl}/cl.jpg`,
+  schema = defaultSchema,
+  noindex = false,
+} = Astro.props;
 ---
 
+<!doctype html>
 <html lang="es">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WKYK6JNLBS"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-WKYK6JNLBS');
-  </script>
   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      <!-- SEO básico -->
-      <title>Clínica Barajas – Especialistas en audífonos y prótesis auditivas</title>
-      <meta 
-        name="description" 
-        content="Clínica Barajas en Tenerife. Especialistas en audífonos y adaptación de prótesis auditivas en niños y adultos. Tecnología avanzada y atención personalizada." 
-      />
+    <title>{title}</title>
+    <meta name="description" content={description} />
 
-      <!-- Open Graph -->
-      <meta property="og:title" content="Clínica Barajas – Otorrinolaringología y prótesis auditivas" />
-      <meta property="og:description" content="Expertos en adaptación de audífonos y prótesis auditivas en niños y adultos. Atención clínica personalizada en Tenerife." />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://www.clinicabarajas.com" />
-      <meta property="og:image" content="https://www.clinicabarajas.com/cl.jpg" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
 
-      <!-- Accesibilidad y SEO técnico -->
-      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-      <link rel="canonical" href="https://www.clinicabarajas.com" />
-      <meta name="robots" content="index, follow" />
+    <!-- Open Graph -->
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Clínica Barajas" />
+    <meta property="og:locale" content="es_ES" />
 
-      <!-- JSON-LD (SEO local para Google) -->
-      <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "MedicalClinic",
-        "name": "Clínica Barajas",
-        "image": "https://www.clinicabarajas.com/cl.jpg",
-        "@id": "https://www.clinicabarajas.com",
-        "url": "https://www.clinicabarajas.com",
-        "telephone": "+34 922 275 488",
-        "priceRange": "€€",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "C. de Perez de Rozas, 8, 38004",
-          "addressLocality": "Santa Cruz de Tenerife",
-          "postalCode": "38004",
-          "addressCountry": "ES"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 28.46824,
-          "longitude": -16.25462
-        },
-        "openingHoursSpecification": [
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday"
-            ],
-            "opens": "09:00",
-            "closes": "19:00"
-          }
-        ],
-        "medicalSpecialty": [
-          "Audiology",
-          "Otolaryngologiy"
-        ],
-        "founder": {
-          "@type": "Person",
-          "name": "Franz Zenker and Dr. Juan Barajas",
-          "jobTitle": "Otorrinolaringólogo y Audiólogo especialista en prótesis auditivas"
-        },
-        "sameAs": [
-          "https://www.facebook.com/clinicabarajas",
-          "https://www.instagram.com/clinicabarajas",
-          "https://www.linkedin.com/company/clinica-barajas"
-        ]
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WKYK6JNLBS"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
       }
-      </script>
+      gtag("js", new Date());
+      gtag("config", "G-WKYK6JNLBS");
+    </script>
   </head>
 
-  <body class="font-sans text-gray-800">
+  <body class="font-sans text-gray-800 antialiased">
     <slot />
   </body>
 </html>

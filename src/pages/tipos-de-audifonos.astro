@@ -1,0 +1,125 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/NavBar";
+import Tipos from "../subcomponents/Tipos.jsx";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.jsx";
+import Chatbot from "../components/Chatbot.astro";
+
+const pageTitle =
+  "Tipos de audífonos en Santa Cruz de Tenerife | Clínica Barajas";
+
+const pageDescription =
+  "Conozca los principales tipos de audífonos en Santa Cruz de Tenerife: retroauriculares, intrauriculares, recargables y soluciones discretas en Clínica Barajas.";
+const canonicalUrl = "https://www.clinicabarajas.com/tipos-de-audifonos";
+
+const hearingAidTypesSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalBusiness",
+      "@id": "https://www.clinicabarajas.com/tipos-de-audifonos/#clinica",
+      "name": "Clínica Barajas - Centro Auditivo en Tenerife",
+      "url": "https://www.clinicabarajas.com/tipos-de-audifonos",
+      "image": "https://www.clinicabarajas.com/especialidades/audifonos.webp",
+      "telephone": "+34922275488",
+      "priceRange": "$$",
+      "medicalSpecialty": "Audiology",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "C. de Perez de Rozas, 8",
+        "addressLocality": "Santa Cruz de Tenerife",
+        "addressRegion": "Canarias",
+        "postalCode": "38004",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 28.46824,
+        "longitude": -16.25462
+      },
+      "description": "Centro especializado en audiología y adaptación de audífonos en Santa Cruz de Tenerife."
+    },
+
+    {
+      "@type": "Service",
+      "@id": "https://www.clinicabarajas.com/tipos-de-audifonos/#servicio",
+      "serviceType": "Información sobre tipos de audífonos",
+      "name": "Tipos de audífonos en Santa Cruz de Tenerife",
+      "description": "Información sobre los diferentes tipos de audífonos y orientación profesional para elegir la solución auditiva más adecuada.",
+      "provider": {
+        "@id": "https://www.clinicabarajas.com/tipos-de-audifonos/#clinica"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Santa Cruz de Tenerife"
+      }
+    },
+
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.clinicabarajas.com/tipos-de-audifonos/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuál es el mejor tipo de audífono?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No existe un único modelo mejor para todos los casos. La elección depende del tipo y grado de pérdida auditiva, la anatomía del oído y las necesidades de cada persona."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué tipos de audífonos existen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Entre los principales tipos se encuentran los audífonos retroauriculares, intrauriculares, modelos recargables y soluciones discretas o invisibles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Los audífonos invisibles son adecuados para todo el mundo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No siempre. La elección depende del tipo de pérdida auditiva y de las características del oído, por lo que es necesario realizar una valoración audiológica."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es necesario realizar una revisión auditiva antes de elegir audífonos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. La revisión auditiva permite conocer el tipo y grado de pérdida auditiva y orientar la elección del audífono más adecuado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Dónde puedo realizar una valoración auditiva en Tenerife?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En Clínica Barajas realizamos revisiones auditivas y adaptación de audífonos en Santa Cruz de Tenerife."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonicalUrl}
+  ogTitle={pageTitle}
+  ogDescription={pageDescription}
+  ogType="article"
+  schema={hearingAidTypesSchema}
+>
+  <NavBar client:load/>
+  <div class="pt-16">
+  <Tipos client:load />
+  <Contact />
+  </div>
+  <Chatbot />
+  <Footer />
+</Layout>

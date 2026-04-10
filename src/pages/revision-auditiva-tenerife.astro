@@ -1,0 +1,125 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/NavBar";
+import Revision from "../subcomponents/Revision.jsx";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.jsx";
+import Chatbot from "../components/Chatbot.astro";
+
+const pageTitle =
+  "Revisión auditiva en Santa Cruz de Tenerife | Clínica Barajas";
+
+const pageDescription =
+  "Revisión auditiva en Santa Cruz de Tenerife con pruebas audiológicas y audiometría para evaluar la capacidad auditiva y detectar pérdida de audición.";
+const canonicalUrl = "https://www.clinicabarajas.com/revision-auditiva-tenerife";
+
+const hearingTestSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalBusiness",
+      "@id": "https://www.clinicabarajas.com/revision-auditiva-tenerife/#clinica",
+      "name": "Clínica Barajas - Centro Auditivo en Tenerife",
+      "url": "https://www.clinicabarajas.com/revision-auditiva-tenerife",
+      "image": "https://www.clinicabarajas.com/especialidades/audifonos.webp",
+      "telephone": "+34922275488",
+      "priceRange": "$$",
+      "medicalSpecialty": "Audiology",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "C. de Perez de Rozas, 8",
+        "addressLocality": "Santa Cruz de Tenerife",
+        "addressRegion": "Canarias",
+        "postalCode": "38004",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 28.46824,
+        "longitude": -16.25462
+      },
+      "description": "Centro especializado en audiología en Santa Cruz de Tenerife. Realizamos revisiones auditivas, audiometrías y evaluación de la capacidad auditiva."
+    },
+
+    {
+      "@type": "Service",
+      "@id": "https://www.clinicabarajas.com/revision-auditiva-tenerife/#servicio",
+      "serviceType": "Revisión auditiva",
+      "name": "Revisión auditiva en Santa Cruz de Tenerife",
+      "description": "Servicio de revisión auditiva con pruebas audiológicas y audiometría para evaluar la capacidad auditiva y detectar pérdida de audición.",
+      "provider": {
+        "@id": "https://www.clinicabarajas.com/revision-auditiva-tenerife/#clinica"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Santa Cruz de Tenerife"
+      }
+    },
+
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.clinicabarajas.com/revision-auditiva-tenerife/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuándo es recomendable realizar una revisión auditiva?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Se recomienda realizar una revisión auditiva cuando existe dificultad para entender conversaciones, necesidad de subir el volumen de televisión o sensación de escuchar pero no comprender con claridad."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿En qué consiste una revisión auditiva?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Una revisión auditiva incluye diferentes pruebas audiológicas como audiometría tonal y pruebas de comprensión del habla que permiten evaluar la capacidad auditiva."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto dura una revisión auditiva?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La evaluación auditiva suele durar entre 30 y 45 minutos dependiendo de las pruebas necesarias."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿La revisión auditiva es dolorosa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Las pruebas audiológicas son completamente seguras, no invasivas y no producen dolor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puede una revisión auditiva detectar pérdida de audición?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Las pruebas audiológicas permiten identificar el tipo y grado de pérdida auditiva y orientar posibles soluciones auditivas."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonicalUrl}
+  ogTitle={pageTitle}
+  ogDescription={pageDescription}
+  ogType="article"
+  schema={hearingTestSchema}
+>
+  <NavBar client:load/>
+  <div class="pt-16">
+  <Revision client:load />
+  <Contact />
+  </div>
+  <Chatbot />
+  <Footer />
+</Layout>

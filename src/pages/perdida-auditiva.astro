@@ -1,0 +1,123 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/NavBar";
+import Perdida from "../subcomponents/Perdida.jsx";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.jsx";
+import Chatbot from "../components/Chatbot.astro";
+
+const pageTitle = "Pérdida auditiva en Santa Cruz de Tenerife | Clínica Barajas";
+const pageDescription =
+  "Pérdida auditiva en Santa Cruz de Tenerife con evaluación audiológica y tratamiento personalizado en Clínica Barajas.";
+const canonicalUrl = "https://www.clinicabarajas.com/perdida-auditiva";
+
+const hearingLossSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalBusiness",
+      "@id": "https://www.clinicabarajas.com/perdida-auditiva/#clinica",
+      "name": "Clínica Barajas - Centro Auditivo en Tenerife",
+      "url": "https://www.clinicabarajas.com/perdida-auditiva",
+      "image": "https://www.clinicabarajas.com/especialidades/audifonos.webp",
+      "telephone": "+34922275488",
+      "priceRange": "$$",
+      "medicalSpecialty": "Audiology",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "C. de Perez de Rozas, 8",
+        "addressLocality": "Santa Cruz de Tenerife",
+        "addressRegion": "Canarias",
+        "postalCode": "38004",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 28.46824,
+        "longitude": -16.25462
+      },
+      "description": "Centro especializado en audiología y adaptación de audífonos en Santa Cruz de Tenerife."
+    },
+
+    {
+      "@type": "MedicalCondition",
+      "@id": "https://www.clinicabarajas.com/perdida-auditiva/#condicion",
+      "name": "Pérdida auditiva",
+      "description": "La pérdida auditiva es la disminución de la capacidad para oír sonidos o comprender el habla con normalidad. Puede ser leve, moderada o severa y afectar a uno o ambos oídos.",
+      "possibleTreatment": {
+        "@type": "MedicalTherapy",
+        "name": "Adaptación de audífonos"
+      },
+      "associatedAnatomy": {
+        "@type": "AnatomicalStructure",
+        "name": "Oído"
+      }
+    },
+
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.clinicabarajas.com/perdida-auditiva/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cómo saber si tengo pérdida auditiva?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Algunos signos frecuentes son la dificultad para entender conversaciones, la necesidad de subir mucho el volumen de la televisión o la sensación de escuchar pero no comprender con claridad."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿La pérdida auditiva puede aparecer de forma progresiva?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. En muchos casos la pérdida auditiva aparece de forma gradual, por lo que puede pasar desapercibida al principio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es necesario realizar una revisión auditiva?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Una revisión auditiva permite confirmar si existe una pérdida de audición y determinar su tipo y grado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿La pérdida auditiva siempre requiere audífonos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No siempre. La indicación depende de la causa y del grado de pérdida auditiva, por lo que es necesario realizar una valoración individualizada."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Dónde realizar una revisión auditiva en Tenerife?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En Clínica Barajas realizamos revisión auditiva y valoración audiológica en Santa Cruz de Tenerife."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonicalUrl}
+  ogTitle={pageTitle}
+  ogDescription={pageDescription}
+  ogType="article"
+  schema={hearingLossSchema}
+>
+  <NavBar client:load/>
+  <div class="pt-16">
+  <Perdida client:load />
+  <Contact />
+  </div>
+  <Chatbot />
+  <Footer />
+</Layout>

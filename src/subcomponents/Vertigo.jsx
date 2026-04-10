@@ -1,181 +1,420 @@
-import React, { useState, useEffect } from "react";
+const checkIcon = (
+  <svg
+    className="w-4 h-4 text-teal-600 mr-2 mt-1 flex-shrink-0"
+    fill="currentColor"
+    viewBox="0 0 20 20"
+    aria-hidden="true"
+  >
+    <path
+      fillRule="evenodd"
+      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
+const diagnosisTests = [
+  "Videonistagmografía (VNG)",
+  "vHIT (reflejo vestíbulo-ocular)",
+  "Pruebas posicionales",
+  "Posturografía",
+  "VEMPs",
+];
+
+const differentiationPoints = [
+  "Evaluación completa y orientada al diagnóstico desde el inicio",
+  "Tratamiento inmediato cuando es posible",
+  "Rehabilitación vestibular personalizada",
+  "Tecnología diagnóstica avanzada",
+  "Seguimiento clínico estructurado",
+];
+
+const treatmentOptions = [
+  "Maniobras de reposicionamiento vestibular (VPPB)",
+  "Tratamiento médico individualizado (cuando está indicado)",
+  "Rehabilitación vestibular",
+];
+
+const virtualRealityBenefits = [
+  "Entrenar el equilibrio en entornos controlados",
+  "Adaptar progresivamente la dificultad según el paciente",
+  "Trabajar la estabilidad visual y postural de forma conjunta",
+  "Mejorar la recuperación en pacientes con mareo persistente",
+];
+
+const rehabilitationGoals = [
+  "Reducir el mareo",
+  "Mejorar la estabilidad",
+  "Recuperar la seguridad al caminar",
+  "Evitar recaídas",
+];
+
+const patientProfile = [
+  "Llevan tiempo con mareo sin diagnóstico claro",
+  "Han probado tratamientos sin mejoría",
+  "Sienten inseguridad al caminar",
+  "Presentan vértigo al cambiar de posición",
+  "Quieren una evaluación completa y definitiva",
+];
 
 export default function VertigoTrastornos() {
-  const [selected, setSelected] = useState(null);
-  const [activeTab, setActiveTab] = useState("VNG"); 
-
-  const secciones = [
-    {
-      image: "/pruebas/pruebas.webp",
-      title: "Vértigo y Trastornos del Equilibrio",
-      description:
-        "El vértigo es una sensación de movimiento o mareo que afecta la vida diaria y puede tener múltiples causas.",
-      bullets: [
-        "Náuseas y vómitos",
-        "Problemas de equilibrio",
-        "Pérdida de audición o zumbido",
-        "Mareo por movimiento",
-        "Nistagmo (movimiento ocular involuntario)",
-      ],
-      fullText: `El vértigo puede ser periférico (afecta oído interno o nervio vestibular) o central (afección cerebral). Entre los tipos de vértigo que diagnosticamos y tratamos se incluyen:
-- Vértigo Posicional Paroxístico Benigno
-- Neuritis vestibular
-- Vestibulopatía bilateral
-- Enfermedad de Ménière
-- Migraña vestibular
-- Desequilibrio en personas mayores (Presbivestibulopatía)
-- Paroxismia vestibular
-- Mareo por viajes (cinetosis)
-- Patologías de origen central con secuelas en el equilibrio (AVC, EM, etc.)
-
-Las causas pueden variar: migrañas, medicamentos, accidente cerebrovascular, lesiones de cabeza, diabetes, cera en el oído, entre otras. En Clínica Barajas ofrecemos diagnóstico integral y tratamiento especializado para recuperar el equilibrio y la calidad de vida.`
-    },
-    {
-      image: "/pruebas/videonista.webp",
-      title: "Pruebas Vestibulares",
-      description:
-        "Evaluación especializada del sistema vestibular para diagnosticar la causa del vértigo y los trastornos del equilibrio.",
-      bullets: [
-        "Videonistagmografía (VNG)",
-        "Video Head Impulse Test (vHIT)",
-        "Potencial Vestibular Miogénico Evocado (PVME)",
-      ],
-      fullText: {
-        VNG: `La Videonistagmografía (VNG) evalúa los movimientos involuntarios de los ojos (nistagmo) para detectar trastornos vestibulares periféricos o centrales. Incluye pruebas oculares, posicionales y calóricas. Beneficios: diagnóstico preciso, planificación de tratamiento personalizado y monitoreo de evolución. Puede causar mareo temporal.`, 
-
-        vHIT: `El Video Head Impulse Test (vHIT) analiza el reflejo vestíbulo-ocular durante movimientos rápidos de la cabeza. Permite identificar qué oído está comprometido y evaluar el grado de afectación vestibular. Es rápido, cómodo y preciso, y complementa otras pruebas de equilibrio.`,
-
-        PVME: `El Potencial Vestibular Miogénico Evocado (PVME) mide la respuesta eléctrica de los músculos del cuello ante estímulos vestibulares. Permite evaluar la integridad del sistema vestibular y nervios relacionados, detectando alteraciones periféricas y centrales. Beneficios: valoración objetiva y cuantitativa, complementa VNG y vHIT, y ayuda a diseñar terapias personalizadas.`
-      }
-    },
-    {
-      image: "/pruebas/video-head.webp",
-      title: "Rehabilitación del Vértigo",
-      description:
-        "Terapia personalizada que combina ejercicios y maniobras para reducir el vértigo y mejorar la estabilidad.",
-      bullets: [
-        "Maniobras de reposicionamiento de los cristales (Epley, Semont, Gufoni)",
-        "Ejercicios de Brandt-Daroff",
-        "Fortalecimiento del equilibrio y coordinación",
-        "Planes adaptados a cada paciente",
-      ],
-      fullText: `La rehabilitación vestibular se centra en ejercicios realizados por profesionales especializados para reducir síntomas de vértigo, mareo e inestabilidad. Se utilizan maniobras específicas para tratar el VPPB y ejercicios de Brandt-Daroff para mejorar la adaptación vestibular. Cada plan se personaliza según las necesidades del paciente, combinando coordinación, fortalecimiento y reentrenamiento del equilibrio.`
-    },
-  ];
-
-  useEffect(() => {
-    if (selected) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = 'unset';
-    return () => { document.body.style.overflow = 'unset'; }
-  }, [selected]);
-
-  useEffect(() => {
-    const handleEscape = (e) => { if (e.key === 'Escape' && selected) setSelected(null); };
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, [selected]);
-
   return (
-    <section className="bg-teal-500 py-16 px-6 lg:px-16" id="vertigo-trastornos">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-white mb-4">Vértigo y Trastornos del Equilibrio</h2>
-          <p className="text-lg text-white max-w-2xl mx-auto">
-            En Clínica Barajas abordamos el vértigo y los trastornos del equilibrio con diagnóstico especializado y rehabilitación personalizada.
-          </p>
+    <section id="vertigo-trastornos" className="bg-white">
+      <HeroSection />
+
+      <main className="px-6 lg:px-16 py-14 bg-slate-50">
+        <div className="max-w-6xl mx-auto space-y-8">
+          <TextCard
+            title="¿Siente que vive con mareo constante y no sabe por qué?"
+            paragraphs={[
+              "Muchos pacientes pasan meses, incluso años, con sensación de inestabilidad, inseguridad al caminar o episodios de vértigo sin un diagnóstico claro.",
+              "Han consultado, han tomado medicación, pero el problema persiste.",
+              "Esto ocurre porque el vértigo no es una enfermedad, sino un síntoma. Y sin un diagnóstico preciso, no hay tratamiento eficaz.",
+            ]}
+          />
+
+          <TextCard
+            title="Un enfoque diferente: diagnóstico + tratamiento + rehabilitación"
+            paragraphs={[
+              "En Clínica Barajas abordamos el vértigo de forma integral en un único centro.",
+              "Esto evita pruebas innecesarias, retrasos y tratamientos ineficaces.",
+            ]}
+            bullets={differentiationPoints}
+          />
+
+          <FeatureImageCard
+            title="Qué es el vértigo"
+            image="/pruebas/videonista.webp"
+            alt="Estudio del sistema vestibular para pacientes con vértigo"
+            paragraphs={[
+              "El vértigo es una sensación de movimiento o giro del entorno, habitualmente causada por alteraciones del sistema vestibular del oído interno.",
+              "Puede aparecer de forma brusca o persistente y afectar de forma significativa a la calidad de vida.",
+            ]}
+          />
+
+          <FeatureImageCard
+            title="Diagnóstico avanzado del vértigo"
+            image="/pruebas/pruebas.webp"
+            alt="Tecnología diagnóstica avanzada para el vértigo en Clínica Barajas"
+            paragraphs={[
+              "El paso más importante es identificar la causa.",
+              "Realizamos un estudio vestibular completo que permite analizar cómo funciona el sistema del equilibrio y detectar alteraciones con precisión.",
+              "El resultado es un diagnóstico claro y un plan de tratamiento desde la primera visita.",
+            ]}
+            bullets={diagnosisTests}
+          />
+
+          <TreatmentSection />
+
+          <FeatureImageCard
+            title="La causa más frecuente: vértigo posicional"
+            image="/pruebas/video-head.webp"
+            alt="Tratamiento del vértigo posicional mediante maniobras en consulta"
+            paragraphs={[
+              "El vértigo que aparece al tumbarse o girar la cabeza suele deberse al VPPB.",
+              "Este tipo de vértigo puede tratarse en consulta mediante maniobras específicas, como la maniobra de Epley u otras técnicas, con alta tasa de éxito.",
+            ]}
+          />
+
+          <RehabilitationSection />
+
+          <TextCard
+            title="¿Para quién está indicado este estudio?"
+            paragraphs={[
+              "Este enfoque está especialmente indicado para pacientes que buscan una evaluación completa del origen de su mareo o inestabilidad.",
+            ]}
+            bullets={patientProfile}
+          />
+
+          <TextCard
+            title="Centro de referencia en vértigo en Tenerife"
+            paragraphs={[
+              "En Clínica Barajas combinamos experiencia clínica, tecnología avanzada y un enfoque integral del paciente.",
+              "Atendemos a pacientes de toda Canarias que buscan una solución real a su problema de equilibrio.",
+            ]}
+          />
+
+          <FaqSection />
         </div>
+      </main>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {secciones.map((section, index) => (
-            <ServiceCard key={index} {...section} onLeerMas={() => setSelected(section)} />
-          ))}
-        </div>
-      </div>
-
-      {/* Modal de "Leer más" con pestañas */}
-      {selected && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 px-4 animate-fadeIn"
-             onClick={(e) => e.target === e.currentTarget && setSelected(null)}>
-          <div className="bg-white max-w-3xl w-full rounded-2xl shadow-2xl relative max-h-[90vh] overflow-hidden animate-scaleIn">
-            <div className="relative">
-              <img src={selected.image} alt={selected.title} className="w-full h-48 object-cover"/>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-              <button onClick={() => setSelected(null)}
-                      className="absolute top-4 right-4 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-teal-700 shadow-lg">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-              <h3 className="absolute bottom-4 left-6 text-2xl font-bold text-white drop-shadow-lg">{selected.title}</h3>
-            </div>
-
-            <div className="p-6 overflow-y-auto max-h-[calc(90vh-12rem)]">
-              {/* Tabs solo si es Pruebas Vestibulares */}
-              {selected.title === "Pruebas Vestibulares" ? (
-                <>
-                  <div className="flex mb-4 border-b border-gray-200">
-                    {["VNG", "vHIT", "PVME"].map(tab => (
-                      <button
-                        key={tab}
-                        onClick={() => setActiveTab(tab)}
-                        className={`px-4 py-2 font-semibold ${activeTab === tab ? "text-teal-700 border-b-2 border-teal-700" : "text-gray-600"}`}
-                      >
-                        {tab}
-                      </button>
-                    ))}
-                  </div>
-                  <p className="text-gray-700 leading-relaxed whitespace-pre-line text-base">
-                    {selected.fullText[activeTab]}
-                  </p>
-                </>
-              ) : (
-                <p className="text-gray-700 leading-relaxed whitespace-pre-line text-base">{selected.fullText}</p>
-              )}
-              
-            </div>
-          </div>
-        </div>
-      )}
-
-      <style jsx>{`
-        @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-        @keyframes scaleIn { from {opacity:0; transform:scale(0.9);} to {opacity:1; transform:scale(1);} }
-        .animate-fadeIn { animation: fadeIn 0.3s ease-out; }
-        .animate-scaleIn { animation: scaleIn 0.3s ease-out; }
-      `}</style>
+      <FinalCta />
     </section>
   );
 }
 
-function ServiceCard({ image, title, description, bullets, onLeerMas }) {
+function HeroSection() {
   return (
-    <div className="bg-white rounded-xl shadow-lg border border-teal-100 hover:shadow-xl hover:border-teal-200 transition-all duration-300 overflow-hidden flex flex-col group">
-      <div className="relative overflow-hidden">
-        <img src={image} alt={title} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"/>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <header className="relative overflow-hidden bg-teal-600 text-white px-6 lg:px-16 py-16 lg:py-20">
+      <div className="absolute -top-20 -left-16 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
+      <div className="absolute -bottom-20 -right-16 w-80 h-80 bg-teal-300/20 rounded-full blur-3xl" />
+
+      <div className="relative max-w-6xl mx-auto grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
+        <div>
+          <p className="uppercase tracking-[0.2em] text-sm text-teal-100 mb-4">
+            Instituto del Vértigo · Clínica Barajas
+          </p>
+          <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-6">
+            Especialistas en vértigo en Tenerife: diagnóstico preciso y abordaje integral
+          </h1>
+          <div className="space-y-4 text-lg leading-relaxed text-teal-50">
+            <p>
+              Si sufre vértigo, mareo o inestabilidad, el problema no es el síntoma, sino encontrar su causa.
+            </p>
+            <p>
+              En Clínica Barajas realizamos un estudio completo del sistema vestibular para identificar con
+              precisión el origen del vértigo y aplicar un tratamiento desde la primera visita.
+            </p>
+            <div className="pt-2 text-white font-semibold">
+              <p>No tratamos mareos.</p>
+              <p>Tratamos la causa.</p>
+            </div>
+          </div>
+
+          <div className="mt-8 inline-flex flex-col gap-2 rounded-2xl border border-white/20 bg-white/10 px-5 py-4 backdrop-blur-sm">
+            <p className="font-semibold text-white">
+              Centro especializado en diagnóstico y rehabilitación vestibular en Canarias
+            </p>
+            <p className="text-sm text-teal-50">
+              Tecnología avanzada · Evaluación completa · Seguimiento clínico
+            </p>
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href="/contacto"
+              className="bg-white text-teal-700 font-semibold px-5 py-3 rounded-lg shadow hover:bg-teal-50 transition"
+            >
+              Solicitar cita ahora
+            </a>
+            <a
+              href="tel:+34922275488"
+              className="bg-teal-900/60 border border-teal-200 text-white font-semibold px-5 py-3 rounded-lg hover:bg-teal-900 transition"
+            >
+              Hablar con un especialista
+            </a>
+          </div>
+        </div>
+
+        <div className="bg-white/10 rounded-3xl p-3 shadow-2xl">
+          <img
+            src="/instalaciones/laboratorio-vestibular.jpg"
+            alt="Unidad especializada en diagnóstico y rehabilitación vestibular"
+            className="w-full h-[420px] object-cover rounded-2xl"
+          />
+        </div>
       </div>
-      <div className="p-6 flex-1 flex flex-col">
-        <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-teal-700 transition-colors duration-200">{title}</h3>
-        <p className="text-gray-600 mb-4 flex-1 leading-relaxed">{description}</p>
-        {bullets && (
-          <ul className="space-y-2 mb-6">
-            {bullets.map((item, index) => (
-              <li key={index} className="flex items-start text-sm text-gray-600">
-                <svg className="w-4 h-4 text-teal-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-                {item}
-              </li>
+    </header>
+  );
+}
+
+function TextCard({ title, paragraphs, bullets }) {
+  return (
+    <article className="bg-white rounded-2xl shadow-lg border border-slate-100 p-7 md:p-8">
+      <h2 className="text-2xl md:text-3xl font-bold text-teal-700 mb-4">{title}</h2>
+      <div className="space-y-3 text-gray-700 leading-relaxed">
+        {paragraphs.map((paragraph, index) => (
+          <p key={index}>{paragraph}</p>
+        ))}
+      </div>
+      {bullets && <BulletList items={bullets} className="mt-5" />}
+    </article>
+  );
+}
+
+function FeatureImageCard({ title, paragraphs, bullets, image, alt }) {
+  return (
+    <article className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden">
+      <div className="grid lg:grid-cols-2 gap-0">
+        <img src={image} alt={alt} className="w-full h-full min-h-[260px] object-cover" />
+        <div className="p-7 md:p-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-teal-700 mb-4">{title}</h2>
+          <div className="space-y-3 text-gray-700 leading-relaxed">
+            {paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
             ))}
-          </ul>
-        )}
-        <button onClick={onLeerMas} className="mt-auto bg-teal-700 hover:bg-teal-800 text-white font-medium py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105 active:scale-95 flex items-center justify-center group">
-          <span className="mr-2">Leer más</span>
-          <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+          </div>
+          {bullets && <BulletList items={bullets} className="mt-5" />}
+        </div>
       </div>
-    </div>
+    </article>
+  );
+}
+
+function TreatmentSection() {
+  return (
+    <article className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden">
+      <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="p-7 md:p-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-teal-700 mb-4">Tratamiento del vértigo</h2>
+          <div className="space-y-3 text-gray-700 leading-relaxed">
+            <p>El tratamiento del vértigo depende de la causa, no del síntoma.</p>
+            <p>
+              En muchos casos, el problema puede resolverse de forma inmediata o en pocas sesiones. En otros,
+              es necesario un abordaje progresivo y personalizado.
+            </p>
+            <p>
+              El objetivo no es solo eliminar el vértigo, sino recuperar la estabilidad y evitar recaídas.
+            </p>
+          </div>
+          <div className="mt-6">
+            <h3 className="text-lg font-semibold text-teal-800 mb-3">Opciones de tratamiento</h3>
+            <BulletList items={treatmentOptions} />
+          </div>
+          <p className="mt-6 text-gray-700 leading-relaxed">
+            En situaciones menos frecuentes, pueden ser necesarias otras opciones terapéuticas que se valoran
+            de forma individual en función del diagnóstico.
+          </p>
+        </div>
+
+        <img
+          src="/pruebas/pruebas.webp"
+          alt="Tratamiento personalizado del vértigo tras un diagnóstico vestibular preciso"
+          className="w-full h-full min-h-[300px] object-cover"
+        />
+      </div>
+    </article>
+  );
+}
+
+function RehabilitationSection() {
+  return (
+    <section className="grid gap-6">
+      <article className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden">
+        <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="p-7 md:p-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-teal-700 mb-4">
+              Rehabilitación vestibular: recuperar el equilibrio
+            </h2>
+            <div className="space-y-3 text-gray-700 leading-relaxed">
+              <p>
+                Cuando el vértigo persiste, el tratamiento no es medicación, sino reentrenar el sistema del
+                equilibrio.
+              </p>
+              <p>
+                Diseñamos programas personalizados para que el cerebro se adapte y el paciente recupere
+                estabilidad.
+              </p>
+              <p>
+                En Clínica Barajas contamos con una sala específica de rehabilitación vestibular equipada con
+                tecnología avanzada, incluyendo sistemas de realidad virtual para el entrenamiento del equilibrio.
+              </p>
+              <p>
+                Esto permite trabajar el sistema vestibular de forma progresiva, controlada y adaptada a cada
+                paciente.
+              </p>
+            </div>
+          </div>
+
+          <img
+            src="/instalaciones/sala.webp"
+            alt="Sala de rehabilitación vestibular con tecnología avanzada"
+            className="w-full h-full min-h-[320px] object-cover"
+          />
+        </div>
+      </article>
+
+      <article className="bg-white rounded-2xl shadow-lg border border-slate-100 p-7 md:p-8">
+        <h3 className="text-xl md:text-2xl font-bold text-teal-700 mb-4">
+          Entrenamiento del equilibrio con realidad virtual
+        </h3>
+        <div className="space-y-3 text-gray-700 leading-relaxed">
+          <p>
+            Utilizamos sistemas avanzados de rehabilitación vestibular que combinan estímulos visuales y
+            posturales para entrenar el equilibrio en condiciones controladas.
+          </p>
+          <p>
+            Esto permite reproducir situaciones reales, como movimiento, entornos complejos o inestabilidad, de
+            forma segura, facilitando la adaptación del sistema nervioso.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 mt-6">
+          <div>
+            <h4 className="text-lg font-semibold text-teal-800 mb-3">Qué nos permite</h4>
+            <BulletList items={virtualRealityBenefits} />
+          </div>
+          <div>
+            <h4 className="text-lg font-semibold text-teal-800 mb-3">Objetivos</h4>
+            <BulletList items={rehabilitationGoals} />
+          </div>
+        </div>
+      </article>
+    </section>
+  );
+}
+
+function FaqSection() {
+  return (
+    <section className="bg-white rounded-2xl shadow-lg border border-slate-100 p-7 md:p-8">
+      <h2 className="text-2xl md:text-3xl font-bold text-teal-700 mb-6">Preguntas frecuentes sobre el vértigo</h2>
+      <div className="space-y-4">
+        <FaqItem
+          question="¿El vértigo siempre se trata con medicación?"
+          answer="No. El tratamiento depende de la causa. En muchos casos son necesarias maniobras específicas o rehabilitación vestibular, no medicación."
+        />
+        <FaqItem
+          question="¿Se puede obtener un diagnóstico desde la primera visita?"
+          answer="Ese es el objetivo del estudio vestibular completo: identificar la causa con precisión y plantear un plan de tratamiento desde el inicio siempre que sea posible."
+        />
+        <FaqItem
+          question="¿El vértigo posicional puede resolverse en consulta?"
+          answer="Sí. El VPPB suele tratarse mediante maniobras de reposicionamiento vestibular, como la maniobra de Epley, con alta tasa de éxito."
+        />
+      </div>
+    </section>
+  );
+}
+
+function FaqItem({ question, answer }) {
+  return (
+    <details className="group border border-slate-200 rounded-xl p-4">
+      <summary className="list-none cursor-pointer flex items-center justify-between font-semibold text-teal-800">
+        {question}
+        <span className="text-teal-600 group-open:rotate-45 transition-transform text-xl leading-none">+</span>
+      </summary>
+      <p className="text-gray-700 mt-3 leading-relaxed">{answer}</p>
+    </details>
+  );
+}
+
+function FinalCta() {
+  return (
+    <section className="px-6 lg:px-16 py-14 bg-teal-700">
+      <div className="max-w-6xl mx-auto bg-white rounded-2xl p-8 md:p-10 shadow-2xl">
+        <h2 className="text-2xl md:text-3xl font-bold text-teal-700 mb-4">Deje de convivir con el vértigo</h2>
+        <p className="text-gray-700 leading-relaxed mb-6">
+          Si lleva tiempo con mareo, inestabilidad o episodios de vértigo, el siguiente paso no es probar otro
+          tratamiento, sino obtener un diagnóstico preciso. En Clínica Barajas podemos ayudarle.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <a
+            href="/contacto"
+            className="bg-teal-700 hover:bg-teal-800 text-white font-semibold px-5 py-3 rounded-lg transition"
+          >
+            Solicitar cita ahora
+          </a>
+          <a
+            href="tel:+34922275488"
+            className="bg-white border border-teal-700 text-teal-700 font-semibold px-5 py-3 rounded-lg hover:bg-teal-50 transition"
+          >
+            Llamar: 922 275 488
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BulletList({ items, className = "" }) {
+  return (
+    <ul className={`space-y-2 ${className}`}>
+      {items.map((item, index) => (
+        <li key={index} className="flex items-start text-gray-700">
+          {checkIcon}
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
   );
 }

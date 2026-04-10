@@ -10,6 +10,7 @@ export default function SimpleChatBot() {
 
   const [patientData, setPatientData] = useState({
     service: "",
+    doctor: "",
     paymentType: "",
     insurance: ""
   });
@@ -37,6 +38,17 @@ export default function SimpleChatBot() {
       field: "service"
     },
     {
+      id: "doctor",
+      botMessage: "¿Con qué médico deseas reservar?",
+      options: [
+        { value: "barajas", label: "Dr. José Juan Barajas de Prat" },
+        { value: "ayoze", label: "Dr. Ayoze Lemes Robayna" },
+        { value: "francisco", label: "Dr. Francisco González Sammarco" }
+      ],
+      field: "doctor",
+      showOnlyIf: (data) => data.service === "otorrino"
+    },
+    {
       id: "paymentType",
       botMessage: "¿Deseas reservar con seguro médico o de forma privada?",
       options: [
@@ -44,7 +56,7 @@ export default function SimpleChatBot() {
         { value: "privado", label: "Consulta Privada 💳" }
       ],
       field: "paymentType",
-      showOnlyIf: (data) => data.service === "otorrino"
+      showOnlyIf: (data) => data.service === "otorrino" && data.doctor === "barajas"
     },
     {
       id: "insurance",
@@ -60,6 +72,15 @@ export default function SimpleChatBot() {
       ],
       field: "insurance",
       showOnlyIf: (data) => data.service === "otorrino" && data.paymentType === "seguro"
+    },
+    {
+      id: "phone",
+      botMessage:
+        "Para pedir cita con el Dr. Ayoze Lemes Robayna o el Dr. Francisco González Sammarco, por favor llámenos al 922 275 488.",
+      type: "phone",
+      showOnlyIf: (data) =>
+        data.service === "otorrino" &&
+        (data.doctor === "ayoze" || data.doctor === "francisco")
     },
     {
       id: "calendar",
@@ -118,14 +139,18 @@ export default function SimpleChatBot() {
   };
 
   const getSummary = () => {
-    const { service, paymentType, insurance } = patientData;
+    const { service, doctor, paymentType, insurance } = patientData;
 
     const insuranceLabel = steps.find(step => step.id === "insurance")?.options.find(opt => opt.value === insurance)?.label;
+    const doctorLabel = steps.find(step => step.id === "doctor")?.options.find(opt => opt.value === doctor)?.label;
 
     return (
       <div className="text-xs text-gray-600 space-y-1">
         {service && (
           <div>📋 Servicio: {service === "otorrino" ? "Otorrinolaringología" : "Audioprótesis"}</div>
+        )}
+        {doctor && (
+          <div>👨‍⚕️ Médico: {doctorLabel}</div>
         )}
         {paymentType && (
           <div>🏥 Modalidad: {paymentType === "seguro" ? "Con Seguro Médico" : "Privado"}</div>
@@ -215,6 +240,26 @@ export default function SimpleChatBot() {
 
                       <p className="text-xs text-gray-500 mt-2">
                         Serás redirigido a nuestro calendario de citas
+                      </p>
+                    </div>
+                  )}
+
+                  {steps[currentStep].type === "phone" && (
+                    <div className="mt-4 p-4 bg-white rounded-lg border border-teal-200 text-center">
+                      <div className="mb-3">
+                        <strong className="text-sm text-gray-700">Resumen:</strong>
+                        {getSummary()}
+                      </div>
+
+                      <a
+                        href="tel:+34922275488"
+                        className="w-full flex items-center justify-center gap-2 bg-teal-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors"
+                      >
+                        Llamar al 922 275 488
+                      </a>
+
+                      <p className="text-xs text-gray-500 mt-2">
+                        La cita con estos doctores se gestiona por teléfono
                       </p>
                     </div>
                   )}

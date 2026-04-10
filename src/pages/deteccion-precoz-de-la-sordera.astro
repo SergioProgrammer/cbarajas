@@ -5,9 +5,84 @@ import Children from "../subcomponents/Children.jsx";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.jsx";
 import Chatbot from "../components/Chatbot.astro";
+
+const pageTitle = "Audífonos Infantiles en Tenerife | Salud Auditiva y Éxito Escolar";
+const pageDescription =
+  "Especialistas en audioprótesis infantil en Tenerife. Evaluación auditiva precoz para evitar retrasos en el lenguaje y fracaso escolar. Confíe en Clínica Barajas.";
+const canonicalUrl = "https://www.clinicabarajas.com/deteccion-precoz-de-la-sordera";
+
+const childrenSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://www.clinicabarajas.com/deteccion-precoz-de-la-sordera/#webpage",
+      url: "https://www.clinicabarajas.com/deteccion-precoz-de-la-sordera",
+      name: "Audífonos para niños en Tenerife | Clínica Barajas",
+      description:
+        "Especialistas en audioprótesis infantil y evaluación auditiva para niños en Santa Cruz de Tenerife.",
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.clinicabarajas.com/" },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Audífonos Niños",
+            item: "https://www.clinicabarajas.com/deteccion-precoz-de-la-sordera",
+          },
+        ],
+      },
+    },
+    {
+      "@type": "MedicalBusiness",
+      name: "Clínica Barajas - Audiología Infantil",
+      image: "https://www.clinicabarajas.com/audifonos/nino.jpg",
+      telephone: "+34922275488",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "C. de Perez de Rozas, 8",
+        addressLocality: "Santa Cruz de Tenerife",
+        postalCode: "38004",
+        addressCountry: "ES",
+      },
+      medicalSpecialty: "Pediatrics",
+      knowsAbout: ["Audiometría infantil", "Audífonos pediátricos", "Desarrollo del lenguaje"],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "¿A qué edad puede usar audífonos un niño?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Los audífonos pueden adaptarse incluso en bebés de pocos meses de edad. La detección precoz es clave para que el niño desarrolle el lenguaje al mismo ritmo que sus compañeros.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿Cómo saber si mi hijo necesita una prueba auditiva?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Si el niño no responde a su nombre, presenta retraso en el habla o sube mucho el volumen de la televisión, es recomendable realizar una evaluación audiológica infantil completa.",
+          },
+        },
+      ],
+    },
+  ],
+};
 ---
 
-<Layout>
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonicalUrl}
+  ogTitle={pageTitle}
+  ogDescription={pageDescription}
+  ogType="article"
+  schema={childrenSchema}
+>
   <NavBar client:load/>
   <div class="pt-9">
   <Children client:load/>

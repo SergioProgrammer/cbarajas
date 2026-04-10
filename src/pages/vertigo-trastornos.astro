@@ -5,9 +5,83 @@ import Vertigo from "../subcomponents/Vertigo.jsx";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.jsx";
 import Chatbot from "../components/Chatbot.astro";
+
+const pageTitle = "Especialistas en vértigo en Tenerife | Diagnóstico preciso – Clínica Barajas";
+const pageDescription =
+  "Especialistas en vértigo en Tenerife. Diagnóstico vestibular preciso, tratamiento desde la primera visita y rehabilitación vestibular integral en Clínica Barajas.";
+const canonicalUrl = "https://www.clinicabarajas.com/vertigo-trastornos";
+
+const vertigoSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalBusiness",
+      "@id": "https://www.clinicabarajas.com/#clinica",
+      name: "Instituto del Vértigo - Clínica Barajas",
+      image: "https://www.clinicabarajas.com/cl.jpg",
+      url: "https://www.clinicabarajas.com",
+      telephone: "+34922275488",
+      priceRange: "$$",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "C. de Perez de Rozas, 8",
+        addressLocality: "Santa Cruz de Tenerife",
+        addressRegion: "Tenerife",
+        postalCode: "38004",
+        addressCountry: "ES",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 28.46824,
+        longitude: -16.25462,
+      },
+      openingHours: "Mo-Fr 09:00-19:00",
+      medicalSpecialty: ["Otolaryngology", "PhysicalTherapy"],
+      description:
+        "Centro especializado en diagnóstico y rehabilitación vestibular en Canarias, con tecnología avanzada y abordaje integral del vértigo.",
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "¿El vértigo siempre se trata con medicación?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. El tratamiento depende de la causa. En muchos casos son necesarias maniobras específicas o rehabilitación vestibular, no medicación.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿Se puede obtener un diagnóstico desde la primera visita?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Ese es el objetivo del estudio vestibular completo: identificar la causa con precisión y plantear un plan de tratamiento desde el inicio siempre que sea posible.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿El vértigo posicional puede resolverse en consulta?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Sí. El VPPB suele tratarse mediante maniobras de reposicionamiento vestibular, como la maniobra de Epley, con alta tasa de éxito.",
+          },
+        },
+      ],
+    },
+  ],
+};
 ---
 
-<Layout>
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonicalUrl}
+  ogTitle={pageTitle}
+  ogDescription={pageDescription}
+  ogType="article"
+  schema={vertigoSchema}
+>
   <NavBar client:load/>
   <div class="pt-9">
   <Vertigo client:load/>
