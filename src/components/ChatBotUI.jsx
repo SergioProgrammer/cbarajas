@@ -124,7 +124,7 @@ export default function SimpleChatBot() {
     const { service, paymentType } = patientData;
 
     if (service === "audioprotesis") {
-      return "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0Z1MySJXGZYj1G2UYaorMq_isNLdShlB8GduUZt2WTajE00rDqfTICPI3grFdTqZwcRv43zb5r";
+      return "https://calendar.app.google/gZeVuxYnYbHjJwNX9";
     }
 
     if (service === "otorrino") {
