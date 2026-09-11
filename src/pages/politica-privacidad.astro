@@ -3,130 +3,395 @@ import Layout from "../layouts/Layout.astro";
 import NavBar from "../components/NavBar.jsx";
 import Footer from "../components/Footer.jsx";
 import Chatbot from "../components/Chatbot.astro";
+
+/*
+ * Política de Privacidad conforme a los artículos 13 y 14 del RGPD y al
+ * artículo 11 de la LOPDGDD.
+ *
+ * NOTA: AIXA CORPORE no adjuntó el documento específico de política de
+ * privacidad junto con el informe web. Este texto se ha redactado siguiendo la
+ * información contenida en el Aviso Legal y las Condiciones de Reserva
+ * facilitados, y el tratamiento real de datos que hace la web. Si el consultor
+ * entrega su propio documento, debe sustituirse este contenido.
+ */
+const fechaVersion = "14/08/2026";
+const version = "V.2.0";
+
+const tratamientos = [
+  {
+    titulo: "Formulario de contacto",
+    datos: "Nombre, correo electrónico, teléfono (opcional) y el contenido del mensaje.",
+    finalidad:
+      "Atender y responder a la consulta o solicitud de información que nos planteas.",
+    base:
+      "Tu consentimiento expreso, prestado al marcar las casillas de aceptación del formulario (art. 6.1.a RGPD).",
+    conservacion:
+      "Durante el tiempo necesario para atender tu consulta y, después, un máximo de 1 año, salvo que exista una relación asistencial o una obligación legal que exija un plazo mayor.",
+  },
+  {
+    titulo: "Solicitud de cita a través del asistente virtual",
+    datos:
+      "Servicio solicitado, profesional, modalidad (privada o con seguro), aseguradora y los datos que introduzcas en el calendario de reservas (nombre, correo electrónico y teléfono).",
+    finalidad: "Gestionar y confirmar tu solicitud de cita en la clínica.",
+    base:
+      "Tu consentimiento y la aplicación de medidas precontractuales a petición tuya (art. 6.1.a y 6.1.b RGPD).",
+    conservacion:
+      "Durante la gestión de la cita y, posteriormente, conforme a los plazos legales aplicables a la documentación clínica y administrativa.",
+  },
+  {
+    titulo: "Cookies analíticas",
+    datos:
+      "Identificadores de cookie, dirección IP, páginas visitadas y datos técnicos de navegación.",
+    finalidad:
+      "Elaborar estadísticas agregadas de uso de la web para mejorar nuestros servicios.",
+    base: "Tu consentimiento expreso otorgado en el selector de cookies (art. 6.1.a RGPD y art. 22.2 LSSI).",
+    conservacion: "13 meses. El consentimiento se conserva un máximo de 24 meses.",
+  },
+  {
+    titulo: "Comunicación por teléfono, WhatsApp o correo electrónico",
+    datos: "Datos identificativos y de contacto y los que facilites voluntariamente.",
+    finalidad: "Atender tu solicitud por el canal que hayas elegido.",
+    base: "Tu consentimiento al iniciar la comunicación (art. 6.1.a RGPD).",
+    conservacion:
+      "Mientras dure la comunicación y el tiempo necesario para atender posibles responsabilidades derivadas.",
+  },
+];
+
+const encargados = [
+  {
+    nombre: "Vercel, Inc.",
+    servicio: "Alojamiento y entrega del sitio web.",
+    ubicacion: "Estados Unidos / Unión Europea.",
+    garantia: "Marco de Privacidad de Datos UE-EE. UU. y Cláusulas Contractuales Tipo.",
+  },
+  {
+    nombre: "Google Ireland Limited (Google Analytics)",
+    servicio: "Analítica web, sólo si aceptas las cookies analíticas.",
+    ubicacion: "Irlanda, con posible acceso desde Estados Unidos.",
+    garantia: "Marco de Privacidad de Datos UE-EE. UU. y Cláusulas Contractuales Tipo.",
+  },
+  {
+    nombre: "Google Ireland Limited (Google Calendar / Reservas)",
+    servicio: "Gestión del calendario de citas enlazado desde el asistente virtual.",
+    ubicacion: "Irlanda, con posible acceso desde Estados Unidos.",
+    garantia: "Marco de Privacidad de Datos UE-EE. UU. y Cláusulas Contractuales Tipo.",
+  },
+  {
+    nombre: "WhatsApp Ireland Limited (Meta)",
+    servicio: "Canal de comunicación con la clínica, si decides utilizarlo.",
+    ubicacion: "Irlanda, con posible acceso desde Estados Unidos.",
+    garantia: "Marco de Privacidad de Datos UE-EE. UU. y Cláusulas Contractuales Tipo.",
+  },
+];
 ---
 
-<Layout>
-  <NavBar client:load/>
+<Layout
+  title="Política de Privacidad | Clínica Barajas"
+  description="Política de privacidad de www.clinicabarajas.com: quién trata tus datos, con qué finalidad y base jurídica, durante cuánto tiempo y cómo ejercer tus derechos."
+  canonical="https://www.clinicabarajas.com/politica-privacidad"
+>
+  <NavBar client:load />
   <div class="pt-24 pb-16 px-6 max-w-5xl mx-auto">
-    <h1 class="text-4xl font-bold text-teal-700 mb-8 text-center">Política de Privacidad</h1>
-    
+    <h1 class="text-4xl font-bold text-teal-700 mb-2 text-center">Política de Privacidad</h1>
+    <p class="text-center text-sm text-gray-500 mb-10">
+      Versión {version} · Última actualización: {fechaVersion}
+    </p>
+
     <div class="prose prose-lg max-w-none">
 
       <!-- Introducción -->
       <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Introducción</h2>
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">1. Introducción</h2>
         <p class="text-gray-700 mb-4">
-          Esta política de privacidad establece la forma en que se gestionan los datos personales en este sitio web. 
-          Es imprescindible que la leas y aceptes antes de seguir navegando.
+          Esta política de privacidad establece la forma en que Clínica Barajas, S.L. trata los
+          datos personales recogidos a través del sitio web www.clinicabarajas.com. Te
+          recomendamos leerla antes de facilitarnos cualquier dato.
         </p>
         <p class="text-gray-700">
-          Este sitio cumple con el Reglamento General de Protección de Datos Europeo (UE) 2016/679 (RGPD) y con la 
-          Ley 34/2002, de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSI).
+          Este sitio cumple con el Reglamento (UE) 2016/679 General de Protección de Datos
+          (RGPD), con la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos
+          Personales y garantía de los derechos digitales (LOPDGDD) y con la Ley 34/2002, de
+          Servicios de la Sociedad de la Información y Comercio Electrónico (LSSI-CE).
         </p>
       </section>
 
-      <!-- Identificación del Responsable -->
+      <!-- Responsable -->
       <section class="mb-10">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Identificación del Responsable</h2>
-        <div class="bg-white p-4 rounded border-l-4 border-teal-500 text-gray-700">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">
+          2. ¿Quién es el responsable del tratamiento de tus datos?
+        </h2>
+        <div class="bg-white p-4 rounded border-l-4 border-teal-500 text-gray-700 space-y-1">
           <p><strong>Identidad:</strong> Clínica Barajas, S.L.</p>
           <p><strong>Nombre comercial:</strong> Clínica Barajas</p>
           <p><strong>CIF:</strong> B38393377</p>
-          <p><strong>Dirección:</strong> C/ Pérez de Rozas, 8, 38004, Santa Cruz, Santa Cruz de Tenerife, España</p>
-          <p><strong>Email:</strong> <a href="mailto:info@clinicabarajas.com" class="text-teal-600 hover:text-teal-800">info@clinicabarajas.com</a></p>
+          <p>
+            <strong>Dirección:</strong> C/ Pérez de Rozas, 8, 38004 Santa Cruz de Tenerife
+            (España)
+          </p>
+          <p>
+            <strong>Teléfono:</strong>
+            <a href="tel:+34922275488" class="text-teal-600 hover:text-teal-800">922 275 488</a>
+          </p>
+          <p>
+            <strong>Correo electrónico:</strong>
+            <a href="mailto:info@clinicabarajas.com" class="text-teal-600 hover:text-teal-800"
+              >info@clinicabarajas.com</a
+            >
+          </p>
+          <p><strong>Sitio web:</strong> www.clinicabarajas.com</p>
         </div>
       </section>
 
       <!-- Principios -->
       <section class="mb-10">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Principios aplicados a tu información</h2>
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">
+          3. Principios aplicados al tratamiento de tu información
+        </h2>
         <ul class="list-disc list-inside text-gray-700 space-y-2">
-          <li><strong>Licitud, lealtad y transparencia:</strong> Siempre requeriremos tu consentimiento informado.</li>
-          <li><strong>Minimización de datos:</strong> Solo solicitamos lo estrictamente necesario.</li>
-          <li><strong>Limitación de conservación:</strong> Los datos se guardarán el tiempo necesario.</li>
-          <li><strong>Integridad y confidencialidad:</strong> Garantizamos seguridad y confidencialidad.</li>
+          <li>
+            <strong>Licitud, lealtad y transparencia:</strong> siempre te informaremos y, cuando
+            proceda, recabaremos tu consentimiento antes de tratar tus datos.
+          </li>
+          <li>
+            <strong>Minimización de datos:</strong> sólo solicitamos los datos estrictamente
+            necesarios para la finalidad informada.
+          </li>
+          <li>
+            <strong>Limitación del plazo de conservación:</strong> los datos se conservarán
+            únicamente durante el tiempo necesario.
+          </li>
+          <li>
+            <strong>Integridad y confidencialidad:</strong> aplicamos medidas técnicas y
+            organizativas para garantizar la seguridad de tus datos.
+          </li>
         </ul>
       </section>
 
-      <!-- Obtención de datos -->
+      <!-- Tratamientos -->
       <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Cómo obtenemos tus datos</h2>
-        <p class="text-gray-700 mb-2">Los datos personales que tratamos proceden de:</p>
-        <ul class="list-disc list-inside text-gray-700 space-y-2">
-          <li>Formulario de contacto.</li>
-        </ul>
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">
+          4. ¿Qué datos tratamos, con qué finalidad y con qué legitimación?
+        </h2>
+        <div class="space-y-6">
+          {
+            tratamientos.map((tratamiento) => (
+              <div class="bg-white p-5 rounded-lg border border-teal-100">
+                <h3 class="text-lg font-semibold text-teal-700 mb-3">{tratamiento.titulo}</h3>
+                <dl class="text-gray-700 text-sm space-y-2">
+                  <div>
+                    <dt class="inline font-semibold">Datos tratados: </dt>
+                    <dd class="inline">{tratamiento.datos}</dd>
+                  </div>
+                  <div>
+                    <dt class="inline font-semibold">Finalidad: </dt>
+                    <dd class="inline">{tratamiento.finalidad}</dd>
+                  </div>
+                  <div>
+                    <dt class="inline font-semibold">Base jurídica: </dt>
+                    <dd class="inline">{tratamiento.base}</dd>
+                  </div>
+                  <div>
+                    <dt class="inline font-semibold">Plazo de conservación: </dt>
+                    <dd class="inline">{tratamiento.conservacion}</dd>
+                  </div>
+                </dl>
+              </div>
+            ))
+          }
+        </div>
+        <p class="text-gray-700 mt-6">
+          <strong>Datos de salud.</strong> A través de esta web no solicitamos ni necesitamos
+          datos relativos a tu salud. Te pedimos que <strong>no incluyas información clínica ni
+          datos de categorías especiales</strong> en el formulario de contacto ni en el
+          asistente virtual de reservas. El tratamiento de datos de salud se realiza únicamente
+          en el ámbito de la asistencia sanitaria presencial, conforme al artículo 9.2.h) del
+          RGPD y a la Ley 41/2002, básica reguladora de la autonomía del paciente, con su propia
+          información al paciente.
+        </p>
+        <p class="text-gray-700 mt-4">
+          <strong>Asistente virtual.</strong> El chat de reservas de esta web es una herramienta
+          automatizada guiada por opciones predefinidas: no es un profesional sanitario, no
+          elabora perfiles, no adopta decisiones automatizadas con efectos jurídicos y no
+          almacena conversaciones en nuestros servidores. Los datos de la cita se recogen en la
+          herramienta de calendario a la que te redirige.
+        </p>
+      </section>
+
+      <!-- Menores -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">5. Menores de edad</h2>
+        <p class="text-gray-700">
+          Sólo los mayores de 18 años pueden facilitar datos a través de esta web. Los menores de
+          14 años no pueden facilitar datos sin el consentimiento de sus padres o tutores. Si
+          detectamos que hemos recibido datos de un menor sin la autorización correspondiente,
+          los suprimiremos.
+        </p>
+      </section>
+
+      <!-- Destinatarios -->
+      <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">
+          6. ¿A quién comunicamos tus datos?
+        </h2>
+        <p class="text-gray-700 mb-4">
+          No cedemos tus datos a terceros salvo obligación legal. Sí contamos con proveedores que
+          acceden a datos personales en calidad de encargados del tratamiento, con los que hemos
+          suscrito el contrato exigido por el artículo 28 del RGPD:
+        </p>
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm text-left border border-gray-300 bg-white">
+            <thead class="bg-teal-100">
+              <tr>
+                <th class="p-2 border">Proveedor</th>
+                <th class="p-2 border">Servicio</th>
+                <th class="p-2 border">Ubicación</th>
+                <th class="p-2 border">Garantía aplicable</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                encargados.map((encargado) => (
+                  <tr>
+                    <td class="p-2 border font-medium">{encargado.nombre}</td>
+                    <td class="p-2 border">{encargado.servicio}</td>
+                    <td class="p-2 border">{encargado.ubicacion}</td>
+                    <td class="p-2 border">{encargado.garantia}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="text-gray-700 mt-4">
+          Cuando una entidad aseguradora interviene en la prestación del servicio, los datos
+          estrictamente necesarios para la facturación y la gestión de la póliza se comunican a
+          dicha aseguradora, sobre la base de la relación contractual que mantienes con ella.
+        </p>
+      </section>
+
+      <!-- Transferencias -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">
+          7. Transferencias internacionales de datos
+        </h2>
+        <p class="text-gray-700">
+          Algunos de los proveedores indicados forman parte de grupos empresariales con sede en
+          Estados Unidos y pueden acceder a datos desde ese país. Estas transferencias se amparan
+          en una decisión de adecuación de la Comisión Europea (Marco de Privacidad de Datos
+          UE-EE. UU., artículo 45 del RGPD) y, de forma subsidiaria, en las Cláusulas
+          Contractuales Tipo aprobadas por la Comisión Europea (artículo 46 del RGPD).
+        </p>
       </section>
 
       <!-- Derechos -->
-      <section class="mb-10">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Tus derechos</h2>
+      <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">8. ¿Cuáles son tus derechos?</h2>
+        <p class="text-gray-700 mb-4">Puedes ejercer en cualquier momento los derechos de:</p>
         <ul class="list-disc list-inside text-gray-700 space-y-2">
-          <li>Acceder a tus datos personales.</li>
-          <li>Solicitar rectificación o supresión.</li>
-          <li>Solicitar limitación de tratamiento.</li>
-          <li>Oponerte al tratamiento.</li>
-          <li>Solicitar portabilidad de los datos.</li>
+          <li><strong>Acceso</strong> a tus datos personales.</li>
+          <li><strong>Rectificación</strong> de los datos inexactos.</li>
+          <li><strong>Supresión</strong> de los datos cuando ya no sean necesarios.</li>
+          <li><strong>Limitación</strong> del tratamiento en los supuestos previstos por la ley.</li>
+          <li><strong>Oposición</strong> al tratamiento de tus datos.</li>
+          <li><strong>Portabilidad</strong> de los datos que nos hayas facilitado.</li>
+          <li>
+            <strong>Retirar el consentimiento</strong> en cualquier momento, sin que ello afecte
+            a la licitud del tratamiento previo.
+          </li>
         </ul>
         <p class="text-gray-700 mt-4">
-          También puedes presentar una reclamación ante la Agencia Española de Protección de Datos.
+          Para ejercerlos, escribe a
+          <a href="mailto:info@clinicabarajas.com" class="text-teal-600 hover:text-teal-800"
+            >info@clinicabarajas.com</a
+          >
+          o a C/ Pérez de Rozas, 8, 38004 Santa Cruz de Tenerife, indicando el derecho que deseas
+          ejercer y adjuntando copia de un documento que acredite tu identidad. Responderemos en
+          el plazo máximo de un mes.
+        </p>
+        <p class="text-gray-700 mt-4">
+          Si consideras que no hemos atendido correctamente tu solicitud, puedes presentar una
+          reclamación ante la
+          <a
+            href="https://www.aepd.es"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-teal-600 hover:text-teal-800">Agencia Española de Protección de Datos</a
+          > (C/ Jorge Juan, 6, 28001 Madrid).
         </p>
       </section>
 
-      <!-- Finalidad -->
-      <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Finalidad del tratamiento</h2>
-        <p class="text-gray-700">
-          Usamos los datos para responder consultas, dar soporte, gestionar redes sociales y garantizar 
-          el cumplimiento de la ley.
-        </p>
-      </section>
-
-      <!-- Conservación -->
+      <!-- Cookies -->
       <section class="mb-10">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Tiempo de conservación</h2>
-        <ul class="list-disc list-inside text-gray-700 space-y-2">
-          <li>Mientras exista relación mercantil.</li>
-          <li>Hasta que se solicite su supresión.</li>
-          <li>Máximo de inactividad: 1 año.</li>
-        </ul>
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">9. Cookies</h2>
+        <p class="text-gray-700">
+          Esta web utiliza cookies técnicas y, previo consentimiento, cookies analíticas. Puedes
+          consultar el detalle en nuestra
+          <a href="/cookies" class="text-teal-600 hover:text-teal-800 font-semibold"
+            >Política de Cookies</a
+          >
+          y cambiar o retirar tu decisión en cualquier momento desde
+          <a href="/cookies" data-cookie-settings class="text-teal-600 hover:text-teal-800 font-semibold"
+            >Configuración de cookies</a
+          >.
+        </p>
       </section>
 
       <!-- Seguridad -->
       <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Seguridad de los datos</h2>
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">10. Seguridad de los datos</h2>
         <p class="text-gray-700">
-          Aplicamos medidas como certificado SSL y protocolos internos, aunque no podemos garantizar 
-          la absoluta inexpugnabilidad de Internet.
+          Aplicamos las medidas técnicas y organizativas apropiadas para garantizar un nivel de
+          seguridad adecuado al riesgo, entre ellas el cifrado de las comunicaciones mediante
+          certificado SSL/TLS, el control de accesos y los procedimientos internos de
+          confidencialidad. No obstante, ningún sistema conectado a Internet es absolutamente
+          inexpugnable.
         </p>
       </section>
 
       <!-- Veracidad -->
       <section class="mb-10">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Veracidad de los datos</h2>
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">11. Veracidad de los datos</h2>
         <p class="text-gray-700">
-          El usuario es responsable de mantener actualizada la información que facilite.
+          El usuario garantiza que los datos facilitados son veraces, exactos y actuales, y es
+          responsable de comunicar cualquier modificación de los mismos.
         </p>
       </section>
 
-      <!-- Aceptación -->
-      <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Aceptación y consentimiento</h2>
+      <!-- Modificaciones -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">
+          12. Modificaciones de esta política
+        </h2>
         <p class="text-gray-700">
-          El usuario declara haber sido informado y acepta el tratamiento de sus datos en los términos 
-          de esta política de privacidad.
+          Clínica Barajas, S.L. se reserva el derecho a modificar esta política de privacidad
+          para adaptarla a novedades legislativas o cambios en el tratamiento de datos. Te
+          recomendamos revisarla periódicamente.
         </p>
       </section>
 
       <!-- Contacto -->
       <section class="bg-teal-50 p-6 rounded-lg border border-teal-200">
         <h2 class="text-2xl font-semibold text-teal-700 mb-4">Contacto</h2>
-        <p class="text-gray-700 mb-4">Para cualquier consulta relacionada con esta política de privacidad:</p>
+        <p class="text-gray-700 mb-4">
+          Para cualquier consulta relacionada con esta política de privacidad:
+        </p>
         <div class="space-y-2 text-gray-700">
-          <p><strong>Email:</strong> <a href="mailto:info@clinicabarajas.com" class="text-teal-600 hover:text-teal-800">info@clinicabarajas.com</a></p>
-          <p><strong>Dirección:</strong> C/ Pérez de Rozas, 8, 38004, Santa Cruz de Tenerife</p>
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:info@clinicabarajas.com" class="text-teal-600 hover:text-teal-800"
+              >info@clinicabarajas.com</a
+            >
+          </p>
+          <p>
+            <strong>Teléfono:</strong>
+            <a href="tel:+34922275488" class="text-teal-600 hover:text-teal-800">922 275 488</a>
+          </p>
+          <p><strong>Dirección:</strong> C/ Pérez de Rozas, 8, 38004 Santa Cruz de Tenerife</p>
         </div>
+        <p class="mt-6 text-sm text-gray-500">
+          Fecha: {fechaVersion} · Versión: {version}
+        </p>
       </section>
-      
     </div>
   </div>
   <Footer />

@@ -3,141 +3,414 @@ import Layout from "../layouts/Layout.astro";
 import NavBar from "../components/NavBar.jsx";
 import Footer from "../components/Footer.jsx";
 import Chatbot from "../components/Chatbot.astro";
+
+/*
+ * Aviso Legal — texto facilitado por AIXA CORPORE, S.L. (v 1.0, 14/08/2026)
+ * adaptado al funcionamiento real de www.clinicabarajas.com.
+ *
+ * Datos registrales aportados por la clínica (los que el documento original
+ * dejaba resaltados en amarillo y vacíos). Si alguno se deja a `null`, se omite
+ * de la mención registral en lugar de imprimirse en blanco.
+ */
+const datosRegistrales = {
+  registro: "Registro Mercantil de Santa Cruz de Tenerife",
+  tomo: "1229",
+  folio: "55",
+  hoja: "TF-11192",
+  seccion: "General",
+  inscripcion: "1ª",
+};
+
+const mencionRegistral = [
+  datosRegistrales.tomo && `Tomo ${datosRegistrales.tomo}`,
+  datosRegistrales.folio && `Folio ${datosRegistrales.folio}`,
+  datosRegistrales.hoja && `Hoja ${datosRegistrales.hoja}`,
+  datosRegistrales.seccion && `Sección ${datosRegistrales.seccion}`,
+  datosRegistrales.inscripcion && `Inscripción ${datosRegistrales.inscripcion}`,
+]
+  .filter(Boolean)
+  .join(", ");
+
+const fechaVersion = "14/08/2026";
+const version = "V.1.0";
 ---
 
-<Layout>
-  <NavBar client:load/>
+<Layout
+  title="Aviso Legal | Clínica Barajas"
+  description="Aviso legal de www.clinicabarajas.com: titularidad, condiciones de uso, propiedad intelectual, responsabilidad y jurisdicción aplicable."
+  canonical="https://www.clinicabarajas.com/aviso-legal"
+>
+  <NavBar client:load />
   <div class="pt-24 pb-16 px-6 max-w-5xl mx-auto">
-    <h1 class="text-4xl font-bold text-teal-700 mb-8 text-center">Aviso Legal</h1>
-    
+    <h1 class="text-4xl font-bold text-teal-700 mb-2 text-center">Aviso Legal</h1>
+    <p class="text-center text-sm text-gray-500 mb-10">
+      Versión {version} · Última actualización: {fechaVersion}
+    </p>
+
     <div class="prose prose-lg max-w-none">
-      <!-- Identificación del titular -->
+
+      <!-- 1. Objeto y aceptación -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">1. Objeto y aceptación</h2>
+        <p class="mb-4 text-gray-700">
+          El presente aviso legal regula el uso del sitio web
+          <strong>www.clinicabarajas.com</strong>.
+        </p>
+        <p class="mb-4 text-gray-700">
+          El sitio web www.clinicabarajas.com presta servicios cuyo objetivo primordial es
+          permitir el contacto entre los usuarios y la entidad, bien para ponerse en contacto
+          con nosotros, responder a su solicitud, gestionar la reserva de una cita, gestionar
+          su reclamación o ejercitar sus derechos en materia de protección de datos.
+        </p>
+        <p class="mb-4 text-gray-700">
+          La navegación por la página www.clinicabarajas.com atribuye la condición de usuario
+          de la misma e implica la aceptación plena y sin reservas de todas y cada una de las
+          disposiciones incluidas en este Aviso Legal, que pueden sufrir modificaciones.
+        </p>
+        <p class="mb-4 text-gray-700">
+          El usuario se obliga a hacer un uso correcto del sitio web de conformidad con las
+          leyes, la buena fe, el orden público, los usos del tráfico y el presente Aviso Legal.
+          El usuario responderá frente a Clínica Barajas, S.L. y frente a terceros de los daños
+          y perjuicios que pudieran causarse como consecuencia del incumplimiento de dicha
+          obligación.
+        </p>
+      </section>
+
+      <!-- 2. Titularidad -->
       <section class="mb-10 bg-teal-50 p-6 rounded-lg border border-teal-200">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Identificación del Titular</h2>
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">
+          2. Titularidad de la web e identificación del prestador de servicios de la sociedad
+          de la información
+        </h2>
         <p class="mb-4 text-gray-700">
-          En cumplimiento con el deber de información recogido en artículo 10 de la Ley 34/2002, de 11 de julio, 
-          de Servicios de la Sociedad de la Información y del Comercio Electrónico, los datos aquí consignados 
-          corresponden a la entidad titular de la web: clinicabarajas.com
+          Con la finalidad de dar cumplimiento al principio de información general exigido por
+          el artículo 10 de la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la
+          información y de comercio electrónico (LSSI-CE), informamos a nuestros usuarios de que
+          el presente sitio web pertenece a <strong>CLÍNICA BARAJAS, S.L.</strong>, con CIF
+          <strong>B38393377</strong>, inscrita en el {datosRegistrales.registro}{
+            mencionRegistral ? `, ${mencionRegistral}` : ""
+          }.
         </p>
-        <div class="bg-white p-4 rounded border-l-4 border-teal-500">
-          <p><strong>Denominación Social:</strong> Clínica Barajas, S.L.</p>
-          <p><strong>CIF:</strong> B38393377</p>
-          <p><strong>Domicilio:</strong> C/ Pérez de Rozas, 8, 38004, Santa Cruz, Santa Cruz de Tenerife, España</p>
-          <p><strong>Email:</strong> <a href="mailto:info@clinicabarajas.com" class="text-teal-600 hover:text-teal-800">info@clinicabarajas.com</a></p>
-          <p><strong>Teléfono:</strong> <a href="tel:+34922275488" class="text-teal-600 hover:text-teal-800">922 275 488</a></p>
+
+        <div class="bg-white rounded border-l-4 border-teal-500 overflow-x-auto">
+          <table class="min-w-full text-sm text-left">
+            <tbody class="text-gray-700">
+              <tr class="border-b border-gray-100">
+                <th class="p-3 font-semibold w-56">Denominación social</th>
+                <td class="p-3">Clínica Barajas, S.L.</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <th class="p-3 font-semibold">CIF</th>
+                <td class="p-3">B38393377</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <th class="p-3 font-semibold">Dirección</th>
+                <td class="p-3">C/ Pérez de Rozas, 8 — 38004 Santa Cruz de Tenerife (España)</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <th class="p-3 font-semibold">Correo electrónico</th>
+                <td class="p-3">
+                  <a href="mailto:info@clinicabarajas.com" class="text-teal-600 hover:text-teal-800"
+                    >info@clinicabarajas.com</a
+                  >
+                </td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <th class="p-3 font-semibold">Teléfono</th>
+                <td class="p-3">
+                  <a href="tel:+34922275488" class="text-teal-600 hover:text-teal-800">922 275 488</a>
+                </td>
+              </tr>
+              <tr>
+                <th class="p-3 font-semibold">Web alojada por</th>
+                <td class="p-3">Vercel, Inc. (infraestructura de Amazon.com, Inc.)</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <p class="mt-4 text-gray-700">
-          El acceso y uso del sitio clinicabarajas.com requiere de la aceptación de las Condiciones de Uso y de la Política de Privacidad.
-        </p>
       </section>
 
-      <!-- Condiciones generales -->
+      <!-- 3. Condiciones generales de acceso y utilización -->
       <section class="mb-10">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Condiciones Generales de Uso</h2>
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">
+          3. Condiciones generales de acceso y utilización
+        </h2>
         <p class="mb-4 text-gray-700">
-          Los términos y condiciones regulan el acceso y uso del sitio web clinicabarajas.com. El acceso al sitio web 
-          implica que el usuario acepta expresamente las presentes condiciones generales de uso.
+          El sitio web y sus servicios son de acceso libre y gratuito, si bien la utilización
+          de determinadas áreas o servicios está condicionada a cumplimentar formularios de
+          recogida de datos. Sólo los mayores de 18 años podrán facilitar datos a través de
+          nuestra web, y los menores de 14 años no pueden facilitarlos sin el consentimiento
+          de los padres o tutores.
         </p>
         <p class="mb-4 text-gray-700">
-          El usuario utilizará los servicios y contenidos exclusivamente para fines particulares con exclusión de 
-          cualquier modalidad de utilización posterior con ánimo de lucro.
+          El usuario garantiza la autenticidad y actualidad de todos aquellos datos que
+          comunique a Clínica Barajas, S.L. y será el único responsable de las manifestaciones
+          falsas o inexactas que realice.
         </p>
-      </section>
-
-      <!-- Objeto del sitio web -->
-      <section class="mb-10">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Objeto del Sitio Web</h2>
-        <p class="mb-4 text-gray-700">
-          A través del acceso al sitio, el usuario podrá disfrutar del uso de diversos contenidos y servicios 
-          relacionados con servicios de otorrinolaringología y audiología que serán ofrecidos por Clínica Barajas.
-        </p>
-        <p class="mb-4 text-gray-700">
-          Clínica Barajas podrá modificar de forma unilateral la prestación, configuración, contenido y servicios 
-          del sitio, así como sus condiciones de uso y el acceso a los servicios prestados.
-        </p>
-      </section>
-
-      <!-- Derechos y obligaciones del usuario -->
-      <section class="mb-10">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Derechos y Obligaciones del Usuario</h2>
-        
-        <h3 class="text-xl font-semibold text-teal-600 mb-3">El usuario podrá:</h3>
-        <ul class="list-disc list-inside mb-6 text-gray-700 space-y-2">
-          <li>Acceder de forma gratuita a los contenidos y servicios del sitio disponibles</li>
-          <li>Utilizar los servicios y contenidos disponibles para su uso exclusivamente particular</li>
-          <li>Hacer un uso correcto y lícito del sitio, conforme a la legislación vigente</li>
-        </ul>
-
-        <h3 class="text-xl font-semibold text-teal-600 mb-3">En ningún caso el usuario podrá:</h3>
-        <ul class="list-disc list-inside mb-6 text-gray-700 space-y-2">
-          <li>Acceder o utilizar los servicios para acciones ilícitas o contrarias a la legislación vigente</li>
-          <li>Utilizar los servicios para promocionar, vender o divulgar publicidad sin autorización previa</li>
-          <li>Introducir información que atente contra los derechos de otros usuarios</li>
-          <li>Utilizar virus informáticos o cualquier código que pueda provocar daños</li>
-          <li>Eliminar o modificar dispositivos de protección o identificación de Clínica Barajas</li>
-          <li>Reproducir total o parcialmente el sitio web sin autorización</li>
-        </ul>
-      </section>
-
-      <!-- Exclusión de garantías -->
-      <section class="mb-10">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Exclusión de Garantías y Responsabilidades</h2>
-        <p class="mb-4 text-gray-700">
-          Clínica Barajas no se hace responsable de los daños y perjuicios de cualquier naturaleza que pudieran 
-          traer causa de:
+        <p class="mb-2 text-gray-700">
+          www.clinicabarajas.com tiene los siguientes tipos de usuarios:
         </p>
         <ul class="list-disc list-inside mb-6 text-gray-700 space-y-2">
-          <li>La falta de disponibilidad, mantenimiento y efectivo funcionamiento de la web</li>
-          <li>La existencia de virus, programas maliciosos o lesivos en los contenidos</li>
-          <li>El uso ilícito, negligente, fraudulento o contrario a este Aviso Legal</li>
-          <li>La falta de licitud, calidad, fiabilidad de los servicios prestados por terceros</li>
+          <li>
+            Usuarios que no han contactado con Clínica Barajas, S.L. pero de los que se
+            recogen datos: datos proporcionados por las cookies, previa aceptación de éstas.
+          </li>
+          <li>
+            Usuarios que aportan datos en cualquiera de los formularios disponibles: los datos
+            personales que Clínica Barajas, S.L. solicita incluyen el nombre, la dirección
+            electrónica, el teléfono y los proporcionados por el propio usuario al rellenar los
+            formularios.
+          </li>
+          <li>
+            Usuarios que solicitan cita a través del asistente virtual de reservas: los datos
+            que el usuario facilita en la herramienta de calendario para gestionar su cita.
+          </li>
+        </ul>
+
+        <h3 class="text-xl font-semibold text-teal-600 mb-3">
+          3.1 Reglas y prohibiciones de uso para usuarios de nuestros servicios
+        </h3>
+        <p class="mb-2 text-gray-700">
+          El usuario se compromete expresamente a hacer un uso adecuado de los contenidos y
+          servicios ofrecidos y a no emplearlos para:
+        </p>
+        <ul class="list-disc list-inside mb-6 text-gray-700 space-y-2">
+          <li>
+            Difundir contenidos delictivos, violentos, pornográficos, racistas, xenófobos,
+            ofensivos, de apología del terrorismo o, en general, contrarios a la ley o al orden
+            público.
+          </li>
+          <li>
+            Introducir en la red virus informáticos o realizar actuaciones susceptibles de
+            alterar, estropear, interrumpir o generar errores o daños en los documentos
+            electrónicos, datos o sistemas físicos y lógicos de Clínica Barajas, S.L. o de
+            terceras personas; así como obstaculizar el acceso de otros usuarios al sitio web y
+            a sus servicios.
+          </li>
+          <li>
+            Intentar acceder a áreas restringidas de los sistemas informáticos de Clínica
+            Barajas, S.L. o de terceros y, en su caso, extraer información.
+          </li>
+          <li>
+            Vulnerar los derechos de propiedad intelectual o industrial, así como violar la
+            confidencialidad de la información de Clínica Barajas, S.L. o de terceros.
+          </li>
+          <li>Suplantar la identidad de otro usuario, de las administraciones públicas o de un tercero.</li>
+          <li>
+            Reproducir, copiar, distribuir, poner a disposición o de cualquier otra forma
+            comunicar públicamente, transformar o modificar los contenidos, a menos que se
+            cuente con la autorización del titular de los correspondientes derechos o ello
+            resulte legalmente permitido.
+          </li>
+          <li>
+            Recabar datos con finalidad publicitaria y remitir publicidad de cualquier clase y
+            comunicaciones con fines de venta u otras de naturaleza comercial sin que medie su
+            previa solicitud o consentimiento.
+          </li>
+        </ul>
+
+        <h3 class="text-xl font-semibold text-teal-600 mb-3">
+          3.2 Procedimiento en caso de realización de actividades de carácter ilícito
+        </h3>
+        <p class="mb-4 text-gray-700">
+          En el caso de que cualquier usuario o un tercero considere que existen hechos o
+          circunstancias que revelen el carácter ilícito de la utilización de cualquier
+          contenido y/o de la realización de cualquier actividad en las páginas web incluidas o
+          accesibles a través del sitio web, deberá enviar una notificación a Clínica Barajas,
+          S.L. identificándose debidamente, especificando las supuestas infracciones y
+          declarando expresamente y bajo su responsabilidad que la información proporcionada en
+          la notificación es exacta.
+        </p>
+      </section>
+
+      <!-- 4. Política de privacidad -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">4. Política de privacidad</h2>
+        <p class="mb-4 text-gray-700">
+          El usuario puede consultar cómo Clínica Barajas, S.L. utiliza sus datos y las medidas
+          de seguridad implantadas en el enlace:
+          <a href="/politica-privacidad" class="text-teal-600 hover:text-teal-800 font-semibold"
+            >Política de Privacidad</a
+          >.
+        </p>
+      </section>
+
+      <!-- 5. Política de cookies -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">5. Política de cookies</h2>
+        <p class="mb-4 text-gray-700">
+          Clínica Barajas, S.L. puede instalar cookies en el equipo del usuario, siempre previo
+          consentimiento expreso salvo las estrictamente necesarias. Para conocer más sobre las
+          cookies de nuestro sitio web acuda al siguiente enlace:
+          <a href="/cookies" class="text-teal-600 hover:text-teal-800 font-semibold"
+            >Política de Cookies</a
+          >. Puede modificar o retirar su consentimiento en cualquier momento desde
+          <a href="/cookies" data-cookie-settings class="text-teal-600 hover:text-teal-800 font-semibold"
+            >Configuración de cookies</a
+          >.
+        </p>
+      </section>
+
+      <!-- 6. Condiciones de reserva -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">6. Condiciones de reserva</h2>
+        <p class="mb-4 text-gray-700">
+          La solicitud de cita a través de la web se rige por las
+          <a href="/condiciones-reserva" class="text-teal-600 hover:text-teal-800 font-semibold"
+            >Condiciones de Reserva</a
+          >, que el usuario debe aceptar expresamente antes de confirmar su solicitud.
+        </p>
+      </section>
+
+      <!-- 7. Notificaciones -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">7. Notificaciones</h2>
+        <p class="mb-2 text-gray-700">
+          Todas las notificaciones y comunicaciones entre los usuarios y Clínica Barajas, S.L.
+          se considerarán eficaces, a todos los efectos, cuando se realicen a través de correo
+          postal, correo electrónico o comunicación telefónica. Los usuarios deberán dirigirse a
+          Clínica Barajas, S.L. mediante:
+        </p>
+        <ul class="list-disc list-inside mb-4 text-gray-700 space-y-2">
+          <li>
+            Envío por correo postal a la siguiente dirección: Clínica Barajas, S.L. — C/ Pérez
+            de Rozas, 8, 38004 Santa Cruz de Tenerife.
+          </li>
+          <li>
+            Envío por correo electrónico a la siguiente dirección:
+            <a href="mailto:info@clinicabarajas.com" class="text-teal-600 hover:text-teal-800"
+              >info@clinicabarajas.com</a
+            >.
+          </li>
         </ul>
       </section>
 
-      <!-- Propiedad intelectual -->
+      <!-- 8. Propiedad industrial e intelectual -->
       <section class="mb-10">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Propiedad Intelectual e Industrial</h2>
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">
+          8. Propiedad industrial y propiedad intelectual
+        </h2>
         <p class="mb-4 text-gray-700">
-          Los contenidos y servicios ofrecidos a través del sitio así como las marcas, nombres comerciales o 
-          signos distintivos se encuentran protegidos por las leyes de propiedad intelectual e industrial.
+          Todos los contenidos del sitio web, como textos, fotografías, gráficos, imágenes,
+          iconos, tecnología, software, así como su diseño gráfico y códigos fuente,
+          constituyen una obra cuya propiedad pertenece a Clínica Barajas, S.L., sin que puedan
+          entenderse cedidos al usuario ninguno de los derechos de explotación sobre los mismos
+          más allá de lo estrictamente necesario para el correcto uso de la web.
         </p>
         <p class="mb-4 text-gray-700">
-          El derecho de autor y de explotación económica de este sitio corresponde a Clínica Barajas. 
-          Ninguna parte de este sitio web puede ser reproducida, distribuida, transmitida, copiada o 
-          comunicada públicamente sin consentimiento de Clínica Barajas.
+          En definitiva, los usuarios que accedan a este sitio web pueden visualizar los
+          contenidos y efectuar, en su caso, copias privadas autorizadas siempre que los
+          elementos reproducidos no sean cedidos posteriormente a terceros, ni se instalen a
+          servidores conectados a redes, ni sean objeto de ningún tipo de explotación y única y
+          exclusivamente mientras se encuentre en vigor el servicio.
+        </p>
+        <p class="mb-4 text-gray-700">
+          Asimismo, todas las marcas, nombres comerciales o signos distintivos de cualquier
+          clase que aparecen en el sitio web son propiedad de Clínica Barajas, S.L., sin que
+          pueda entenderse que el uso o acceso al mismo atribuya al usuario derecho alguno sobre
+          los mismos.
+        </p>
+        <p class="mb-4 text-gray-700">
+          Quedan prohibidas la distribución, modificación, cesión o comunicación pública de los
+          contenidos y cualquier otro acto que no haya sido expresamente autorizado por Clínica
+          Barajas, S.L. En caso de incumplimiento, Clínica Barajas, S.L. procederá a adoptar las
+          medidas legales oportunas.
         </p>
       </section>
 
-      <!-- Hiperenlaces -->
+      <!-- 9. Exención de responsabilidad -->
       <section class="mb-10">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Hiperenlaces</h2>
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">
+          9. Exención de responsabilidad y modificación del presente aviso legal
+        </h2>
         <p class="mb-4 text-gray-700">
-          El uso de hiperenlaces al sitio web únicamente será autorizado por Clínica Barajas mediante 
-          autorización escrita. El enlace deberá permitir únicamente el acceso a la página de inicio 
-          y no podrá cargar páginas en marcos que provoquen distorsión en la presentación.
+          La web www.clinicabarajas.com utiliza técnicas de seguridad de la información tales
+          como firewalls, procedimientos de control de acceso y mecanismos criptográficos, todo
+          ello con el objetivo de evitar el acceso no autorizado a los datos y garantizar la
+          confidencialidad de los mismos.
+        </p>
+        <p class="mb-4 text-gray-700">
+          La información que se difunde en esta web se hace única y exclusivamente a título
+          informativo y <strong>no sustituye en ningún caso el diagnóstico, el consejo ni el
+          tratamiento de un profesional sanitario</strong>. Clínica Barajas, S.L. se reserva el
+          derecho de eliminar o suspender su difusión, total o parcialmente, y a modificar la
+          estructura y contenido de este sitio web sin aviso previo, pudiendo incluso limitar o
+          no permitir el acceso a dicha información. Clínica Barajas, S.L. intenta mantener la
+          calidad y actualización de esta información y evitar y minimizar posibles errores,
+          pero no responderá de los daños o perjuicios causados por decisiones tomadas en base a
+          la información difundida; ni de inexactitudes, omisiones o errores contenidos en el
+          mismo, ni de los problemas que se originen por el uso de este sitio web u otro de
+          conexión externa; ni de los daños y/o perjuicios en el software o hardware del usuario
+          que se deriven del acceso a este sitio web.
+        </p>
+        <p class="mb-4 text-gray-700">
+          Los usuarios aceptan expresamente que Clínica Barajas, S.L. no será responsable del
+          acceso no autorizado o alteración de sus transmisiones o datos, de cualquier material
+          o datos enviados o recibidos o no enviados o recibidos, ni de ninguna transacción
+          realizada a través de su web.
+        </p>
+        <p class="mb-4 text-gray-700">
+          Clínica Barajas, S.L. se reserva el derecho a modificar el presente aviso legal
+          unilateralmente y sin preaviso en los términos y condiciones que estime conveniente,
+          con la única obligación de informar al usuario de las modificaciones efectuadas a
+          través de www.clinicabarajas.com.
         </p>
       </section>
 
-      <!-- Ley aplicable -->
+      <!-- 10. Nulidad parcial -->
       <section class="mb-10">
-        <h2 class="text-2xl font-semibold text-teal-700 mb-4">Ley Aplicable y Jurisdicción</h2>
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">10. Nulidad parcial</h2>
         <p class="mb-4 text-gray-700">
-          Las relaciones entre Clínica Barajas con los usuarios se encuentran sometidas a la legislación 
-          y jurisdicción españolas y a los tribunales de Santa Cruz de Tenerife.
+          Si alguna de las presentes cláusulas fuese declarada nula y sin efecto por resolución
+          firme dictada por autoridad competente, los restantes términos y condiciones
+          permanecerán en vigor, sin que queden afectados por dicha declaración de nulidad.
         </p>
       </section>
 
-      <!-- Información de contacto -->
+      <!-- 11. Ley aplicable -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-teal-700 mb-4">
+          11. Ley aplicable y tribunales competentes
+        </h2>
+        <p class="mb-4 text-gray-700">
+          El presente sitio web queda sometido a lo establecido por la legislación española y la
+          normativa europea que resulte de aplicación.
+        </p>
+        <p class="mb-4 text-gray-700">
+          Cualquier controversia que surja o guarde relación con el uso de la página web o con
+          dichos servicios será sometida a la jurisdicción no exclusiva de los juzgados y
+          tribunales españoles de la provincia de Santa Cruz de Tenerife.
+        </p>
+        <p class="mb-4 text-gray-700">
+          Si se trata de un consumidor final, nada en la presente cláusula afectará a los
+          derechos que como tal le reconoce la legislación vigente, pudiendo elegir presentar una
+          reclamación para hacer valer sus derechos en relación con las presentes condiciones
+          ante el juez o tribunales que correspondan a su domicilio.
+        </p>
+      </section>
+
+      <!-- Contacto -->
       <section class="bg-teal-50 p-6 rounded-lg border border-teal-200">
         <h2 class="text-2xl font-semibold text-teal-700 mb-4">Contacto</h2>
         <p class="mb-4 text-gray-700">
           Para cualquier consulta relacionada con este aviso legal, puede contactarnos:
         </p>
         <div class="space-y-2 text-gray-700">
-          <p><strong>Email:</strong> <a href="mailto:info@clinicabarajas.com" class="text-teal-600 hover:text-teal-800">info@clinicabarajas.com</a></p>
-          <p><strong>Teléfono:</strong> <a href="tel:+34922275488" class="text-teal-600 hover:text-teal-800">922 275 488</a></p>
-          <p><strong>Dirección:</strong> C/ Pérez de Rozas, 8, 38004, Santa Cruz de Tenerife</p>
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:info@clinicabarajas.com" class="text-teal-600 hover:text-teal-800"
+              >info@clinicabarajas.com</a
+            >
+          </p>
+          <p>
+            <strong>Teléfono:</strong>
+            <a href="tel:+34922275488" class="text-teal-600 hover:text-teal-800">922 275 488</a>
+          </p>
+          <p><strong>Dirección:</strong> C/ Pérez de Rozas, 8, 38004 Santa Cruz de Tenerife</p>
         </div>
+        <p class="mt-6 text-sm text-gray-500">
+          Fecha: {fechaVersion} · Versión: {version}
+        </p>
       </section>
     </div>
   </div>

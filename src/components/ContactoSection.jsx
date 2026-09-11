@@ -8,6 +8,14 @@ export default function Contacto() {
     telefono: '',
     mensaje: ''
   });
+
+  // Aceptaciones obligatorias e independientes (art. 7 y 13 RGPD, art. 11 LOPDGDD).
+  // Sin las tres marcadas no se envían los datos.
+  const [legalConsents, setLegalConsents] = useState({
+    avisoLegal: false,
+    privacidad: false,
+    cookies: false
+  });
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
@@ -24,7 +32,24 @@ export default function Contacto() {
     if (!formData.mensaje.trim()) {
       newErrors.mensaje = 'El mensaje es requerido';
     }
+    if (!legalConsents.avisoLegal) {
+      newErrors.avisoLegal = 'Debes aceptar el Aviso Legal';
+    }
+    if (!legalConsents.privacidad) {
+      newErrors.privacidad = 'Debes aceptar la Política de Privacidad';
+    }
+    if (!legalConsents.cookies) {
+      newErrors.cookies = 'Debes aceptar la Política de Cookies y dispositivos de seguimiento';
+    }
     return newErrors;
+  };
+
+  const handleConsentChange = (name) => {
+    setLegalConsents(prev => ({ ...prev, [name]: !prev[name] }));
+
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
   const handleInputChange = (e) => {
@@ -62,6 +87,7 @@ ${formData.mensaje}`;
     // Limpiar formulario después de enviar
     setTimeout(() => {
       setFormData({ nombre: '', email: '', telefono: '', mensaje: '' });
+      setLegalConsents({ avisoLegal: false, privacidad: false, cookies: false });
       setErrors({});
     }, 500);
   };
@@ -149,7 +175,7 @@ ${formData.mensaje}`;
                   <h3 className="text-lg font-semibold text-gray-800">Email</h3>
                 </div>
                 <div className="text-gray-600 leading-relaxed">
-                  <a href="mailto:info@clinicabarajas.com" className="hover:text-teal-700 transition-colors">
+                  <a href="mailto:clinicabarajas@gmail.com" className="hover:text-teal-700 transition-colors">
                     clinicabarajas@gmail.com
                   </a>
                 </div>
@@ -260,6 +286,77 @@ ${formData.mensaje}`;
                 {errors.mensaje && <p className="text-red-500 text-sm mt-1">{errors.mensaje}</p>}
               </div>
 
+              {/* Información previa y aceptaciones obligatorias (RGPD) */}
+              <div className="rounded-lg border border-teal-100 bg-teal-50/60 p-4 space-y-3">
+                <p className="text-xs leading-relaxed text-gray-600">
+                  <strong className="text-gray-700">Información básica sobre protección de datos.</strong>{' '}
+                  Responsable: Clínica Barajas, S.L. (B38393377). Finalidad: atender tu consulta
+                  y ponernos en contacto contigo. Legitimación: tu consentimiento. Destinatarios:
+                  no se ceden datos a terceros salvo obligación legal. Derechos: acceso,
+                  rectificación, supresión, limitación, oposición y portabilidad escribiendo a{' '}
+                  <a href="mailto:clinicabarajas@gmail.com" className="text-teal-700 underline">
+                    clinicabarajas@gmail.com
+                  </a>
+                  . Información adicional en nuestra{' '}
+                  <a href="/politica-privacidad" className="text-teal-700 underline">
+                    Política de Privacidad
+                  </a>
+                  .
+                </p>
+
+                <LegalCheckbox
+                  name="avisoLegal"
+                  checked={legalConsents.avisoLegal}
+                  onChange={handleConsentChange}
+                  error={errors.avisoLegal}
+                >
+                  He leído y acepto el{' '}
+                  <a
+                    href="/aviso-legal"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-teal-700 font-semibold underline"
+                  >
+                    Aviso Legal
+                  </a>
+                </LegalCheckbox>
+
+                <LegalCheckbox
+                  name="privacidad"
+                  checked={legalConsents.privacidad}
+                  onChange={handleConsentChange}
+                  error={errors.privacidad}
+                >
+                  Acepto la{' '}
+                  <a
+                    href="/politica-privacidad"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-teal-700 font-semibold underline"
+                  >
+                    Política de Privacidad
+                  </a>{' '}
+                  y el tratamiento de mis datos para responder a mi consulta
+                </LegalCheckbox>
+
+                <LegalCheckbox
+                  name="cookies"
+                  checked={legalConsents.cookies}
+                  onChange={handleConsentChange}
+                  error={errors.cookies}
+                >
+                  Acepto la{' '}
+                  <a
+                    href="/cookies"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-teal-700 font-semibold underline"
+                  >
+                    Política de Cookies y dispositivos de seguimiento
+                  </a>
+                </LegalCheckbox>
+              </div>
+
               {/* Botón de envío */}
               <button
                 type="submit"
@@ -324,5 +421,32 @@ ${formData.mensaje}`;
         </div>
       </div>
     </section>
+  );
+}
+
+function LegalCheckbox({ name, checked, onChange, error, children }) {
+  const id = `consent-${name}`;
+
+  return (
+    <div>
+      <label htmlFor={id} className="flex items-start gap-3 cursor-pointer">
+        <input
+          id={id}
+          type="checkbox"
+          name={name}
+          checked={checked}
+          onChange={() => onChange(name)}
+          aria-invalid={Boolean(error)}
+          required
+          className={`mt-0.5 h-4 w-4 shrink-0 rounded border text-teal-600 focus:ring-2 focus:ring-teal-500 ${
+            error ? 'border-red-400' : 'border-gray-300'
+          }`}
+        />
+        <span className="text-sm leading-snug text-gray-700">
+          {children} <span className="text-red-500">*</span>
+        </span>
+      </label>
+      {error && <p className="text-red-500 text-xs mt-1 ml-7">{error}</p>}
+    </div>
   );
 }

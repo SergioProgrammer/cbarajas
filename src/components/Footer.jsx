@@ -57,7 +57,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-2">
-                ✉️ <a href="mailto:info@clinicabarajas.com" className="hover:text-white transition">clinicabarajas@gmail.com</a>
+                ✉️ <a href="mailto:clinicabarajas@gmail.com" className="hover:text-white transition">clinicabarajas@gmail.com</a>
               </li>
             </ul>
           </div>
@@ -138,7 +138,11 @@ export default function Footer() {
 
         {/* Línea divisoria */}
         <div className="border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4">
+          <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-4">
+            <a href="/aviso-legal" className="hover:text-white transition">
+              Aviso Legal
+            </a>
+            <span className="hidden sm:inline">•</span>
             <a href="/politica-privacidad" className="hover:text-white transition">
               Política de Privacidad
             </a>
@@ -147,8 +151,22 @@ export default function Footer() {
               Política de Cookies
             </a>
             <span className="hidden sm:inline">•</span>
-            <a href="/aviso-legal" className="hover:text-white transition">
-              Aviso Legal
+            <a href="/condiciones-reserva" className="hover:text-white transition">
+              Condiciones de Reserva
+            </a>
+            <span className="hidden sm:inline">•</span>
+            {/*
+              Permite retirar o modificar el consentimiento con la misma facilidad
+              con la que se otorgó (art. 7.3 RGPD). CookieBanner intercepta el clic
+              mediante [data-cookie-settings]; sin JavaScript, el enlace lleva a la
+              Política de Cookies.
+            */}
+            <a
+              href="/cookies"
+              data-cookie-settings
+              className="hover:text-white transition underline decoration-dotted underline-offset-4"
+            >
+              Configuración de cookies
             </a>
           </div>
           <p>&copy; 2025 Clínica Barajas. Todos los derechos reservados. <a href="https://www.instagram.com/sqstudiodm/" className="hover:text-white transition"> Web SQStudio</a></p>

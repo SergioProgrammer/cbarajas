@@ -1,7 +1,11 @@
 ---
 import "../styles/global.css";
+import CookieBanner from "../components/CookieBanner.jsx";
 
 const siteUrl = "https://www.clinicabarajas.com";
+
+// Identificador de Google Analytics. Sólo se carga tras el consentimiento.
+const gaMeasurementId = "G-WKYK6JNLBS";
 
 const defaultTitle =
   "Clínica Barajas – Especialistas en otorrinolaringología y audiología en Tenerife";
@@ -95,19 +99,116 @@ const {
     <!-- JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WKYK6JNLBS"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        window.dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-WKYK6JNLBS");
+    <!--
+      Consentimiento de cookies (RGPD + art. 22.2 LSSI).
+      Google Analytics NO se carga hasta que el usuario acepta expresamente las
+      cookies analíticas. Mantener sincronizada la clave con src/lib/consent.js.
+    -->
+    <script is:inline define:vars={{ gaMeasurementId }}>
+      (function () {
+        var STORAGE_KEY = "cb-cookie-consent";
+        var CONSENT_VERSION = 2;
+        var MAX_AGE_MS = 24 * 30 * 24 * 60 * 60 * 1000; // 24 meses
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
+        window.gtag = gtag;
+
+        // Por defecto, todo denegado: no se instala ninguna cookie no necesaria.
+        gtag("consent", "default", {
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          analytics_storage: "denied",
+          functionality_storage: "denied",
+          personalization_storage: "denied",
+          security_storage: "granted",
+          wait_for_update: 500,
+        });
+
+        var analyticsLoaded = false;
+
+        function loadAnalytics() {
+          if (analyticsLoaded || !gaMeasurementId) return;
+          analyticsLoaded = true;
+
+          var script = document.createElement("script");
+          script.async = true;
+          script.src =
+            "https://www.googletagmanager.com/gtag/js?id=" + gaMeasurementId;
+          document.head.appendChild(script);
+
+          gtag("js", new Date());
+          gtag("config", gaMeasurementId, { anonymize_ip: true });
+        }
+
+        // Elimina las cookies de Google Analytics si se retira el consentimiento.
+        function removeAnalyticsCookies() {
+          var host = window.location.hostname;
+          var domains = ["", host, "." + host];
+          var parts = host.split(".");
+          if (parts.length > 2) domains.push("." + parts.slice(-2).join("."));
+
+          document.cookie.split(";").forEach(function (entry) {
+            var name = entry.split("=")[0].trim();
+            if (!name) return;
+            if (name !== "_ga" && name.indexOf("_ga_") !== 0 && name.indexOf("_gid") !== 0) return;
+
+            domains.forEach(function (domain) {
+              document.cookie =
+                name +
+                "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/" +
+                (domain ? "; domain=" + domain : "");
+            });
+          });
+        }
+
+        function apply(preferences) {
+          var analytics = !!(preferences && preferences.analytics);
+
+          gtag("consent", "update", {
+            analytics_storage: analytics ? "granted" : "denied",
+            ad_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied",
+          });
+
+          if (analytics) {
+            loadAnalytics();
+          } else {
+            removeAnalyticsCookies();
+          }
+        }
+
+        function readStoredPreferences() {
+          try {
+            var raw = window.localStorage.getItem(STORAGE_KEY);
+            if (!raw) return null;
+
+            var stored = JSON.parse(raw);
+            if (!stored || stored.version !== CONSENT_VERSION) return null;
+
+            var savedAt = Date.parse(stored.date);
+            if (!isFinite(savedAt) || Date.now() - savedAt > MAX_AGE_MS) return null;
+
+            return stored.preferences || null;
+          } catch (error) {
+            return null;
+          }
+        }
+
+        window.cbConsent = { apply: apply, read: readStoredPreferences };
+
+        var stored = readStoredPreferences();
+        if (stored) apply(stored);
+      })();
     </script>
   </head>
 
   <body class="font-sans text-gray-800 antialiased">
     <slot />
+    <CookieBanner client:load />
   </body>
 </html>

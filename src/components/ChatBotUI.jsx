@@ -5,8 +5,17 @@ export default function SimpleChatBot() {
   const [open, setOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [messages, setMessages] = useState([
-    { from: "bot", text: "¡Hola! Soy el asistente de Clínica Barajas 👋 ¿Qué servicio deseas reservar?" }
+    {
+      from: "bot",
+      text:
+        "¡Hola! Estás hablando con un asistente virtual automático de Clínica Barajas 🤖 " +
+        "No es un profesional sanitario y no ofrece diagnósticos ni consejo médico: " +
+        "sólo te ayuda a reservar tu cita. ¿Qué servicio deseas reservar?"
+    }
   ]);
+
+  // Aceptación de las Condiciones de Reserva antes de confirmar la cita.
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const [patientData, setPatientData] = useState({
     service: "",
@@ -171,6 +180,7 @@ export default function SimpleChatBot() {
           >
             <MessageCircle className="w-6 h-6" />
             <span className="font-semibold text-lg">Reserva Cita</span>
+            <span className="sr-only">con nuestro asistente virtual automático</span>
           </button>
         </div>
       )}
@@ -180,9 +190,20 @@ export default function SimpleChatBot() {
         <div className="fixed bottom-6 md:right-6 md:left-auto left-1/2 -translate-x-1/2">
           <div className="w-96 max-w-[90vw] max-h-[80vh] h-[500px] bg-white rounded-2xl shadow-2xl mt-3 overflow-hidden flex flex-col animate-fadeIn">
             {/* Header */}
-            <div className="bg-teal-700 text-white p-4 font-bold flex justify-between items-center">
-              <span>Reserva tu cita</span>
-              <button onClick={() => setOpen(false)} className="text-xl">×</button>
+            <div className="bg-teal-700 text-white p-4 flex justify-between items-start gap-3">
+              <div>
+                <span className="font-bold block leading-tight">Reserva tu cita</span>
+                <span className="text-xs font-normal text-teal-100">
+                  🤖 Asistente virtual automático · no es un profesional sanitario
+                </span>
+              </div>
+              <button
+                onClick={() => setOpen(false)}
+                aria-label="Cerrar el chat"
+                className="text-xl leading-none"
+              >
+                ×
+              </button>
             </div>
 
             {/* Mensajes */}
@@ -228,18 +249,79 @@ export default function SimpleChatBot() {
                         {getSummary()}
                       </div>
 
-                      <a
-                        href={getCalendarLink()}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full flex items-center justify-center gap-2 bg-teal-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors"
-                      >
-                        <Calendar className="w-5 h-5" />
-                        Elegir Fecha y Hora
-                      </a>
+                      <label className="flex items-start gap-2 text-left mb-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={acceptedTerms}
+                          onChange={() => setAcceptedTerms(prev => !prev)}
+                          className="mt-0.5 h-4 w-4 shrink-0 rounded border-gray-300 text-teal-600 focus:ring-2 focus:ring-teal-500"
+                        />
+                        <span className="text-xs leading-snug text-gray-700">
+                          Acepto las{" "}
+                          <a
+                            href="/condiciones-reserva"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-teal-700 font-semibold underline"
+                          >
+                            Condiciones de Reserva
+                          </a>
+                          , el{" "}
+                          <a
+                            href="/aviso-legal"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-teal-700 font-semibold underline"
+                          >
+                            Aviso Legal
+                          </a>
+                          , la{" "}
+                          <a
+                            href="/politica-privacidad"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-teal-700 font-semibold underline"
+                          >
+                            Política de Privacidad
+                          </a>{" "}
+                          y la{" "}
+                          <a
+                            href="/cookies"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-teal-700 font-semibold underline"
+                          >
+                            Política de Cookies
+                          </a>
+                          <span className="text-red-500"> *</span>
+                        </span>
+                      </label>
+
+                      {acceptedTerms ? (
+                        <a
+                          href={getCalendarLink()}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full flex items-center justify-center gap-2 bg-teal-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors"
+                        >
+                          <Calendar className="w-5 h-5" />
+                          Elegir Fecha y Hora
+                        </a>
+                      ) : (
+                        <button
+                          type="button"
+                          disabled
+                          className="w-full flex items-center justify-center gap-2 bg-gray-300 text-gray-600 py-3 px-4 rounded-lg font-semibold cursor-not-allowed"
+                        >
+                          <Calendar className="w-5 h-5" />
+                          Elegir Fecha y Hora
+                        </button>
+                      )}
 
                       <p className="text-xs text-gray-500 mt-2">
-                        Serás redirigido a nuestro calendario de citas
+                        Serás redirigido a Google Calendar, servicio de Google Ireland Ltd.,
+                        donde se recogerán tus datos para gestionar la cita. No facilites
+                        datos de salud en este chat.
                       </p>
                     </div>
                   )}
