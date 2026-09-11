@@ -5,12 +5,12 @@ const doctors = [
   {
     name: "Dr. José Juan Barajas de Prat",
     role: "Especialista en Otorrinolaringología y Cirugía de Cabeza y Cuello",
-    img: "hero/barajas.webp",
+    img: "/hero/barajas.webp",
     imageClassName: "object-[center_18%] scale-[1.18]",
     modalImageClassName: "object-[center_10%]",
     delay: 100,
     email: "clinicabarajas@gmail.com",
-    images: ["hero/Dr-Jose-Juan.webp", "hero/Dr-Jose-Juan2.webp"],
+    images: ["/hero/Dr-Jose-Juan.webp", "/hero/Dr-Jose-Juan2.webp"],
     fullText: `El Dr. J.J. Barajas, médico otorrinolaringólogo, nace en Santa Cruz de Tenerife, obtiene la licenciatura en Medicina y Cirugía en la Universidad de Navarra. Continúa su formación en el Reino Unido donde obtenie el diploma en Laringología y Otología por el Real Colegio de Cirujanos de Londres.
 
 Recibe la Beca Fulbrigth y acude a la Fundación de Otología de los Ángeles (EEUU) y a la Universidad de California (UCLA) donde investiga la fisiología de la cóclea. Becado en el Hospital Universitario de Odense en Dinamarca. Becado por la Fundación Alexander von Humboldt, acude al Departamento de Neurología de la Universidad de Ulm en Alemania, para llevar a cabo estudios de electrofisiología auditiva.
@@ -22,12 +22,12 @@ El Dr. Barajas ha fundamentado este prestigio en un trabajo de investigación de
   {
     name: "Dr. Ayoze Lemes Robayna",
     role: "Especialista en Otorrinolaringología y Cirugía de Cabeza y Cuello",
-    img: "hero/ayoze.jpg",
+    img: "/hero/ayoze.jpg",
     imageClassName: "object-[center_42%] scale-[1.16]",
     modalImageClassName: "object-[center_31%]",
     modalImageClasses: ["object-[center_31%]", "object-[center_38%]"],
     delay: 300,
-    images: ["hero/ayoze.jpg", "hero/ayoze2.jpg"],
+    images: ["/hero/ayoze.jpg", "/hero/ayoze2.jpg"],
     fullText: `El Dr. Ayoze Lemes Robayna es especialista en Otorrinolaringología y Cirugía de Cabeza y Cuello, nacido en Lanzarote. Se licenció en Medicina por la Universidad de Granada y completó su formación como especialista en el Hospital Universitario de Albacete. Actualmente trabaja como otorrinolaringólogo en el Hospital Universitario Nuestra Señora de Candelaria (Tenerife) y ha compaginado su actividad asistencial con la docencia como profesor externo en la Universidad de La Laguna. Cuenta con el título Fellow of the European Board of ORL-HNS (FEBEORL-HNS) y ha realizado estancias formativas en centros de referencia internacionales, como la University of Miami (Estados Unidos) o el Guy's and St Thomas' NHS Foundation Trust (Londres), ampliando su formación en rinología.
 
 Sus áreas de especial interés incluyen la rinología y la otorrinolaringología pediátrica enfocado en el diagnóstico y tratamiento de la apnea obstructiva del sueño infantil, ofreciendo una atención médica actualizada y basada en la evidencia.`,
@@ -35,12 +35,12 @@ Sus áreas de especial interés incluyen la rinología y la otorrinolaringologí
   {
     name: "Dr. Francisco González Sammarco",
     role: "Especialista en Otorrinolaringología y Cirugía de Cabeza y Cuello",
-    img: "hero/francisco.jpg",
+    img: "/hero/francisco.jpg",
     imageClassName: "object-[center_28%] scale-[1.6]",
     modalImageClassName: "object-[center_58%]",
     modalImageClasses: ["object-[center_28%]", "object-[28%_45%] scale-[1.08]"],
     delay: 350,
-    images: ["hero/francisco.jpg", "hero/francisco2.jpg"],
+    images: ["/hero/francisco.jpg", "/hero/francisco2.jpg"],
     fullText: `El Dr. Francisco González Sammarco es graduado en Medicina por la Universidad de La Laguna y especialista vía MIR en Otorrinolaringología por el Hospital Universitario Nuestra Señora de Candelaria.
 
 Con una sólida trayectoria en el diagnóstico y tratamiento de patologías de oído, nariz y garganta, el Dr. González destaca por su alta especialización en Otología, Audiología y Otoneurología. Su práctica clínica se centra especialmente en la cirugía del oído medio, la patología de la cadena osicular y el tratamiento avanzado del colesteatoma.
@@ -52,11 +52,11 @@ Actualmente, compagina su actividad asistencial en el Hospital Universitario Nue
   {
     name: "Franz Zenker Castro",
     role: "Técnico en Audiología y Audioprótesis, Psicólogo en Audición y Lenguaje",
-    img: "hero/franz.webp",
+    img: "/hero/franz.webp",
     imageClassName: "object-[center_22%] scale-[1.18]",
     delay: 400,
     email: "efas2009@gmail.com",
-    images: ["hero/Franz-Zenker-03.webp", "hero/Franz-Zenker-04.webp"],
+    images: ["/hero/Franz-Zenker-03.webp", "/hero/Franz-Zenker-04.webp"],
     fullText: `Franz Zenker es psicólogo especialista en audición y lenguaje y técnico superior en audiología protésica. Ha ejercido roles destacados como secretario científico en congresos internacionales de la Federación Europea de Audiología (IX EFAS) y de la Sociedad Internacional de Respuestas Evocadas (XVIII IERASG). Fue presidente del VI Congreso Nacional de la Asociación Española de Audiología y recibió becas de la Universidad de Nottingham y la Universidad de Helsinki para cursos avanzados en tinnitus y neurociencia cognitiva.
 
 Zenker es co-fundador, junto al Dr. Barajas, del Spanish Journal of Audiology y editor asociado en revistas como Chilena de Fonoaudiología, AMCAOF (México) y AELFA (España). Su contribución en la Revista de AELFA 2012 le valió un accésit al mejor artículo científico. En 2013 recibió el Premio Nacional de Investigación sobre Discapacidad Auditiva FIAPAS. Del 2014 al 2020 fue presidente de la Asociación Española de Audiología (AEDA).
@@ -70,21 +70,21 @@ Además, es formador nacional e internacional en cursos de adaptación audioprot
   {
     name: "Natalia Rodríguez Rodríguez",
     role: "Técnico en Audiología y Audioprótesis",
-    img: "hero/nati.JPG",
+    img: "/hero/nati.JPG",
     imageClassName: "object-[center_35%] scale-[1.15]",
     delay: 450,
   },
   {
     name: "Romina Martín Hernandez",
     role: "Técnico en Cuidados Auxiliares de Enfermería",
-    img: "hero/romina.webp",
+    img: "/hero/romina.webp",
     imageClassName: "object-[center_22%] scale-[1.16]",
     delay: 550,
   },
   {
     name: "Beatriz González Rodríguez",
     role: "Auxiliar de Consulta",
-    img: "hero/beatriz.webp",
+    img: "/hero/beatriz.webp",
     imageClassName: "object-[center_20%] scale-[1.16]",
     delay: 650,
   },
