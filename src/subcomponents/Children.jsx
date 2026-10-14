@@ -140,7 +140,7 @@ function HeroInfantil() {
               href="tel:+34922275488"
               className="bg-white text-teal-700 font-semibold px-5 py-3 rounded-lg shadow hover:bg-teal-50 transition"
             >
-              Llámenos ahora: 922 275 488
+              Llámenos ahora: 922 275 488 · Atención 24 h
             </a>
             <a
               href="/contacto"
@@ -239,7 +239,7 @@ function FinalCta() {
             href="tel:+34922275488"
             className="bg-teal-700 hover:bg-teal-800 text-white font-semibold px-5 py-3 rounded-lg transition"
           >
-            Llámenos ahora: 922 275 488
+            Llámenos ahora: 922 275 488 · Atención 24 h
           </a>
           <a
             href="/contacto"

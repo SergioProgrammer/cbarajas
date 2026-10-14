@@ -36,7 +36,7 @@ export default function Footer() {
                 📍 <span>Clínica Barajas, C. de Perez de Rozas, 8, 38004 Santa Cruz de Tenerife</span>
               </li>
               <li className="flex items-start gap-2">
-                📞 <a href="tel:+34922275488" className="hover:text-white transition">+34 922 275 488</a>
+                📞 <span><a href="tel:+34922275488" className="hover:text-white transition">922 275 488</a> <span className="text-teal-400">· Atención 24 h</span></span>
               </li>
               <li className="flex items-start gap-2">
                 <svg

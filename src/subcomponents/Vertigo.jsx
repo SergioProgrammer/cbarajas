@@ -191,7 +191,7 @@ function HeroSection() {
               href="tel:+34922275488"
               className="bg-teal-900/60 border border-teal-200 text-white font-semibold px-5 py-3 rounded-lg hover:bg-teal-900 transition"
             >
-              Hablar con un especialista
+              Hablar con un especialista · 24 h
             </a>
           </div>
         </div>
@@ -398,7 +398,7 @@ function FinalCta() {
             href="tel:+34922275488"
             className="bg-white border border-teal-700 text-teal-700 font-semibold px-5 py-3 rounded-lg hover:bg-teal-50 transition"
           >
-            Llamar: 922 275 488
+            Llamar: 922 275 488 · Atención 24 h
           </a>
         </div>
       </div>

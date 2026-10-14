@@ -85,7 +85,7 @@ export default function SimpleChatBot() {
     {
       id: "phone",
       botMessage:
-        "Para pedir cita con el Dr. Ayoze Lemes Robayna o el Dr. Francisco González Sammarco, puede contactar por teléfono en el 922 275 488 o por WhatsApp.",
+        "Para pedir cita con el Dr. Ayoze Lemes Robayna o el Dr. Francisco González Sammarco, puede contactar por teléfono en el 922 275 488, con atención 24 horas, o por WhatsApp.",
       type: "phone",
       showOnlyIf: (data) =>
         data.service === "otorrino" &&
@@ -368,7 +368,7 @@ function ContactButtons() {
         href="tel:+34922275488"
         className="w-full flex items-center justify-center gap-2 bg-teal-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors"
       >
-        Llamar al 922 275 488
+        Llamar al 922 275 488 · 24 h
       </a>
 
       <a

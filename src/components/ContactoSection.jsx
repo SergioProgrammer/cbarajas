@@ -136,10 +136,10 @@ ${formData.mensaje}`;
                 </div>
                 <div className="text-gray-600 leading-relaxed">
                   <a href="tel:+34922275488" className="hover:text-teal-700 transition-colors">
-                    +34 922 27 54 88
+                    922 275 488
                   </a>
                 </div>
-                <p className="text-sm text-gray-500 mt-1">Atención al paciente</p>
+                <p className="text-sm font-medium text-teal-600 mt-1">Atención 24 h</p>
                 <div className="mt-4 flex flex-col gap-3">
                   <a
                     href="tel:+34922275488"
@@ -190,11 +190,16 @@ ${formData.mensaje}`;
                   </div>
                   <h3 className="text-lg font-semibold text-gray-800">Horario</h3>
                 </div>
-                <div className="text-gray-600 leading-relaxed">
-                  <p>Lunes y Miércoles: 9:00 - 19:00</p>
-                  <p>Martes, Jueves y Viernes: 9:00 - 17:00</p>
-                  <p>Sábados: Cerrado</p>
-                  <p>Domingos: Cerrado</p>
+                <div className="text-gray-600 leading-relaxed space-y-3">
+                  <div>
+                    <p className="font-semibold text-gray-700">Apertura de la clínica</p>
+                    <p>Lunes a viernes: de 9:00 a 17:00</p>
+                    <p>Sábados y domingos: cerrado</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-700">Atención telefónica 24 horas</p>
+                    <p>Nuestro asistente virtual te atiende las 24 horas, todos los días.</p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -44,9 +44,12 @@ import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
               Islas Canarias, España</p>
           </div>
           <!-- Teléfono -->
-          <div class="flex items-center gap-4">
-            <Phone class="h-6 w-6 text-teal-500" />
-            <p><strong>Teléfono:</strong> +34 922 27 54 88</p>
+          <div class="flex items-start gap-4">
+            <Phone class="h-6 w-6 text-teal-500 mt-1" />
+            <p>
+              <strong>Teléfono:</strong> 922 275 488<br />
+              <span class="text-sm text-teal-600">Atención 24 h</span>
+            </p>
           </div>
           <div class="flex items-center gap-4">
             <MessageCircle class="h-6 w-6 text-teal-500" />
@@ -61,13 +64,15 @@ import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
           <div class="flex items-start gap-4">
             <Clock class="h-6 w-6 text-teal-500 mt-1" />
             <div>
-              <strong>Horario de atención:</strong>
+              <strong>Horario de apertura de la clínica:</strong>
               <ul class="list-disc list-inside ml-4 mt-1">
-                <li>Lunes y Miércoles: 9:00 - 19:00</li>
-                <li>Martes, Jueves y Viernes: 9:00 - 17:00</li>
-                <li>Sábado: Cerrado</li>
-                <li>Domingo: Cerrado</li>
+                <li>Lunes a viernes: de 9:00 a 17:00</li>
+                <li>Sábados y domingos: cerrado</li>
               </ul>
+              <strong class="mt-3 block">Atención telefónica 24 horas:</strong>
+              <p class="mt-1">
+                Nuestro asistente virtual te atiende las 24 horas, todos los días.
+              </p>
             </div>
           </div>
         </div>
